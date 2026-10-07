@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Carson Crocker</title>
-<meta name="description" content="How I built a system of off-the-shelf AIs that produced computer-checked results on open maths problems, and what went wrong along the way.">
+<meta name="description" content="How I built a system of off-the-shelf AIs that produced computer-checked results on open math problems, and what went wrong along the way.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
@@ -93,6 +93,8 @@ footer { border-top: 1px solid var(--rule); padding-top: 18px; font-size: 0.9rem
   table.results td { display: block; border: 0; padding: 0; }
   table.results td:nth-child(3)::before { content: "Before: "; color: var(--muted); font-size: 0.86rem; }
 }
+.sitenav { display:flex; gap:18px; font-family: var(--mono); font-size:0.85rem; }
+.sitenav a[aria-current] { color: var(--fg); text-decoration: none; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -102,7 +104,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 18px; font-size: 0.9rem
     <nav class="sitenav" aria-label="Site"><a href="index.html" aria-current="page">Home</a><a href="tracker.html">Tracker</a></nav>
     <span class="label">AI implementation · open problems</span>
     <h1>Carson Crocker</h1>
-    <p class="lede">I work in corporate strategy and AI implementation. Since September I've been running a system of off-the-shelf AIs on open maths problems, to see how far a good process can go.</p>
+    <p class="lede">I work in corporate strategy and AI implementation. Since September I've been running a system of off-the-shelf AIs on open math problems, to see how far a good process can go.</p>
     <nav class="toc" aria-label="Sections">
       <a href="#produced">What it produced</a>
       <a href="#why">Why I started</a>
@@ -356,7 +358,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 18px; font-size: 0.9rem
   <section id="learned" aria-labelledby="learned-h">
     <h2 id="learned-h">What I learned</h2>
     <div class="note">
-      <p>Most of what I learned is about working with AI, not maths. It is remarkably good at exploring once the process is right, and remarkably good at fooling itself. My job turned out to be building the process and not believing anything until it was checked.</p>
+      <p>Most of what I learned is about working with AI, not math. It is remarkably good at exploring once the process is right, and remarkably good at fooling itself. My job turned out to be building the process and not believing anything until it was checked.</p>
       <p>If you see something I got wrong, or want to try this in your own field, I'd like to hear from you.</p>
     </div>
   </section>
