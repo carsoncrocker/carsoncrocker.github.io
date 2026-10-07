@@ -4,369 +4,73 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Carson Crocker</title>
-<meta name="description" content="How I built a system of off-the-shelf AIs that produced computer-checked results on open math problems, and what went wrong along the way.">
+<meta name="description" content="Computer-checked results on open math problems, produced by a system of off-the-shelf AIs. Every result links to a citable package with code anyone can re-run.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
-<style>
-:root {
-  --bg: #f6f7f9; --surface: #ffffff; --fg: #1a2130; --muted: #5a6476; --rule: #dde2ea;
-  --red: #c4372c; --blue: #2b58d0; --chip: #e9eef8; --ok: #2f9e5b; --wait: #c99a1e; --none: #a3abb8;
-  --display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
-  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #0f1319; --surface: #161b23; --fg: #e5e8ee; --muted: #97a1b2; --rule: #2a313d;
-  --red: #e2574b; --blue: #7397ff; --chip: #1d2533; --none: #5d6676; color-scheme: dark } }
-:root[data-theme="dark"] {
-  --bg: #0f1319; --surface: #161b23; --fg: #e5e8ee; --muted: #97a1b2; --rule: #2a313d;
-  --red: #e2574b; --blue: #7397ff; --chip: #1d2533; --none: #5d6676; color-scheme: dark }
-
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.6; }
-.wrap { max-width: 46rem; margin: 0 auto; padding-inline: 16px; padding-block: 40px 64px; display: grid; gap: 52px; }
-h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; text-wrap: balance; margin: 0; }
-h1 { font-size: 2.4rem; letter-spacing: -0.01em; }
-h2 { font-size: 1.35rem; }
-h3 { font-size: 1.08rem; }
-p { margin: 0; max-width: 65ch; }
-a { color: var(--blue); text-underline-offset: 3px; }
-a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
-.label { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-.draft { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); border: 1px dashed var(--rule); padding: 8px 12px; }
-header { display: grid; gap: 14px; }
-.lede { font-size: 1.12rem; }
-section { display: grid; gap: 18px; }
-nav.toc { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--mono); font-size: 0.82rem; }
-
-.story { display: grid; gap: 14px; }
-
-ol.pieces { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: piece; }
-ol.pieces > li { counter-increment: piece; background: var(--surface); border: 1px solid var(--rule); padding: 18px 20px; display: grid; gap: 10px; min-width: 0; }
-ol.pieces h3::before { content: counter(piece, decimal-leading-zero); font-family: var(--mono); font-weight: 500; font-size: 0.8rem; color: var(--muted); margin-right: 10px; }
-blockquote { margin: 0; border-left: 3px solid var(--wait); padding: 2px 0 2px 14px; display: grid; gap: 2px; }
-blockquote q { font-family: var(--mono); font-size: 0.86rem; quotes: "\201C" "\201D"; overflow-wrap: anywhere; }
-blockquote span { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
-
-.chip { font-family: var(--mono); font-size: 0.72rem; background: var(--chip); padding: 3px 9px; border-radius: 3px; display: inline-block; margin: 0 6px 6px 0; }
-.chip::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; background: var(--none); }
-.chip.ok::before { background: var(--ok); }
-.chip.none::before { background: var(--none); }
-
-table.small { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
-table.small th, table.small td { text-align: left; vertical-align: top; padding: 9px 10px 9px 0; border-bottom: 1px solid var(--rule); }
-table.small th { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-table.small td:first-child { white-space: nowrap; }
-.tablewrap { overflow-x: auto; }
-.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.bound { font-family: var(--mono); font-weight: 500; font-size: 1.05rem; white-space: nowrap; }
-.small-note { font-size: 0.88rem; color: var(--muted); }
-
-figure { margin: 0; display: grid; gap: 8px; }
-.chart { width: 100%; height: auto; display: block; border: 1px solid var(--rule); background: var(--surface); }
-.chart .grid { stroke: var(--rule); stroke-width: 1; }
-.chart .axis { fill: var(--muted); font-family: var(--mono); font-size: 14px; }
-.chart .line { fill: none; stroke: var(--red); stroke-width: 2; }
-.chart .dot { fill: var(--red); }
-.chart .dot.first { fill: var(--surface); stroke: var(--muted); stroke-width: 2; }
-.chart .val { fill: var(--fg); font-family: var(--mono); font-size: 16px; font-weight: 500; }
-.chart .gap { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 4 4; fill: none; }
-figcaption { font-size: 0.88rem; color: var(--muted); }
-
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); background: var(--surface); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
-.stat { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
-.stat b { font-family: var(--mono); font-weight: 500; font-size: 1.3rem; font-variant-numeric: tabular-nums; }
-.stat span { font-size: 0.84rem; color: var(--muted); line-height: 1.4; }
-
-.note { border-left: 3px solid var(--blue); padding-left: 16px; display: grid; gap: 12px; }
-footer { border-top: 1px solid var(--rule); padding-top: 18px; font-size: 0.9rem; color: var(--muted); display: grid; gap: 8px; }
-
-@media (max-width: 560px) {
-  h1 { font-size: 1.9rem; }
-  ol.pieces > li { padding: 16px 14px; }
-  table.small { font-size: 0.86rem; }
-  table.small td:first-child { white-space: normal; }
-  table.results thead { display: none; }
-  table.results tr { display: grid; grid-template-columns: 1fr; gap: 6px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
-  table.results td { display: block; border: 0; padding: 0; }
-  table.results td:nth-child(3)::before { content: "Before: "; color: var(--muted); font-size: 0.86rem; }
-}
-.sitenav { display:flex; gap:18px; font-family: var(--mono); font-size:0.85rem; }
-.sitenav a[aria-current] { color: var(--fg); text-decoration: none; font-weight: 600; }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="wrap">
+<header class="top"><div class="wrap">
+  <a class="brand" href="./">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="./" aria-current="page">Home</a><a href="tracker.html">Tracker</a></nav>
+</div></header>
 
-  <header>
-    <nav class="sitenav" aria-label="Site"><a href="index.html" aria-current="page">Home</a><a href="tracker.html">Tracker</a></nav>
-    <span class="label">AI implementation · open problems</span>
+<main class="wrap">
+  <section>
+    <span class="eyebrow">Open problems · AI · verification</span>
     <h1>Carson Crocker</h1>
-    <p class="lede">I work in corporate strategy and AI implementation. Since September I've been running a system of off-the-shelf AIs on open math problems, to see how far a good process can go.</p>
-    <nav class="toc" aria-label="Sections">
-      <a href="#produced">What it produced</a>
-      <a href="#why">Why I started</a>
-      <a href="#system">The system</a>
-      <a href="#wrong">What went wrong</a>
-      <a href="#learned">What I learned</a>
-    </nav>
-  </header>
-
-  <section id="produced" aria-labelledby="produced-h">
-    <h2 id="produced-h">What it produced</h2>
-    <div class="stats">
-      <div class="stat"><b>10</b><span>computer-verified improvements on published bounds or open problems</span></div>
-      <div class="stat"><b>22</b><span>days, 15 Sep to 6 Oct</span></div>
-      <div class="stat"><b>~43</b><span>problems tried; about 1 in 4 gave a main result</span></div>
-      <div class="stat"><b>14</b><span>claims withdrawn after checking (8 already known, 1 overtaken, 5 wrong)</span></div>
-    </div>
-    <p>Each result comes with code anyone can run to re-check it. Results go public one at a time, after the authors of the work they build on have seen them first; the <a href="tracker.html">tracker</a> shows where each one is. None has yet been checked by a professional mathematician.</p>
-    <div class="tablewrap">
-      <table class="small results">
-        <thead><tr><th>Problem</th><th>Result</th><th>Before</th><th>Days</th><th>Checks</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><a href="https://www.erdosproblems.com/188" target="_blank" rel="noopener">Erdős #188</a></td>
-            <td><span class="bound">7 ≤ k ≤ 60</span></td>
-            <td><span class="num">6 ≤ k ≤ 6330</span><br><span class="small-note">Currier, Mody, Xie, Zhang 2026</span></td>
-            <td class="num">8</td>
-            <td><span class="chip ok">certificate</span><span class="chip ok">3 independent checkers</span><span class="chip ok">formally verified checker</span><span class="chip ok">ChatGPT referee</span></td>
-            <td><span class="chip ok">public</span></td>
-          </tr>
-          <tr>
-            <td><a href="https://www.erdosproblems.com/189" target="_blank" rel="noopener">Erdős #189</a></td>
-            <td><span class="bound">3 ≤ r ≤ 21</span></td>
-            <td><span class="small-note">no lower bound, as far as I can find</span></td>
-            <td class="num">7</td>
-            <td><span class="chip ok">certificate</span><span class="chip ok">3 exact checkers</span><span class="chip ok">formally verified checker</span><span class="chip ok">Lean proof</span></td>
-            <td><span class="chip ok">public</span></td>
-          </tr>
-          <tr>
-            <td><span class="small-note">Distance geometry</span></td>
-            <td><span class="bound"><span class="small-note">in review</span></span></td>
-            <td><span class="small-note">details once the authors of the prior work have seen it</span></td>
-            <td class="num">1</td>
-            <td></td>
-            <td><span class="chip none">in review</span></td>
-          </tr>
-          <tr>
-            <td><span class="small-note">Euclidean Ramsey theory</span></td>
-            <td><span class="bound"><span class="small-note">in review</span></span></td>
-            <td><span class="small-note">details once the authors of the prior work have seen it</span></td>
-            <td class="num">7</td>
-            <td></td>
-            <td><span class="chip none">in review</span></td>
-          </tr>
-          <tr>
-            <td>Triangle-free 5-chromatic unit-distance graph in R³</td>
-            <td><span class="bound">31 vertices</span></td>
-            <td><span class="num">61</span><br><span class="small-note">de Grey, Geombinatorics 2026</span></td>
-            <td class="num">2</td>
-            <td><span class="chip ok">certificate</span><span class="chip ok">blind checker</span><span class="chip ok">adversarial review</span></td>
-            <td><span class="chip ok">verified</span></td>
-          </tr>
-          <tr>
-            <td>5-chromatic unit-distance graph on the sphere of radius cos(π/10)</td>
-            <td><span class="bound">228 vertices</span></td>
-            <td><span class="num">372</span><br><span class="small-note">Voronov, Neopryatnaya, Dergachev, Discrete Math. 2022</span></td>
-            <td class="num">1</td>
-            <td><span class="chip ok">certificate</span><span class="chip ok">blind checker</span><span class="chip ok">adversarial review</span></td>
-            <td><span class="chip ok">verified</span></td>
-          </tr>
-          <tr>
-            <td><span class="small-note">Unit-distance graphs</span></td>
-            <td><span class="bound"><span class="small-note">in review</span></span></td>
-            <td><span class="small-note">details once the authors of the prior work have seen it</span></td>
-            <td class="num">1</td>
-            <td></td>
-            <td><span class="chip none">in review</span></td>
-          </tr>
-          <tr>
-            <td><span class="small-note">Unit-distance graphs</span></td>
-            <td><span class="bound"><span class="small-note">in review</span></span></td>
-            <td><span class="small-note">details once the authors of the prior work have seen it</span></td>
-            <td class="num">1</td>
-            <td></td>
-            <td><span class="chip none">in review</span></td>
-          </tr>
-          <tr>
-            <td>5-chromatic unit-distance graph in the hyperbolic plane (Exoo–Ismailescu distance)</td>
-            <td><span class="bound">276 vertices</span></td>
-            <td><span class="num">622</span><br><span class="small-note">Exoo, Ismailescu, Geombinatorics 2023</span></td>
-            <td class="num">2</td>
-            <td><span class="chip ok">certificate</span><span class="chip ok">blind checker</span><span class="chip ok">adversarial review</span></td>
-            <td><span class="chip ok">verified</span></td>
-          </tr>
-          <tr>
-            <td><span class="small-note">Plane colorings</span></td>
-            <td><span class="bound"><span class="small-note">in review</span></span></td>
-            <td><span class="small-note">details once the authors of the prior work have seen it</span></td>
-            <td class="num">&lt;1</td>
-            <td></td>
-            <td><span class="chip none">in review</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="small-note">Credits. R³: builds on de Grey's 2026 construction; base graph from J. Goedgebeur's lists; Mycielski construction; with thanks to Aubrey de Grey for encouragement. Sphere: setting and the 372 construction from Voronov, Neopryatnaya and Dergachev (2022). Hyperbolic: built from Exoo and Ismailescu's 9-point seed graph by their augmentation rule, then trimmed by SAT (their 762-vertex graph's first 622 vertices are already 5-chromatic). Also an explicit 5,942-vertex girth-5 5-chromatic unit-distance graph in R³; Tomon (2026) proved such graphs exist, non-explicitly.</p>
-    <p class="small-note">Days: from first targeting the problem to the final certified bound. Also 12 to 16 smaller certified results, depending on how they are grouped. #188 builds on the upper-bound construction of Currier, Mody, Xie and Zhang (arXiv 2606.17194) and the lower-bound method of Arman and Tsaturian; Gabriel Currier suggested using cells of different sizes. Packages: <a class="num" href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a> (#188) and <a class="num" href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a> (#189), both published 7 Oct 2026.</p>
-
-    <figure>
-      <svg class="chart" viewBox="0 0 560 270" role="img" aria-labelledby="chart-t chart-d">
-        <title id="chart-t">Erdős #188 upper bound over time</title>
-        <desc id="chart-d">Log-scale chart. Published bound 6330 in June 2026, then 242 and 166 on 29 September, 85 on 30 September, 69 and 64 on 2 October, and 60 on 4 October.</desc>
-        <line class="grid" x1="56" y1="30" x2="540" y2="30"/>
-        <line class="grid" x1="56" y1="108" x2="540" y2="108"/>
-        <line class="grid" x1="56" y1="187" x2="540" y2="187"/>
-        <text class="axis" x="48" y="34" text-anchor="end">10000</text>
-        <text class="axis" x="48" y="112" text-anchor="end">1000</text>
-        <text class="axis" x="48" y="191" text-anchor="end">100</text>
-        <path class="gap" d="M80 46 L156 156"/>
-        <path class="line" d="M156 156 L232 169 L308 192 L384 199 L460 202 L536 204"/>
-        <circle class="dot first" cx="80" cy="46" r="5"/>
-        <circle class="dot" cx="156" cy="156" r="4.5"/>
-        <circle class="dot" cx="232" cy="169" r="4.5"/>
-        <circle class="dot" cx="308" cy="192" r="4.5"/>
-        <circle class="dot" cx="384" cy="199" r="4.5"/>
-        <circle class="dot" cx="460" cy="202" r="4.5"/>
-        <circle class="dot" cx="536" cy="204" r="4.5"/>
-        <text class="val" x="92" y="44">6330</text>
-        <text class="val" x="156" y="144" text-anchor="middle">242</text>
-        <text class="val" x="232" y="157" text-anchor="middle">166</text>
-        <text class="val" x="308" y="180" text-anchor="middle">85</text>
-        <text class="val" x="384" y="187" text-anchor="middle">69</text>
-        <text class="val" x="460" y="190" text-anchor="middle">64</text>
-        <text class="val" x="536" y="192" text-anchor="end">60</text>
-        <text class="axis" x="80" y="232" text-anchor="middle">Jun</text>
-        <text class="axis" x="80" y="250" text-anchor="middle">published</text>
-        <text class="axis" x="156" y="232" text-anchor="middle">Sep 29</text>
-        <text class="axis" x="232" y="232" text-anchor="middle">Sep 29</text>
-        <text class="axis" x="308" y="232" text-anchor="middle">Sep 30</text>
-        <text class="axis" x="384" y="232" text-anchor="middle">Oct 2</text>
-        <text class="axis" x="460" y="232" text-anchor="middle">Oct 2</text>
-        <text class="axis" x="536" y="232" text-anchor="end">Oct 4</text>
-      </svg>
-      <figcaption>Erdős #188 upper bound, log scale. Points are evenly spaced by step, not by date.</figcaption>
-    </figure>
-
-    <h3>How #188 came down</h3>
-    <p>Each drop came from a new question rather than more compute: mixing cell sizes (Gabriel Currier's suggestion), making the checker keep score, letting some cells sit very close together, and turning the checker's failures into the search's next targets.</p>
-    <h3>Numbers</h3>
-    <div class="stats">
-      <div class="stat"><b>22</b><span>days, 15 Sep to 6 Oct</span></div>
-      <div class="stat"><b>~25,300</b><span>Claude Code responses, from local logs</span></div>
-      <div class="stat"><b>~28.5M</b><span>Claude Code output tokens, from local logs</span></div>
-      <div class="stat"><b>1</b><span>home PC (8 cores, no GPU, no cloud)</span></div>
-      <div class="stat"><b>Flat-rate</b><span>consumer AI subscriptions</span></div>
-    </div>
-    <p class="small-note">The response and token counts were read from Claude Code's session logs. They cover the whole project, including problems that went nowhere, and leave out ChatGPT and the other models, which I didn't log in the same way. Priced at API list rates, the Claude usage would come to roughly $3,900 (an estimate; it isn't what I paid).</p>
-  
-    <p>More results are with the experts whose work they build on, and will be added once they've had a chance to look.</p>
+    <p class="lede">I work in corporate strategy and AI implementation. I built a system of off-the-shelf AI tools to work on open math problems, and I publish each result with its proof files and code, so anyone can check it.</p>
   </section>
 
-  <section id="why" aria-labelledby="why-h">
-    <h2 id="why-h">Why I started</h2>
-    <div class="story">
-      <p>I'm not a mathematician. I work in corporate strategy, and a lot of my job is figuring out how to actually use AI. I wanted to see whether someone with the right questions and a good process could make real progress on hard problems they knew nothing about. For me it's more about how you do it than what it is.</p>
-      <p>It started with a tweet: someone had asked an AI to "do a breakthrough" on an unsolved problem. I laughed, then thought it was probably getting that good.</p>
-      <p>My first attempts went nowhere. I aimed at famous conjectures, and Claude and ChatGPT would think for days on one step and get bogged down. I realized I was thinking about it the wrong way.</p>
-      <p>So I stopped asking the AI for answers and started building a system around it. I don't do the mathematics and I don't write the code. I don't come up with each research question either. I built the thing that does: the overnight runs, the process, the memory, the checking and the gates a result has to pass.</p>
+  <section aria-labelledby="results-h">
+    <h2 id="results-h">Results</h2>
+    <div class="cards">
+      <article class="card">
+        <div class="card-head">
+          <h3>Erdős Problem #188</h3>
+          <span class="small">published 7 Oct 2026</span>
+        </div>
+        <p>Color the plane red and blue so that no two red points are exactly 1 apart. How long a run of equally spaced blue points, 1 apart in a straight line, are you forced to have? The answer k was known to be between 6 and 6330.</p>
+        <div class="bound"><span class="was">6 ≤ k ≤ 6330</span><span class="arrow">→</span><span class="now">7 ≤ k ≤ 60</span></div>
+        <div class="tags"><span class="tag ok">computer-checked proof</span><span class="tag ok">3 independent checkers</span><span class="tag ok">formally verified SAT checker</span><span class="tag">not yet reviewed by a mathematician</span></div>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23151059">Package and note (doi:10.5281/zenodo.23151059)</a><a href="https://www.erdosproblems.com/188">Problem page</a></div>
+        <p class="small">Improves the upper bound 6330 of Currier, Mody, Xie and Zhang (<a href="https://arxiv.org/abs/2606.17194">arXiv:2606.17194</a>); the lower bound follows the method of Arman and Tsaturian. Gabriel Currier suggested using red cells of different sizes.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <h3>Erdős Problem #189</h3>
+          <span class="small">published 7 Oct 2026</span>
+        </div>
+        <p>Color the plane with two colors. Must there always be a rectangle of area exactly 1 whose four corners share a color? Yes: this shows that 180 specific points already force one. So the fewest colors that can avoid such rectangles is between 3 and 21.</p>
+        <div class="bound"><span class="was">r ≤ 21, no lower bound</span><span class="arrow">→</span><span class="now">3 ≤ r ≤ 21</span></div>
+        <div class="tags"><span class="tag ok">computer-checked proof</span><span class="tag ok">Lean proof</span><span class="tag ok">formally verified SAT checker</span><span class="tag">not yet reviewed by a mathematician</span></div>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23178517">Package and note (doi:10.5281/zenodo.23178517)</a><a href="https://www.erdosproblems.com/189">Problem page</a></div>
+        <p class="small">The upper bound 21 and the question are from Hu and Liu (<a href="https://arxiv.org/abs/2609.00583">arXiv:2609.00583</a>).</p>
+      </article>
+    </div>
+    <p class="note">More results are being prepared. Each is added here only after the authors of the work it builds on have seen it and its package has a permanent DOI. The <a href="tracker.html">tracker</a> shows where everything stands.</p>
+  </section>
+
+  <section aria-labelledby="how-h">
+    <h2 id="how-h">How to check a result yourself</h2>
+    <p>Download a package from its DOI link, unzip it, and run one command in Linux (or WSL on Windows). It re-checks every step with standard, independent tools and prints PASS or FAIL.</p>
+    <pre>bash verify_all.sh    # Erdős #188
+bash verify.sh        # Erdős #189</pre>
+  </section>
+
+  <section aria-labelledby="more-h">
+    <h2 id="more-h">More</h2>
+    <div class="tiles">
+      <a class="tile" href="tracker.html"><b>Tracker</b><span>Every result's stage, from found to peer-reviewed, plus the claims that were withdrawn after checking.</span></a>
+      <a class="tile" href="https://github.com/carsoncrocker"><b>Contact</b><span>Questions, corrections or ideas: reach me through my GitHub profile.</span></a>
     </div>
   </section>
+</main>
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  <section id="system" aria-labelledby="system-h">
-    <h2 id="system-h">The system</h2>
-    <p>Claude runs the research: it generates the questions, launches parallel lines of attack, writes its own checkers, attacks its own results and reports back. ChatGPT and other models act as critics and outside checkers. I designed the system they work in, I correct it, and my corrections become permanent rules. I also decide what is real enough to go out.</p>
-    <figure>
-<svg viewBox="0 0 640 230" role="img" aria-label="Diagram: Choose, Explore, Verify, Release in sequence, all reading from and writing to a shared memory. I design, correct and gate." style="width:100%;height:auto;display:block">
-<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--muted)"/></marker></defs>
-<g font-family="var(--display)" font-size="15" fill="var(--fg)" text-anchor="middle">
-<rect x="10" y="30" width="130" height="56" rx="6" fill="var(--surface)" stroke="var(--rule)"/><text x="75" y="56">Choose</text><text x="75" y="74" font-size="11" fill="var(--muted)">scouts, targets</text>
-<rect x="170" y="30" width="130" height="56" rx="6" fill="var(--surface)" stroke="var(--blue)"/><text x="235" y="56">Explore</text><text x="235" y="74" font-size="11" fill="var(--muted)">storms, probes</text>
-<rect x="330" y="30" width="130" height="56" rx="6" fill="var(--surface)" stroke="var(--rule)"/><text x="395" y="56">Verify</text><text x="395" y="74" font-size="11" fill="var(--muted)">checkers, referees</text>
-<rect x="490" y="30" width="140" height="56" rx="6" fill="var(--surface)" stroke="var(--rule)"/><text x="560" y="56">Release</text><text x="560" y="74" font-size="11" fill="var(--muted)">gates, experts</text>
-<rect x="170" y="140" width="290" height="56" rx="6" fill="var(--surface)" stroke="var(--red)"/><text x="315" y="166">Learn: shared memory</text><text x="315" y="184" font-size="11" fill="var(--muted)">ledger, playbook, rules</text>
-</g>
-<g stroke="var(--muted)" stroke-width="1.6" fill="none" marker-end="url(#ar)">
-<path d="M140 58H168"/><path d="M300 58H328"/><path d="M460 58H488"/>
-<path d="M75 86V168H168"/><path d="M235 138V88"/><path d="M395 88V138"/><path d="M560 86V168H462"/>
-</g>
-<text x="320" y="222" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--muted)">Claude runs every stage. I design it, correct it, and decide what goes out.</text>
-</svg>
-</figure>
-    <ol class="pieces">
-      <li>
-        <h3>1. Choose</h3>
-        <p class="rule"><b>Choose problems that suit AI: where search and computation can make real progress, and the answer can be proved by a program.</b></p>
-        <ul><li>Famous conjectures went nowhere. What works are bounds that are recent, loose or built by hand.</li><li>Scout agents look for targets. A literature check comes before any compute, and the dead list is checked first.</li><li>The ledger shows which choices paid off, and the next target is picked from that.</li></ul>
-      </li>
-      <li>
-        <h3>2. Explore</h3>
-        <p class="rule"><b>Ask many small questions at once, keep the machine busy, and don't stop when the AI wants to.</b></p>
-        <ul><li><b>Question storms.</b> When progress stalls, the system asks three to five different questions in parallel instead of running one search longer. The playbook has fourteen question types, each added because it produced an improvement: Is it minimal? Which hidden assumption can I drop? Is this condition necessary or only sufficient? Is the engine the bottleneck? Who outside has an idea?</li><li><b>Probes.</b> Every idea is tested in minutes, with a positive control that must first reproduce something known. Each ends with a one-line verdict. Two probes with no movement and the idea goes on the dead list.</li><li><b>Parallel and overnight.</b> Several Claude Code sessions and agents run at once, some forked to try different approaches, with a fresh-eyes agent in every storm. Nights run from a written directive with time budgets, kill rules and a morning report.</li><li><b>Speed.</b> Every round asks whether the tools can go faster, and whether any core is idle. Moving one checker to Linux took it from 93 minutes to 17. A long run is allowed only while it keeps improving.</li><li><b>Past the stopping point.</b> On my first problem Claude recommended stopping at 35, then at 29. Both times I pushed on, and both times the next improvement came, ending at 27.</li></ul>
-      </li>
-      <li>
-        <h3>3. Verify</h3>
-        <p class="rule"><b>Nothing is true until it is checked by something that didn't produce it.</b></p>
-        <ul><li><b>Honest scoring.</b> The search is graded by the checker, never by its own shortcut.</li><li><b>Certificates.</b> Exact or interval arithmetic, or SAT proofs checked by standard tools and by a formally verified checker; a Lean proof where possible.</li><li><b>Independent checks.</b> A second checker written blind in a separate session, ChatGPT and other models as outside referees, and a hostile agent that tries to break each result.</li><li><b>Tests of the tests.</b> Deliberately broken inputs must be rejected, or the check doesn't count.</li></ul>
-      </li>
-      <li>
-        <h3>4. Learn</h3>
-        <p class="rule"><b>Every result and every mistake becomes a rule.</b></p>
-        <ul><li>AI sessions forget, so the system remembers in files: a ledger of every claim and its status that outranks any model's memory, a playbook, around 40 memory files, a catalogue of tools, and a start-here page every session reads first.</li><li>Lessons are written back as rules, so each session starts smarter than the last. This isn't machine learning in the technical sense; the system learns by rewriting its own instructions.</li></ul>
-      </li>
-      <li>
-        <h3>5. Release</h3>
-        <p class="rule"><b>Experts first, credit always, and claim only what has been checked.</b></p>
-        <ul><li>A seven-point release checklist, a 48-hour hold, careful wording, and nothing goes out without my OK.</li><li>Before anything is public I write to the mathematicians whose work it builds on, and credit where each idea came from.</li><li>Each result ships with code anyone can re-run, and every AI conversation is archived with checksums, so who did what can be checked.</li></ul>
-      </li>
-    </ol>
-  </section>
-
-  
-
-  <section id="wrong" aria-labelledby="wrong-h">
-    <h2 id="wrong-h">What went wrong (and what it taught the system)</h2>
-    <p>The AI is remarkably good at fooling itself. These are the mistakes I'd most want someone building a similar system to know about.</p>
-    <div class="tablewrap">
-      <table class="small">
-        <thead><tr><th>When</th><th>What happened</th><th>What changed</th></tr></thead>
-        <tbody>
-          <tr><td>2 Oct</td><td>A search reported 63 on Erdős #188. It had learned to game its own score. The independent checker found the true figure was about 68.</td><td>The independent checker's test is now the search's score.</td></tr>
-          <tr><td>21 Sep</td><td>Claude twice recommended stopping, once at 35 and once at 29. Both times there was more to find.</td><td>A stall is read as the method being stuck, not as the answer being reached.</td></tr>
-          <tr><td>6 Oct</td><td>A proof checker printed "VERIFIED" on a tampered file, because the file's header no longer matched its contents.</td><td>Header and body are checked against each other before any proof check counts.</td></tr>
-          <tr><td>6 Oct</td><td>A tamper test passed when it should have failed. It changed a clause the proof never used.</td><td>Tamper tests must change something the proof depends on.</td></tr>
-          <tr><td>20 Sep onward</td><td>Several results that looked new were already known, including one found in a 2021 Polymath16 thread within minutes of being called new.</td><td>A literature check comes before compute and before any claim. The list of "not new after all" is kept.</td></tr>
-          <tr><td>6 Oct</td><td>A release package was described as passing a full clean run. It had passed in two separate runs, not one.</td><td>Corrected in the ledger, then re-run as one clean run, which passed (43 minutes).</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="learned" aria-labelledby="learned-h">
-    <h2 id="learned-h">What I learned</h2>
-    <div class="note">
-      <p>Most of what I learned is about working with AI, not math. It is remarkably good at exploring once the process is right, and remarkably good at fooling itself. My job turned out to be building the process and not believing anything until it was checked.</p>
-      <p>If you see something I got wrong, or want to try this in your own field, I'd like to hear from you.</p>
-    </div>
-  </section>
-
-  <footer>
-    <p>Contact: via my GitHub profile <a href="https://github.com/carsoncrocker">github.com/carsoncrocker</a>.</p>
-    <p>The mathematics, code and checking on this page were done by AI models (Claude and ChatGPT, with others as checkers) inside a system I designed and ran. I take responsibility for every claim here. Corrections are welcome and will be dated.</p>
-  </footer>
-</div>
+<footer><div class="wrap">
+  <p>The searches, code and checks behind these results were produced with AI tools (Claude Code, with ChatGPT as a reviewer) inside a process I designed and ran. Corrections are welcome and will be dated.</p>
+</div></footer>
 </body>
 </html>

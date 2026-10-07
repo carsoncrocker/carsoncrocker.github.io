@@ -1,0 +1,96 @@
+/* Shared styles for carsoncrocker.github.io */
+:root {
+  --bg: #fbfaf7; --surface: #ffffff; --fg: #17181c; --muted: #5d6270; --faint: #8a8f9c; --rule: #e6e3dc;
+  --accent: #1f5fd6; --accent-soft: #e9f0fd; --red: #c23b2e; --ok: #23864e; --ok-soft: #e6f4ec;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111317; --surface: #181b21; --fg: #e8e9ec; --muted: #a2a8b5; --faint: #747b88; --rule: #2a2f38;
+  --accent: #7ea6ff; --accent-soft: #1b2436; --red: #ef6a5d; --ok: #5cc98a; --ok-soft: #16271e; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #111317; --surface: #181b21; --fg: #e8e9ec; --muted: #a2a8b5; --faint: #747b88; --rule: #2a2f38;
+  --accent: #7ea6ff; --accent-soft: #1b2436; --red: #ef6a5d; --ok: #5cc98a; --ok-soft: #16271e; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 18px; line-height: 1.62; }
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.wrap { max-width: 44rem; margin: 0 auto; padding: 0 16px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(2.2rem, 6vw, 3rem); letter-spacing: -0.015em; }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.12rem; }
+p { margin: 0; }
+.mono, .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.small { font-size: 0.88rem; color: var(--muted); }
+
+/* top bar */
+.top { border-bottom: 1px solid var(--rule); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap; }
+.brand { font-family: var(--display); font-weight: 600; font-size: 1.05rem; color: var(--fg); text-decoration: none; }
+.nav { display: flex; gap: 4px 18px; flex-wrap: wrap; font-family: var(--mono); font-size: 0.82rem; }
+.nav a { color: var(--muted); text-decoration: none; }
+.nav a:hover, .nav a[aria-current] { color: var(--fg); }
+.nav a[aria-current] { border-bottom: 1px solid var(--fg); }
+
+main { padding: 48px 0 72px; display: grid; gap: 56px; }
+section { display: grid; gap: 18px; }
+.lede { font-size: 1.2rem; color: var(--fg); max-width: 36rem; }
+.eyebrow { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--faint); }
+
+/* result cards */
+.cards { display: grid; gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 22px 22px 20px; display: grid; gap: 12px; }
+.card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap; }
+.card h3 a { color: var(--fg); text-decoration: none; }
+.card h3 a:hover { color: var(--accent); }
+.bound { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; font-family: var(--mono); }
+.bound .was { color: var(--faint); text-decoration: line-through; text-decoration-thickness: 1px; font-size: 1rem; }
+.bound .arrow { color: var(--faint); }
+.bound .now { font-size: 1.55rem; font-weight: 500; color: var(--fg); }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { font-family: var(--mono); font-size: 0.72rem; padding: 3px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--fg); white-space: nowrap; }
+.tag.ok { background: var(--ok-soft); }
+.tag.ok::before { content: "\25CF  "; color: var(--ok); }
+.card .links { display: flex; gap: 6px 18px; flex-wrap: wrap; font-family: var(--mono); font-size: 0.82rem; }
+
+/* tiles */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 12px; }
+.tile { display: grid; gap: 6px; align-content: start; padding: 18px; border: 1px solid var(--rule); border-radius: 10px; text-decoration: none; color: var(--fg); background: var(--surface); }
+.tile:hover { border-color: var(--accent); }
+.tile b { font-family: var(--display); font-size: 1.08rem; }
+.tile span { color: var(--muted); font-size: 0.93rem; line-height: 1.45; }
+
+.note { border-left: 3px solid var(--rule); padding-left: 14px; color: var(--muted); font-size: 0.95rem; }
+footer { border-top: 1px solid var(--rule); }
+footer .wrap { padding-top: 20px; padding-bottom: 40px; font-size: 0.88rem; color: var(--muted); display: grid; gap: 6px; }
+
+/* long-form pages */
+.prose { display: grid; gap: 16px; }
+.prose ul, .prose ol { margin: 0; padding-left: 1.3rem; display: grid; gap: 8px; }
+.prose h2 { margin-top: 12px; }
+sup.cite a { font-family: var(--mono); font-size: 0.7em; text-decoration: none; padding: 0 1px; }
+.refs { font-size: 0.9rem; color: var(--muted); }
+.refs ol { padding-left: 1.4rem; display: grid; gap: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--faint); font-weight: 500; }
+.tablewrap { overflow-x: auto; }
+figure { margin: 0; display: grid; gap: 8px; }
+figcaption { font-size: 0.88rem; color: var(--muted); }
+pre, code { font-family: var(--mono); font-size: 0.86rem; }
+pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; overflow-x: auto; margin: 0; }
+
+/* tracker */
+.stages { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: 10px; }
+.stg { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.stg b { font-family: var(--display); }
+.stg span { font-size: 0.86rem; color: var(--muted); line-height: 1.4; }
+.dotc { font-family: var(--mono); white-space: nowrap; color: var(--ok); }
+@media (max-width: 560px) { .track th:nth-child(n+3), .track td:nth-child(n+3) { display: none; } }
+@media (min-width: 640px) { .stages { grid-template-columns: repeat(5, 1fr); } }
