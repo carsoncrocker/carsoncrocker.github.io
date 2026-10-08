@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evidence · Carson Crocker</title>
+<meta name="description" content="The evidence behind every claim on this site: verbatim excerpts from the project's ledger and logs, the claims caught before publishing, and the usage count.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="../">Home</a><a href="../results/">Results</a><a href="../case-study.html">Case study</a><a href="../log.html">Log</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section>
+    <h1>Evidence</h1>
+    <p class="lede">Every footnote on this site points either to a published paper or package, or to one of the files below. They are short, verbatim excerpts from the project's own records, so you can see what each sentence rests on.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="files-h">
+    <h2 id="files-h">The files</h2>
+    <div class="tiles">
+      <a class="tile" href="ledger_extract.html"><b>Ledger extract</b><span>Rows of the project ledger, the running record of every claim and check, quoted by line number.</span></a>
+      <a class="tile" href="log_quotes.html"><b>Log quotes</b><span>My own messages to the AI that are quoted on this site, and lines from the who-did-what timeline.</span></a>
+      <a class="tile" href="withdrawn.html"><b>Caught before publishing</b><span>Claims that did not survive a later check, all caught before anything went public, with the evidence for each.</span></a>
+      <a class="tile" href="usage.html"><b>Claude Code usage</b><span>How many responses and tokens, measured from the session logs, with the script and its output.</span></a>
+    </div>
+    <p>Each page is generated from a plain-text file, which is the source: <a href="ledger_extract.md">ledger_extract.md</a>, <a href="log_quotes.md">log_quotes.md</a>, <a href="withdrawn.md">withdrawn.md</a>, <a href="usage.md">usage.md</a>. The usage count comes with its script, <a href="measure_usage.py">measure_usage.py</a>, and its output, <a href="usage_output.txt">usage_output.txt</a>.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="rules-h">
+    <h2 id="rules-h">How the excerpts were made</h2>
+    <ul>
+      <li>Excerpts are copied by a script, not retyped, and are verbatim. The ledger is in British spelling and in shorthand; it is left as written.</li>
+      <li>Some text is removed and marked: <code>[redacted: unreleased result]</code> for work that is not public yet, <code>[redacted: private correspondence]</code> for the content of private emails, and <code>[redacted: local path]</code> for file locations on my computer.</li>
+      <li>Snapshots of the AI session logs are kept privately with checksums (<a href="ledger_extract.html#L681">ledger row 681</a>). The two published results do not depend on any of this: each package can be checked on its own.</li>
+    </ul>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>The searches, code and checks behind these results were produced with AI tools (Claude Code, with ChatGPT as a reviewer) inside a process I designed and ran. Corrections are welcome and will be dated.</p>
+</div></footer>
+</body>
+</html>

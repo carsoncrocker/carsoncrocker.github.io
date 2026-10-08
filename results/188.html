@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erdős #188 · Carson Crocker</title>
+<meta name="description" content="Erdős Problem #188: the bounds 7 ≤ k ≤ 60, explained in plain English, with how it was checked and how to check it yourself.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="../">Home</a><a href="./" aria-current="page">Results</a><a href="../case-study.html">Case study</a><a href="../log.html">Log</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section>
+    <span class="eyebrow">Result · published 7 Oct 2026</span>
+    <h1>Erdős Problem #188</h1>
+    <p class="lede">Color every point of the plane red or blue, with one rule: no two red points may be exactly 1 apart. Now look for a blue run: points on a straight line, each exactly 1 from the next, all blue. How long a blue run are you forced to have? Erdős asked for the smallest k such that some coloring has no blue run of k points.<sup class="cite"><a href="#n1">1</a></sup></p>
+    <div class="bound"><span class="was">6 ≤ k ≤ 6330</span><span class="arrow">→</span><span class="now">7 ≤ k ≤ 60</span></div>
+    <p class="small">Package and note: <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>. Computer-checked; not yet reviewed by a mathematician.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="known-h">
+    <h2 id="known-h">What was known</h2>
+    <p>Tsaturian proved in 2017 that every such coloring has a blue run of 5, so k is at least 6.<sup class="cite"><a href="#n2">2</a></sup> In June 2026 Currier, Mody, Xie and Zhang built a coloring with no blue run of 6330, so k is at most 6330.<sup class="cite"><a href="#n3">3</a></sup> That left a wide gap: 6 ≤ k ≤ 6330.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="new-h">
+    <h2 id="new-h">What is new</h2>
+    <ul>
+      <li><b>Lower bound, k ≥ 7.</b> Every red/blue coloring of the plane has two red points exactly 1 apart or a blue run of 6.<sup class="cite"><a href="#n4">4</a></sup></li>
+      <li><b>Upper bound, k ≤ 60.</b> An explicit coloring has no two red points exactly 1 apart and no blue run of 60.<sup class="cite"><a href="#n4">4</a></sup></li>
+    </ul>
+    <p>To my knowledge neither bound was in the literature before; the note asks to be corrected if it was.<sup class="cite"><a href="#n4">4</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="idea-h">
+    <h2 id="idea-h">The idea in simple words</h2>
+    <h3>The coloring (k ≤ 60)</h3>
+    <p>The red part is made of small, nearly round red patches (regular 24-sided polygons), each less than 1 across, repeated across the plane like wallpaper. One repeating tile holds 90 patches in 48 different sizes.<sup class="cite"><a href="#n4">4</a></sup> Any two patches are either far apart, so every distance between them is more than 1, or close together, so every distance is less than 1. Either way, no two red points are exactly 1 apart.<sup class="cite"><a href="#n4">4</a></sup></p>
+    <p>The hard part is showing that every run of 60 hits red, in every direction and from every starting point. Because the pattern repeats, it is enough to check one tile. A program splits the directions into 40,000 small slices and, for each slice, proves that 60 shifted copies of the red set cover the whole tile, with every step checked in rigorous ball arithmetic.<sup class="cite"><a href="#n4">4</a></sup></p>
+    <p>The framework of red patches less than 1 across comes from Currier, Mody, Xie and Zhang, whose patches were hexagons of one size.<sup class="cite"><a href="#n3">3</a></sup> Gabriel Currier suggested using red cells of different sizes, with smaller ones in the gaps. That idea is what brought the bound down from 85 to 69, then 64.<sup class="cite"><a href="#n5">5</a></sup> Letting small patches sit very close to a larger one, together with further search, took it to 60.<sup class="cite"><a href="#n4">4</a></sup></p>
+    <h3>The lower bound (k ≥ 7)</h3>
+    <p>This follows the method of Arman and Tsaturian, who proved the matching statement in three dimensions.<sup class="cite"><a href="#n6">6</a></sup> Suppose a coloring had no red pair 1 apart and no blue run of 6. First, four computer-checked lemmas show it also has no red pairs at distances 4, 3, 2 and 6. Each lemma is a yes/no puzzle on about 9,000 to 12,000 exact points, and a SAT solver proves the puzzle has no solution, writing out a proof file (a DRAT certificate) that standard tools can check.<sup class="cite"><a href="#n4">4</a></sup></p>
+    <p>Then a short argument by hand finishes it. Take a red point A. In any direction, one of the six points at distances 1 to 6 from A must be red, and distances 1, 2, 3, 4 and 6 are ruled out, so the point at distance 5 is red. That makes the whole circle of radius 5 around A red, and that circle contains two points exactly 1 apart. Contradiction.<sup class="cite"><a href="#n4">4</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="checked-h">
+    <h2 id="checked-h">How it was checked</h2>
+    <ul>
+      <li><b>No red pair 1 apart:</b> checked by two separately written programs in exact arithmetic.<sup class="cite"><a href="#n7">7</a></sup></li>
+      <li><b>No blue run of 60:</b> proved by one program (Method 2) and confirmed by a second, separately written program with a different method (Method 1).<sup class="cite"><a href="#n7">7</a></sup> A third verifier, written separately from the coloring data and the README’s description of the cells, also passed, and it found an exact blue run of 59, so 60 is the best this coloring can give. A separate attack program found no counterexample.<sup class="cite"><a href="#n8">8</a></sup></li>
+      <li><b>Lower bound:</b> the four proof files pass <code>drat-trim</code> and <code>lrat-check</code>, and also <code>cake_lpr</code>, a formally verified proof checker. A separate verifier rebuilt the puzzles with its own arithmetic and its own solvers.<sup class="cite"><a href="#n9">9</a></sup></li>
+      <li><b>Outside AI referee:</b> ChatGPT reproduced the checks and signed off on 7 ≤ k ≤ 60.<sup class="cite"><a href="#n10">10</a></sup></li>
+      <li><b>One clean run:</b> the whole package passed in one uninterrupted run from a clean copy (about 43 minutes).<sup class="cite"><a href="#n11">11</a></sup></li>
+    </ul>
+    <p class="note">All the verifiers were written with the same AI tool (Claude Code), in separate sessions. That is not independence in the sense of different authors, which is why checks by others are very welcome.<sup class="cite"><a href="#n12">12</a></sup> To my knowledge, no mathematician has checked the result yet.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="yourself-h">
+    <h2 id="yourself-h">How to check it yourself</h2>
+    <p>Download the package from <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>, unzip it, and in Linux or WSL run:<sup class="cite"><a href="#n7">7</a></sup></p>
+    <pre>pip install numpy numba python-flint
+bash verify_all.sh          # upper bound, about 20-25 min on 8 cores
+bash verify_all.sh full     # adds Method 1 and the lower bound (needs drat-trim), about 40 min</pre>
+    <p>The last line says PASS or FAIL. The README in the package explains every step and what each program checks.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="credits-h">
+    <h2 id="credits-h">Credits</h2>
+    <ul>
+      <li>The upper bound builds on the cell colorings of Currier, Mody, Xie and Zhang (<a href="https://arxiv.org/abs/2606.17194">arXiv:2606.17194</a>), including the bound 6330.<sup class="cite"><a href="#n3">3</a></sup></li>
+      <li>The lower bound follows the method of Arman and Tsaturian (<a href="https://arxiv.org/abs/1702.04799">arXiv:1702.04799</a>) and builds on Tsaturian's k ≥ 6.<sup class="cite"><a href="#n6">6</a></sup></li>
+      <li>Gabriel Currier suggested using red cells of different sizes.<sup class="cite"><a href="#n5">5</a></sup></li>
+      <li>Thomas Bloom maintains <a href="https://www.erdosproblems.com/188">erdosproblems.com</a>, where I learned of the problem.<sup class="cite"><a href="#n5">5</a></sup></li>
+    </ul>
+  </section>
+
+  <section class="prose" aria-labelledby="not-h">
+    <h2 id="not-h">What is not claimed</h2>
+    <ul>
+      <li>The exact value of k. It is somewhere from 7 to 60.</li>
+      <li>Anything about k ≥ 8. The note records some conditional steps toward it; they are not a proof.<sup class="cite"><a href="#n7">7</a></sup></li>
+      <li>Peer review. The note is posted with the package; it is not a journal paper.</li>
+      <li>That the search programs that found the coloring are part of the proof. They are not; only the certificates and verifiers are.<sup class="cite"><a href="#n4">4</a></sup></li>
+    </ul>
+  </section>
+
+  <section class="prose" aria-labelledby="ai-h">
+    <h2 id="ai-h">How AI was used</h2>
+    <p>The searches, the verification programs and drafts of the note were produced with Claude Code under my direction. ChatGPT was used as an outside referee and for an independent re-check of the lower bound. I take responsibility for the content.<sup class="cite"><a href="#n12">12</a></sup> How the whole system works is on the <a href="../case-study.html">case study</a> page.</p>
+  </section>
+
+  <section class="refs" aria-labelledby="refs-h">
+    <h2 id="refs-h">Sources</h2>
+    <ol>
+      <li id="n1">Erdős Problem #188, <a href="https://www.erdosproblems.com/188">erdosproblems.com/188</a>.</li>
+      <li id="n2">S. Tsaturian, Electron. J. Combin. 24(4) (2017), P4.35; as cited in the note, Introduction, in <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>.</li>
+      <li id="n3">G. Currier, K. Mody, Z. Xie, J. Zhang, <a href="https://arxiv.org/abs/2606.17194">arXiv:2606.17194</a> (June 2026), Theorem 1.2.</li>
+      <li id="n4">C. Crocker, "Bounds for Erdős Problem #188: 7 ≤ k ≤ 60", note.pdf in <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>: abstract, Sections 2–5 (lower bound, the coloring, Claim A, Claim B, how the coloring was found) and Acknowledgements.</li>
+      <li id="n5">The note's Acknowledgements and the package README (Provenance) in <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>; ledger, 1 Oct 2026: <a href="../evidence/ledger_extract.html#L601">evidence/ledger_extract, L601</a>; the bounds 85, 69, 64: <a href="../evidence/ledger_extract.html#L597">L597</a>, <a href="../evidence/ledger_extract.html#L607">L607</a>.</li>
+      <li id="n6">A. Arman, S. Tsaturian, <a href="https://arxiv.org/abs/1702.04799">arXiv:1702.04799</a>; the note, Section 1 and Acknowledgements.</li>
+      <li id="n7">Package README.txt, Parts I, I-b and II, in <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>; ledger, 4 Oct 2026: <a href="../evidence/ledger_extract.html#L645">evidence/ledger_extract, L645</a>.</li>
+      <li id="n8">Package extra_checks/README.txt, items 2 and 3, in <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>; ledger, 7 Oct 2026: <a href="../evidence/ledger_extract.html#L683">evidence/ledger_extract, L683</a>.</li>
+      <li id="n9">Package README.txt Part I and extra_checks/README.txt item 1; ledger: <a href="../evidence/ledger_extract.html#L552">L552</a>, <a href="../evidence/ledger_extract.html#L680">L680</a>.</li>
+      <li id="n10">Ledger, 4–5 Oct 2026: <a href="../evidence/ledger_extract.html#L649">evidence/ledger_extract, L649</a>.</li>
+      <li id="n11">Package file logs/FULL_RUN_2026-10-06.log; ledger, 7 Oct 2026: <a href="../evidence/ledger_extract.html#L682">evidence/ledger_extract, L682</a>.</li>
+      <li id="n12">The note, "Use of AI tools", in <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>.</li>
+    </ol>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>The searches, code and checks behind these results were produced with AI tools (Claude Code, with ChatGPT as a reviewer) inside a process I designed and ran. Corrections are welcome and will be dated.</p>
+  <p>Contact: <a href="https://github.com/carsoncrocker">github.com/carsoncrocker</a></p>
+</div></footer>
+</body>
+</html>

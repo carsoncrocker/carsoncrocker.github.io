@@ -13,7 +13,7 @@
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="./">Carson Crocker</a>
-  <nav class="nav" aria-label="Site"><a href="./" aria-current="page">Home</a><a href="tracker.html">Tracker</a></nav>
+  <nav class="nav" aria-label="Site"><a href="./" aria-current="page">Home</a><a href="results/">Results</a><a href="case-study.html">Case study</a><a href="log.html">Log</a></nav>
 </div></header>
 
 <main class="wrap">
@@ -28,49 +28,122 @@
     <div class="cards">
       <article class="card">
         <div class="card-head">
-          <h3>Erdős Problem #188</h3>
+          <h3><a href="results/188.html">Erdős Problem #188</a></h3>
           <span class="small">published 7 Oct 2026</span>
         </div>
-        <p>Color the plane red and blue so that no two red points are exactly 1 apart. How long a run of equally spaced blue points, 1 apart in a straight line, are you forced to have? The answer k was known to be between 6 and 6330.</p>
+        <p>Color the plane red and blue so that no two red points are exactly 1 apart. What is the smallest k such that some coloring avoids every straight run of k blue points spaced 1 apart? It was known to be between 6 and 6330.</p>
         <div class="bound"><span class="was">6 ≤ k ≤ 6330</span><span class="arrow">→</span><span class="now">7 ≤ k ≤ 60</span></div>
         <div class="tags"><span class="tag ok">computer-checked proof</span><span class="tag ok">3 independent checkers</span><span class="tag ok">formally verified SAT checker</span><span class="tag">not yet reviewed by a mathematician</span></div>
-        <div class="links"><a href="https://doi.org/10.5281/zenodo.23151059">Package and note (doi:10.5281/zenodo.23151059)</a><a href="https://www.erdosproblems.com/188">Problem page</a></div>
+        <div class="links"><a href="results/188.html">Explanation</a><a href="https://doi.org/10.5281/zenodo.23151059">Package and note (doi:10.5281/zenodo.23151059)</a><a href="https://www.erdosproblems.com/188">Problem page</a></div>
         <p class="small">Improves the upper bound 6330 of Currier, Mody, Xie and Zhang (<a href="https://arxiv.org/abs/2606.17194">arXiv:2606.17194</a>); the lower bound follows the method of Arman and Tsaturian. Gabriel Currier suggested using red cells of different sizes.</p>
       </article>
 
       <article class="card">
         <div class="card-head">
-          <h3>Erdős Problem #189</h3>
+          <h3><a href="results/189.html">Erdős Problem #189</a></h3>
           <span class="small">published 7 Oct 2026</span>
         </div>
         <p>Color the plane with two colors. Must there always be a rectangle of area exactly 1 whose four corners share a color? Yes: this shows that 180 specific points already force one. So the fewest colors that can avoid such rectangles is between 3 and 21.</p>
-        <div class="bound"><span class="was">r ≤ 21, no lower bound</span><span class="arrow">→</span><span class="now">3 ≤ r ≤ 21</span></div>
+        <div class="bound"><span class="was">r ≤ 21, only the trivial r ≥ 2</span><span class="arrow">→</span><span class="now">3 ≤ r ≤ 21</span></div>
         <div class="tags"><span class="tag ok">computer-checked proof</span><span class="tag ok">Lean proof</span><span class="tag ok">formally verified SAT checker</span><span class="tag">not yet reviewed by a mathematician</span></div>
-        <div class="links"><a href="https://doi.org/10.5281/zenodo.23178517">Package and note (doi:10.5281/zenodo.23178517)</a><a href="https://www.erdosproblems.com/189">Problem page</a></div>
+        <div class="links"><a href="results/189.html">Explanation</a><a href="https://doi.org/10.5281/zenodo.23178517">Package and note (doi:10.5281/zenodo.23178517)</a><a href="https://www.erdosproblems.com/189">Problem page</a></div>
         <p class="small">The upper bound 21 and the question are from Hu and Liu (<a href="https://arxiv.org/abs/2609.00583">arXiv:2609.00583</a>).</p>
       </article>
     </div>
-    <p class="note">More results are being prepared. Each is added here only after the authors of the work it builds on have seen it and its package has a permanent DOI. The <a href="tracker.html">tracker</a> shows where everything stands.</p>
+    <p class="note">More results are being prepared. Each is added only after the authors of the work it builds on have seen it and its package has a permanent DOI. <a href="results/">Results</a> shows where everything stands, including the claims caught before publishing.</p>
+  </section>
+
+  <section aria-labelledby="latest-h">
+    <h2 id="latest-h">Latest</h2>
+    <ol class="entries">
+      <li><time datetime="2026-10-07">7 Oct 2026</time><span>This site launched.<sup class="cite"><a href="#n13">13</a></sup></span></li>
+      <li><time datetime="2026-10-07">7 Oct 2026</time><span>The Erdős #188 package was published on Zenodo: <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>.<sup class="cite"><a href="#n14">14</a></sup></span></li>
+      <li><time datetime="2026-10-07">7 Oct 2026</time><span>The Erdős #189 package was published on Zenodo: <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>.<sup class="cite"><a href="#n14">14</a></sup></span></li>
+    </ol>
+    <p class="small"><a href="log.html">The full log</a>, with evidence for each entry.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="why-h">
+    <h2 id="why-h">Why I started</h2>
+    <p>I'm not a mathematician; the mathematical ideas did not come from me.<sup class="cite"><a href="#n1">1</a></sup> I wanted to see whether someone with the right questions and a good process could make real progress on hard problems they knew nothing about.</p>
+    <p>It started, honestly, with a tweet. Someone had asked an AI to &ldquo;do a breakthrough&rdquo; on an unsolved problem. I laughed, and then thought it probably could.</p>
+    <p>My first attempts went nowhere: I aimed at a famous problem and asked the AI for a big result directly.<sup class="cite"><a href="#n2">2</a></sup> So I stopped asking for answers and built a system around the AI instead. Claude writes the code, runs the searches and produces the certificates, and ChatGPT critiques; my part is the goals, the process and the standards.<sup class="cite"><a href="#n3">3</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="system-h">
+    <h2 id="system-h">The system</h2>
+    <figure>
+      <svg class="fig" viewBox="0 0 640 236" role="img" aria-labelledby="dg-t">
+        <title id="dg-t">Choose, Explore, Verify and Release in sequence, all reading from and writing to a shared memory (Learn). I design, correct and decide what goes out.</title>
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="head" d="M0,0L10,5L0,10z"/></marker></defs>
+        <rect class="box" x="10" y="30" width="130" height="56" rx="6"/><text class="t" x="75" y="56">Choose</text><text class="s" x="75" y="74">targets, scouts</text>
+        <rect class="box hot" x="170" y="30" width="130" height="56" rx="6"/><text class="t" x="235" y="56">Explore</text><text class="s" x="235" y="74">storms, probes</text>
+        <rect class="box" x="330" y="30" width="130" height="56" rx="6"/><text class="t" x="395" y="56">Verify</text><text class="s" x="395" y="74">checkers, referees</text>
+        <rect class="box" x="490" y="30" width="140" height="56" rx="6"/><text class="t" x="560" y="56">Release</text><text class="s" x="560" y="74">gates, experts</text>
+        <rect class="box mem" x="170" y="140" width="290" height="56" rx="6"/><text class="t" x="315" y="166">Learn: shared memory</text><text class="s" x="315" y="184">ledger, rules</text>
+        <g class="arr" marker-end="url(#ah)">
+          <path d="M140 58H168"/><path d="M300 58H328"/><path d="M460 58H488"/>
+          <path d="M75 86V168H168"/><path d="M235 138V88"/><path d="M395 88V138"/><path d="M560 86V168H462"/>
+        </g>
+        <text class="s" x="320" y="226">Claude runs every stage. I design it, correct it, and decide what goes out.</text>
+      </svg>
+    </figure>
+    <ol class="steps">
+      <li><b>Choose</b> problems where search can make progress and a program can check the answer; #189 came from a list of loose published bounds.<sup class="cite"><a href="#n4">4</a></sup></li>
+      <li><b>Explore</b> by asking many small questions in parallel; one such storm produced an idea used in the final #188 coloring.<sup class="cite"><a href="#n5">5</a></sup></li>
+      <li><b>Verify:</b> nothing counts until something that didn't produce it has checked it, including ChatGPT as an outside referee.<sup class="cite"><a href="#n6">6</a></sup></li>
+      <li><b>Learn:</b> mistakes and lessons are written into the project's ledger as rules.<sup class="cite"><a href="#n7">7</a></sup></li>
+      <li><b>Release:</b> the authors of the prior work hear first, every idea is credited, and every result ships with code anyone can re-run.<sup class="cite"><a href="#n8">8</a></sup></li>
+    </ol>
+  </section>
+
+  <section class="prose" aria-labelledby="wrong-h">
+    <h2 id="wrong-h">What went wrong</h2>
+    <ul>
+      <li>A search on #188 reported 63 after learning to game its own score; the rigorous verifier found runs of at least 68. The verifier is now the score.<sup class="cite"><a href="#n9">9</a></sup></li>
+      <li>Claude twice recommended stopping on an earlier problem; both times I asked it to keep going, and the work continued.<sup class="cite"><a href="#n10">10</a></sup></li>
+      <li>A tamper test passed when it should have failed, because it changed a part of the proof that was never used. Tests must now touch what the proof depends on.<sup class="cite"><a href="#n11">11</a></sup></li>
+      <li>Results that looked new were already known, one of them within minutes of being called new. The literature check now comes first.<sup class="cite"><a href="#n12">12</a></sup></li>
+    </ul>
+  </section>
+
+  <section class="prose" aria-labelledby="learned-h">
+    <h2 id="learned-h">What I learned</h2>
+    <p>Most of what I learned is about working with AI, not math. It is remarkably good at exploring once the process is right, and remarkably good at fooling itself. My job turned out to be building the process and not believing anything until it was checked.</p>
+    <p><a href="case-study.html">The full case study</a> has the details, the quotes and the sources.</p>
   </section>
 
   <section aria-labelledby="how-h">
     <h2 id="how-h">How to check a result yourself</h2>
-    <p>Download a package from its DOI link, unzip it, and run one command in Linux (or WSL on Windows). It re-checks every step with standard, independent tools and prints PASS or FAIL.</p>
-    <pre>bash verify_all.sh    # Erdős #188
-bash verify.sh        # Erdős #189</pre>
+    <p>Download a package from its DOI link, unzip it, and run one command in Linux (or WSL on Windows). It re-checks the proof with standard, independent tools and prints PASS or FAIL. For #188, add <code>full</code> to include the lower bound and the second method.</p>
+    <pre>bash verify_all.sh full    # Erdős #188
+bash verify.sh             # Erdős #189</pre>
   </section>
 
-  <section aria-labelledby="more-h">
-    <h2 id="more-h">More</h2>
-    <div class="tiles">
-      <a class="tile" href="tracker.html"><b>Tracker</b><span>Every result's stage, from found to peer-reviewed, plus the claims that were withdrawn after checking.</span></a>
-      <a class="tile" href="https://github.com/carsoncrocker"><b>Contact</b><span>Questions, corrections or ideas: reach me through my GitHub profile.</span></a>
-    </div>
+  <section class="refs" aria-labelledby="refs-h">
+    <h2 id="refs-h">Sources</h2>
+    <ol>
+      <li id="n1"><a href="evidence/log_quotes.html#t-limits">evidence/log_quotes, Honest limits</a>.</li>
+      <li id="n2"><a href="evidence/log_quotes.html#q-breakthrough-2">evidence/log_quotes, 18 Sep 2026</a>; <a href="evidence/ledger_extract.html#L8">evidence/ledger_extract, L8</a>.</li>
+      <li id="n3"><a href="evidence/log_quotes.html#t-roles">evidence/log_quotes, Who did what</a>.</li>
+      <li id="n4"><a href="evidence/ledger_extract.html#L638">evidence/ledger_extract, L638</a>.</li>
+      <li id="n5"><a href="evidence/ledger_extract.html#L629">evidence/ledger_extract, L629</a>; the #188 note, Introduction, in <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>.</li>
+      <li id="n6"><a href="evidence/ledger_extract.html#L683">evidence/ledger_extract, L683</a>, <a href="evidence/ledger_extract.html#L649">L649</a>.</li>
+      <li id="n7"><a href="evidence/ledger_extract.html#L1">evidence/ledger_extract, L1</a>, <a href="evidence/ledger_extract.html#L664">L664</a>.</li>
+      <li id="n8"><a href="evidence/ledger_extract.html#L659">evidence/ledger_extract, L659</a>; the Acknowledgements of both notes; the packages at the DOIs above.</li>
+      <li id="n9"><a href="evidence/withdrawn.html#w-188-63">evidence/caught, 63</a>; <a href="log.html#2026-10-02-63">Log, 2 Oct 2026</a>.</li>
+      <li id="n10"><a href="evidence/log_quotes.html#t-stopping">evidence/log_quotes, Claude recommends stopping</a>; <a href="log.html#2026-09-21-stop">Log, 21 Sep 2026</a>.</li>
+      <li id="n11"><a href="evidence/ledger_extract.html#L680">evidence/ledger_extract, L680</a>; <a href="log.html#2026-10-06-cake188">Log, 6 Oct 2026</a>.</li>
+      <li id="n12"><a href="evidence/withdrawn.html#w-polymath">evidence/caught, Polymath16</a>; <a href="evidence/ledger_extract.html#L229">evidence/ledger_extract, L229</a>.</li>
+      <li id="n13"><a href="evidence/ledger_extract.html#L701">evidence/ledger_extract, L701</a>.</li>
+      <li id="n14"><a href="evidence/ledger_extract.html#L699">evidence/ledger_extract, L699</a>.</li>
+    </ol>
   </section>
 </main>
 
 <footer><div class="wrap">
   <p>The searches, code and checks behind these results were produced with AI tools (Claude Code, with ChatGPT as a reviewer) inside a process I designed and ran. Corrections are welcome and will be dated.</p>
+  <p>Contact: <a href="https://github.com/carsoncrocker">github.com/carsoncrocker</a></p>
 </div></footer>
 </body>
 </html>

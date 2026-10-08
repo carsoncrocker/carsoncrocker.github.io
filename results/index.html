@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Results · Carson Crocker</title>
+<meta name="description" content="What has been proven, and where each result stands: published results with DOIs, the stages a result moves through, and the claims caught before publishing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="../">Home</a><a href="./" aria-current="page">Results</a><a href="../case-study.html">Case study</a><a href="../log.html">Log</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section>
+    <h1>Results</h1>
+    <p class="lede">What has been proven, and where each result stands.</p>
+    <p>Each result is a computer-checked proof that improves a published bound on an open problem. Each one comes with a package anyone can download and re-check, and a page that explains it in plain English.</p>
+  </section>
+
+  <section aria-labelledby="pub-h">
+    <h2 id="pub-h">Published</h2>
+    <div class="cards">
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="188.html">Erdős Problem #188</a></h3>
+          <span class="small">published 7 Oct 2026<sup class="cite"><a href="#n1">1</a></sup></span>
+        </div>
+        <p>Color the plane red and blue with no two red points exactly 1 apart. How long a straight blue run, with points 1 apart, are you forced to have?</p>
+        <div class="bound"><span class="was">6 ≤ k ≤ 6330</span><span class="arrow">→</span><span class="now">7 ≤ k ≤ 60</span></div>
+        <div class="links"><a href="188.html">Explanation</a><a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a></div>
+      </article>
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="189.html">Erdős Problem #189</a></h3>
+          <span class="small">published 7 Oct 2026<sup class="cite"><a href="#n1">1</a></sup></span>
+        </div>
+        <p>Color the plane with two colors. Must some rectangle of area exactly 1 have four corners of one color? Yes, so the fewest colors that avoid such rectangles is at least 3.</p>
+        <div class="bound"><span class="was">r ≤ 21, only the trivial r ≥ 2</span><span class="arrow">→</span><span class="now">3 ≤ r ≤ 21</span></div>
+        <div class="links"><a href="189.html">Explanation</a><a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="st-h">
+    <h2 id="st-h">In progress</h2>
+    <p>Every result moves through five stages. Both published results are at stage 3.</p>
+    <div class="stages">
+      <div class="stg"><b>1. Found</b><span>The system found a candidate and it passed a first rigorous computer check.</span></div>
+      <div class="stg"><b>2. Verified</b><span>Independent checkers, a formally verified checker or Lean proof where possible, hostile AI review, a literature check and a 48-hour hold.</span></div>
+      <div class="stg"><b>3. Public</b><span>The authors of the prior work are told first. Then the note and code go public with a DOI.</span><span class="dotc">#188, #189</span></div>
+      <div class="stg"><b>4. arXiv</b><span>A written paper on arXiv, ideally with a professional mathematician as co-author.</span></div>
+      <div class="stg"><b>5. Peer-reviewed</b><span>Accepted by a journal after independent review.</span></div>
+    </div>
+    <p>More results are in preparation. Each is listed here only after the authors of the work it builds on have had a chance to look, and its package has a DOI. A result is marked <b>expert-checked</b> when an independent mathematician has checked it; none has that mark yet.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="wd-h">
+    <h2 id="wd-h">Caught before publishing</h2>
+    <p>Things that looked new or true at first, until the checks said otherwise. None of these were ever published; they were caught before anything went public. They are listed because catching them is the point. Items about unpublished work will be added when that work is published.</p>
+    <ul>
+      <li><b>A claimed 63 for #188</b> (2 Oct 2026). The search had graded itself on a sample of lines; the true figure was at least 68. Never announced. <a href="../evidence/withdrawn.html#w-188-63">Evidence</a></li>
+      <li><b>A 5-chromatic unit-distance graph in a small disk</b> (20 Sep 2026) was already beaten in the Polymath16 project in 2021. <a href="../evidence/withdrawn.html#w-polymath">Evidence</a></li>
+      <li><b>A theorem overtaken by Tomon's paper</b> (<a href="https://arxiv.org/abs/2610.03517">arXiv:2610.03517</a>, 2 Oct 2026), found before release. Dropped. <a href="../evidence/withdrawn.html#w-tomon">Evidence</a></li>
+      <li><b>An exact value already proved by Cabello</b> in 2012 (<a href="https://arxiv.org/abs/1112.5149">arXiv:1112.5149</a>). Dropped. <a href="../evidence/withdrawn.html#w-cabello">Evidence</a></li>
+      <li><b>Table entries first counted as new</b> that followed from graphs Cherkashin, Kulikov and Raigorodskii had already published. <a href="../evidence/withdrawn.html#w-ckr">Evidence</a></li>
+    </ul>
+  </section>
+
+  <section class="refs" aria-labelledby="refs-h">
+    <h2 id="refs-h">Sources</h2>
+    <ol>
+      <li id="n1">Ledger, 7 Oct 2026: <a href="../evidence/ledger_extract.html#L699">evidence/ledger_extract, L699</a>.</li>
+    </ol>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>The searches, code and checks behind these results were produced with AI tools (Claude Code, with ChatGPT as a reviewer) inside a process I designed and ran. Corrections are welcome and will be dated.</p>
+  <p>Contact: <a href="https://github.com/carsoncrocker">github.com/carsoncrocker</a></p>
+</div></footer>
+</body>
+</html>

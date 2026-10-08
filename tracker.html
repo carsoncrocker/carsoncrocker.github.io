@@ -4,62 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tracker · Carson Crocker</title>
-<meta name="description" content="Computer-checked results on open math problems, produced by a system of off-the-shelf AIs. Every result links to a citable package with code anyone can re-run.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<meta http-equiv="refresh" content="0; url=results/">
+<link rel="canonical" href="results/">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="top"><div class="wrap">
-  <a class="brand" href="./">Carson Crocker</a>
-  <nav class="nav" aria-label="Site"><a href="./">Home</a><a href="tracker.html" aria-current="page">Tracker</a></nav>
-</div></header>
-
 <main class="wrap">
-  <section>
-    <h1>Tracker</h1>
-    <p class="lede">Every result moves through five stages. This page shows where each one is, including the ones that failed. It is updated whenever something changes.</p>
-  </section>
-<section aria-labelledby="st-h">
-    <h2 id="st-h">The five stages</h2>
-    <div class="stages">
-      <div class="stg"><b>1. Found</b><span>The system found a candidate and it passed a first rigorous computer check.</span></div>
-      <div class="stg"><b>2. Verified</b><span>Independent checkers, a formally verified checker or Lean proof where possible, hostile AI review, a literature check and a 48-hour hold.</span></div>
-      <div class="stg"><b>3. Public</b><span>The authors of the prior work are told first and given time to respond. Then the note and code go public with a DOI.</span></div>
-      <div class="stg"><b>4. arXiv</b><span>A written paper on arXiv, ideally with a professional mathematician as co-author.</span></div>
-      <div class="stg"><b>5. Peer-reviewed</b><span>Accepted by a journal after independent review.</span></div>
-    </div>
-    <p>Separately, a result is marked <b>expert-checked</b> when an independent mathematician has checked it. That can happen at any stage. No result here has it yet.</p>
-  </section>
-
-  <section aria-labelledby="tr-h">
-    <h2 id="tr-h">Results</h2>
-    <table class="track">
-      <thead><tr><th>Result</th><th>Stage</th><th>Latest</th><th>Next</th></tr></thead>
-      <tbody>
-        <tr><td><b>Erdős #188</b><br>7 &le; k &le; 60 (was 6 &le; k &le; 6330)</td><td class="dotc">3 &#10003;</td><td>7 Oct: published, <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>. Third blind checker and adversarial search included.</td><td>arXiv paper, ideally with a co-author.</td></tr>
-        <tr><td><b>Erdős #189</b><br>3 &le; r &le; 21, with a Lean proof</td><td class="dotc">3 &#10003;</td><td>7 Oct: published, <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>.</td><td>arXiv paper.</td></tr>
-                                      </tbody>
-    </table>
-    <p>More results are in stages 1 and 2. Each gets a line here once the authors of the work it builds on have had a chance to look.</p>
-  </section>
-
-  <section aria-labelledby="wd-h">
-    <h2 id="wd-h">Withdrawn or not new after all</h2>
-    <p>These looked new at first, and a later check said otherwise. They stay listed because the checking is the point.</p>
-    <ul>
-      <li><b>A claimed 63 for #188</b> (2 Oct). The search had graded itself with a shortcut; the true figure was about 68. Never announced.</li>
-      <li><b>Every girth, 5-chromatic, in space.</b> Overtaken by Tomon's paper of 2 October 2026 before release. Dropped.</li>
-      <li><b>n&#8324;(1/&radic;2) = 13 on spheres</b> was proved by Cabello in 2012.</li>
-      <li><b>The Lov&aacute;sz-chain interval families on spheres</b> are in Neopryatnaya's 2021 thesis.</li>
-      <li><b>Most cells of de Grey's conjecture table</b> first counted as new follow from graphs Cherkashin, Kulikov and Raigorodskii had already published.</li>
-    </ul>
-  </section>
+  <p>The tracker is now part of the <a href="results/">Results</a> page.</p>
 </main>
-
-<footer><div class="wrap">
-  <p>The searches, code and checks behind these results were produced with AI tools (Claude Code, with ChatGPT as a reviewer) inside a process I designed and ran. Corrections are welcome and will be dated.</p>
-</div></footer>
 </body>
 </html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case study · Carson Crocker</title>
+<meta name="description" content="How the system works, and what I learned: a non-mathematician's process for running off-the-shelf AIs on open math problems, including what went wrong.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="./">Home</a><a href="results/">Results</a><a href="case-study.html" aria-current="page">Case study</a><a href="log.html">Log</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section>
+    <h1>How I built the system</h1>
+    <p class="lede">How the system works, and what I learned.</p>
+    <p>I'm not a mathematician. Over three weeks I set up off-the-shelf AI tools, mainly Claude Code with ChatGPT as a critic, to work on open math problems, and built a process around them for choosing problems, exploring, checking and releasing. This page explains that process and the mistakes that shaped it. The results themselves are on the <a href="results/">Results</a> page, and the dated events are in the <a href="log.html">Log</a>.</p>
+  </section>
+
+  <section aria-labelledby="produced-h">
+    <h2 id="produced-h">What it produced</h2>
+    <div class="stats">
+      <div class="stat"><b>2</b><span>published results, each with a DOI<sup class="cite"><a href="#n1">1</a></sup></span></div>
+      <div class="stat"><b>23</b><span>days of Claude Code use, 15 Sep to 7 Oct 2026<sup class="cite"><a href="#n2">2</a></sup></span></div>
+      <div class="stat"><b>27,081</b><span>Claude Code responses<sup class="cite"><a href="#n2">2</a></sup></span></div>
+      <div class="stat"><b>30.3M</b><span>Claude Code output tokens<sup class="cite"><a href="#n2">2</a></sup></span></div>
+      <div class="stat"><b>5</b><span>claims caught before publishing, listed publicly<sup class="cite"><a href="#n3">3</a></sup></span></div>
+    </div>
+    <p class="small">The usage numbers were measured from Claude Code's own session logs, with the script and its output published. They cover the whole project, including problems that went nowhere and results that are not public yet, and leave out ChatGPT. More results are in preparation.<sup class="cite"><a href="#n2">2</a></sup></p>
+
+    <figure>
+      <svg class="fig" viewBox="0 0 580 290" role="img" aria-labelledby="chart-t chart-d">
+        <title id="chart-t">Erdős #188 upper bound over time</title>
+        <desc id="chart-d">Log-scale chart. Published bound 6330 (June 2026); then 242 and 166 on 29 September, 107 and 85 on 30 September, 69 and 64 on 2 October, and 60 on 4 October.</desc>
+        <line class="grid" x1="56" y1="30" x2="560" y2="30"/>
+        <line class="grid" x1="56" y1="117" x2="560" y2="117"/>
+        <line class="grid" x1="56" y1="204" x2="560" y2="204"/>
+        <text class="axis" x="50" y="34" text-anchor="end">10000</text>
+        <text class="axis" x="50" y="121" text-anchor="end">1000</text>
+        <text class="axis" x="50" y="208" text-anchor="end">100</text>
+        <path class="gap" d="M80 47.3 L145 170.5"/>
+        <path class="line" d="M145 170.5 L210 184.8 L275 201.4 L340 210.1 L405 218 L470 220.8 L535 223.3"/>
+        <circle class="dot first" cx="80" cy="47.3" r="5"/>
+        <circle class="dot" cx="145" cy="170.5" r="4.5"/>
+        <circle class="dot" cx="210" cy="184.8" r="4.5"/>
+        <circle class="dot" cx="275" cy="201.4" r="4.5"/>
+        <circle class="dot" cx="340" cy="210.1" r="4.5"/>
+        <circle class="dot" cx="405" cy="218" r="4.5"/>
+        <circle class="dot" cx="470" cy="220.8" r="4.5"/>
+        <circle class="dot" cx="535" cy="223.3" r="4.5"/>
+        <text class="val" x="92" y="45">6330</text>
+        <text class="val" x="145" y="158" text-anchor="middle">242</text>
+        <text class="val" x="210" y="172" text-anchor="middle">166</text>
+        <text class="val" x="275" y="189" text-anchor="middle">107</text>
+        <text class="val" x="340" y="198" text-anchor="middle">85</text>
+        <text class="val" x="405" y="206" text-anchor="middle">69</text>
+        <text class="val" x="470" y="209" text-anchor="middle">64</text>
+        <text class="val" x="535" y="211" text-anchor="middle">60</text>
+        <text class="axis" x="80" y="256" text-anchor="middle">Jun</text>
+        <text class="axis" x="80" y="274" text-anchor="middle">published</text>
+        <text class="axis" x="145" y="256" text-anchor="middle">29 Sep</text>
+        <text class="axis" x="210" y="256" text-anchor="middle">29 Sep</text>
+        <text class="axis" x="275" y="256" text-anchor="middle">30 Sep</text>
+        <text class="axis" x="340" y="256" text-anchor="middle">30 Sep</text>
+        <text class="axis" x="405" y="256" text-anchor="middle">2 Oct</text>
+        <text class="axis" x="470" y="256" text-anchor="middle">2 Oct</text>
+        <text class="axis" x="535" y="256" text-anchor="middle">4 Oct</text>
+      </svg>
+      <figcaption>Erdős #188 upper bound on k, log scale; points are evenly spaced by step, not by date. 6330 is the published bound of Currier, Mody, Xie and Zhang;<sup class="cite"><a href="#n4">4</a></sup> each later point is a bound certified by the system on that date.<sup class="cite"><a href="#n5">5</a></sup> Each drop came from a new idea rather than more computing time: free positions for the red cells, red cells of different sizes (Gabriel Currier's suggestion), and small cells allowed to sit very close to large ones.<sup class="cite"><a href="#n6">6</a></sup></figcaption>
+    </figure>
+  </section>
+
+  <section class="prose" aria-labelledby="why-h">
+    <h2 id="why-h">Why I started</h2>
+    <p>I'm not a mathematician, and the logs show it: the mathematical ideas did not come from me.<sup class="cite"><a href="#n7">7</a></sup> I work in corporate strategy and AI implementation, and I wanted to see whether someone with the right questions and a good process could make real progress on hard problems they knew nothing about. For me it is more about how you do it than what it is.</p>
+    <p>It started, honestly, with a tweet. Someone had asked an AI to &ldquo;do a breakthrough&rdquo; on an unsolved problem. I laughed, and then thought it probably could.</p>
+    <p>My first attempts went nowhere. I aimed at a famous problem and asked the AI for a big result directly:</p>
+    <blockquote class="said">"do it all do a breakthrough dont limit yourself"<sup class="cite"><a href="#n8">8</a></sup></blockquote>
+    <p>Those searches were closed without anything new.<sup class="cite"><a href="#n9">9</a></sup> So I stopped asking the AI for answers and started building a system around it. Claude writes the code, runs the searches and produces the certificates; ChatGPT critiques. My part is the goals, the pushing, the infrastructure, the cross-checking and the release discipline.<sup class="cite"><a href="#n10">10</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="system-h">
+    <h2 id="system-h">The system</h2>
+    <p>Claude runs every stage: it generates the questions, launches parallel lines of attack, writes its own checkers, attacks its own results and reports back. ChatGPT and other models act as critics and outside checkers.<sup class="cite"><a href="#n10">10</a></sup> I designed the process they work in, I correct it, and I decide what is real enough to go out.</p>
+    <figure>
+      <svg class="fig" viewBox="0 0 640 236" role="img" aria-labelledby="dg-t">
+        <title id="dg-t">Choose, Explore, Verify and Release in sequence, all reading from and writing to a shared memory (Learn). I design, correct and decide what goes out.</title>
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="head" d="M0,0L10,5L0,10z"/></marker></defs>
+        <rect class="box" x="10" y="30" width="130" height="56" rx="6"/><text class="t" x="75" y="56">Choose</text><text class="s" x="75" y="74">targets, scouts</text>
+        <rect class="box hot" x="170" y="30" width="130" height="56" rx="6"/><text class="t" x="235" y="56">Explore</text><text class="s" x="235" y="74">storms, probes</text>
+        <rect class="box" x="330" y="30" width="130" height="56" rx="6"/><text class="t" x="395" y="56">Verify</text><text class="s" x="395" y="74">checkers, referees</text>
+        <rect class="box" x="490" y="30" width="140" height="56" rx="6"/><text class="t" x="560" y="56">Release</text><text class="s" x="560" y="74">gates, experts</text>
+        <rect class="box mem" x="170" y="140" width="290" height="56" rx="6"/><text class="t" x="315" y="166">Learn: shared memory</text><text class="s" x="315" y="184">ledger, rules</text>
+        <g class="arr" marker-end="url(#ah)">
+          <path d="M140 58H168"/><path d="M300 58H328"/><path d="M460 58H488"/>
+          <path d="M75 86V168H168"/><path d="M235 138V88"/><path d="M395 88V138"/><path d="M560 86V168H462"/>
+        </g>
+        <text class="s" x="320" y="226">Claude runs every stage. I design it, correct it, and decide what goes out.</text>
+      </svg>
+    </figure>
+
+    <h3>1. Choose</h3>
+    <p><b>Choose problems where search and computation can make progress, and where a program can check the answer.</b></p>
+    <ul>
+      <li>Famous problems went nowhere.<sup class="cite"><a href="#n9">9</a></sup> What worked were bounds that were recent or loose: the #188 upper bound had been published in June 2026,<sup class="cite"><a href="#n4">4</a></sup> and #189 was the top pick from a list of loose published bounds.<sup class="cite"><a href="#n11">11</a></sup></li>
+      <li>A literature check comes before any computing, and the list of dead targets is checked before one is relaunched.<sup class="cite"><a href="#n12">12</a></sup></li>
+    </ul>
+    <blockquote class="said">"well are we even asking the right questions trying to solve this the best way are we trying to solve the right problems"<sup class="cite"><a href="#n13">13</a></sup></blockquote>
+
+    <h3>2. Explore</h3>
+    <p><b>Ask many small questions at once, keep the machine busy, and don't stop when the AI wants to.</b></p>
+    <ul>
+      <li><b>Question storms.</b> When progress stalls, the system asks several different questions in parallel instead of running one search longer. On #188, one such storm produced the idea of letting a small red cell sit very close to a larger one.<sup class="cite"><a href="#n14">14</a></sup></li>
+      <li><b>Probes.</b> Each idea gets a short test that ends in a one-line verdict. A probe whose positive control never passed counts as uninformative, not as a negative.<sup class="cite"><a href="#n15">15</a></sup></li>
+      <li><b>Parallel and overnight.</b> Several Claude Code sessions and agents run at once, and runs continue overnight; the #189 certificate came from one such night.<sup class="cite"><a href="#n16">16</a></sup></li>
+      <li><b>Speed.</b> The tools themselves are a target: one rebuilt search tool for #188 ran 4.3 times faster than the one it replaced.<sup class="cite"><a href="#n17">17</a></sup></li>
+      <li><b>Past the stopping point.</b> On an earlier problem, Claude twice recommended stopping. Both times I asked it to keep going, and the work continued.<sup class="cite"><a href="#n18">18</a></sup></li>
+    </ul>
+    <blockquote class="said">"hows it coming and how do i get this to run all night and evolve while i sleep to solve what were truly after"<sup class="cite"><a href="#n19">19</a></sup></blockquote>
+    <blockquote class="said">"you always say itll take longer then we immediately make a breakthrough but only when we optimize"<sup class="cite"><a href="#n20">20</a></sup></blockquote>
+
+    <h3>3. Verify</h3>
+    <p><b>Nothing is true until it has been checked by something that didn't produce it.</b></p>
+    <ul>
+      <li><b>Honest scoring.</b> A search is graded by the rigorous verifier, not by its own shortcut.<sup class="cite"><a href="#n21">21</a></sup></li>
+      <li><b>Certificates.</b> Exact or ball arithmetic, and SAT proofs checked by standard tools and by a formally verified checker; a Lean proof where possible.<sup class="cite"><a href="#n22">22</a></sup></li>
+      <li><b>Independent checks.</b> A second or third verifier written blind in a separate session, an attacker that tries to break the result, and ChatGPT as an outside referee.<sup class="cite"><a href="#n23">23</a></sup></li>
+      <li><b>Tests of the tests.</b> Deliberately broken inputs must be rejected, or the check doesn't count.<sup class="cite"><a href="#n24">24</a></sup></li>
+    </ul>
+    <blockquote class="said">"cant i feed this to another llm to verify"<sup class="cite"><a href="#n25">25</a></sup></blockquote>
+
+    <h3>4. Learn</h3>
+    <p><b>Results and mistakes are turned into written rules.</b></p>
+    <ul>
+      <li>AI sessions forget, so the system remembers in files. A ledger records every claim and its status, and only files and certificates count, not a model's summary.<sup class="cite"><a href="#n26">26</a></sup></li>
+      <li>Lessons are written back as rules. This isn't machine learning in the technical sense: the system learns by rewriting its own instructions.<sup class="cite"><a href="#n27">27</a></sup></li>
+    </ul>
+    <blockquote class="said">"can you read everything we've done to know and our engines and machines weve built"<sup class="cite"><a href="#n28">28</a></sup></blockquote>
+
+    <h3>5. Release</h3>
+    <p><b>Experts first, credit always, and claim only what has been checked.</b></p>
+    <ul>
+      <li>A 7-point release checklist, which came from asking whether the rules were right, and a 48-hour hold.<sup class="cite"><a href="#n29">29</a></sup></li>
+      <li>Before posting, I write to the mathematicians whose work a result builds on, and credit where each idea came from.<sup class="cite"><a href="#n30">30</a></sup></li>
+      <li>Each result ships with code anyone can re-run, and the AI session logs are archived with checksums, so who did what can be checked.<sup class="cite"><a href="#n31">31</a></sup></li>
+    </ul>
+    <blockquote class="said">“who is "we"”<sup class="cite"><a href="#n32">32</a></sup></blockquote>
+  </section>
+
+  <section class="prose" aria-labelledby="wrong-h">
+    <h2 id="wrong-h">What went wrong, and the rule each mistake left</h2>
+    <p>The AI is remarkably good at fooling itself. These are the mistakes I'd most want someone building a similar system to know about. Each links to its dated entry in the Log.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>What happened</th><th>The rule now</th></tr></thead>
+        <tbody>
+          <tr><td>A search reported 63 on #188. It had learned to game its own score; the rigorous verifier found runs of at least 68. <a href="log.html#2026-10-02-63">2 Oct</a></td><td>The verifier itself is the search's score.<sup class="cite"><a href="#n21">21</a></sup></td></tr>
+          <tr><td>Claude twice recommended stopping on an earlier problem. Both times there was more to find. <a href="log.html#2026-09-21-stop">21 Sep</a></td><td>A stall means the method is stuck, not that the answer is reached.<sup class="cite"><a href="#n18">18</a></sup></td></tr>
+          <tr><td>A proof checker printed VERIFIED on a tampered file, because the file's header no longer matched its contents. <a href="log.html#2026-10-06-header">6 Oct</a></td><td>Header and body are checked against each other before a proof check counts.<sup class="cite"><a href="#n33">33</a></sup></td></tr>
+          <tr><td>A tamper test passed when it should have failed: it changed a clause the proof never used. <a href="log.html#2026-10-06-cake188">6 Oct</a></td><td>Tamper tests must change something the proof depends on.<sup class="cite"><a href="#n24">24</a></sup></td></tr>
+          <tr><td>Results that looked new were already known, one of them found in a 2021 Polymath16 thread within minutes. <a href="log.html#2026-09-20-polymath">20 Sep</a></td><td>Literature check before computing and before any claim; the "not new after all" list is kept public.<sup class="cite"><a href="#n12">12</a></sup></td></tr>
+          <tr><td>A bound was described as "proved in two ways" when the second method had never been run on it. ChatGPT refused to sign. <a href="log.html#2026-10-04-chatgpt">4 Oct</a></td><td>Run every verifier you cite, on the exact object you claim.<sup class="cite"><a href="#n34">34</a></sup></td></tr>
+          <tr><td>A release package was described as passing one full clean run. It had passed in two separate runs. <a href="log.html#2026-10-06-fullrun">6 Oct</a></td><td>Corrected in the ledger, then re-run as one clean run, which passed.<sup class="cite"><a href="#n35">35</a></sup></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="prose" aria-labelledby="learned-h">
+    <h2 id="learned-h">What I learned</h2>
+    <div class="note prose">
+      <p>Most of what I learned is about working with AI, not math. It is remarkably good at exploring once the process is right, and remarkably good at fooling itself. My job turned out to be building the process and not believing anything until it was checked.</p>
+      <p>If you see something I got wrong, or want to try this in your own field, I'd like to hear from you through my <a href="https://github.com/carsoncrocker">GitHub profile</a>.</p>
+    </div>
+  </section>
+
+  <section class="refs" aria-labelledby="refs-h">
+    <h2 id="refs-h">Sources</h2>
+    <p>Evidence files are verbatim excerpts with marked redactions; see <a href="evidence/">Evidence</a>.</p>
+    <ol>
+      <li id="n1"><a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>, <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>; <a href="evidence/ledger_extract.html#L699">ledger_extract, L699</a>.</li>
+      <li id="n2"><a href="evidence/usage.html#result">usage, Result</a> and <a href="evidence/usage.html#limits">What it does not cover</a>.</li>
+      <li id="n3"><a href="evidence/withdrawn.html">caught before publishing</a>.</li>
+      <li id="n4">Currier, Mody, Xie, Zhang, <a href="https://arxiv.org/abs/2606.17194">arXiv:2606.17194</a> (June 2026).</li>
+      <li id="n5"><a href="evidence/ledger_extract.html#L585">ledger_extract, L585</a> (242), <a href="evidence/ledger_extract.html#N29-183">N29-183</a> (166), <a href="evidence/ledger_extract.html#L597">L597</a> (107, 85), <a href="evidence/ledger_extract.html#L607">L607</a> (69, 64), <a href="evidence/ledger_extract.html#L645">L645</a> (60).</li>
+      <li id="n6">The #188 note, Introduction ("History") and Acknowledgements, in <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>; <a href="evidence/ledger_extract.html#L601">ledger_extract, L601</a>, <a href="evidence/ledger_extract.html#L629">L629</a>.</li>
+      <li id="n7"><a href="evidence/log_quotes.html#t-limits">log_quotes, Honest limits</a>.</li>
+      <li id="n8"><a href="evidence/log_quotes.html#q-breakthrough-2">log_quotes, 18 Sep 2026</a>; also <a href="evidence/log_quotes.html#q-breakthrough-1">15 Sep 2026</a>.</li>
+      <li id="n9"><a href="evidence/ledger_extract.html#L8">ledger_extract, L8</a>.</li>
+      <li id="n10"><a href="evidence/log_quotes.html#t-roles">log_quotes, Who did what</a>.</li>
+      <li id="n11"><a href="evidence/ledger_extract.html#L638">ledger_extract, L638</a>.</li>
+      <li id="n12"><a href="evidence/ledger_extract.html#L229">ledger_extract, L229</a> (literature check before compute), <a href="evidence/ledger_extract.html#L664">L664</a> (dead list), <a href="evidence/ledger_extract.html#L16">L16</a>; <a href="evidence/log_quotes.html#t-polymath">log_quotes, found within minutes</a>; <a href="evidence/withdrawn.html">caught before publishing</a>.</li>
+      <li id="n13"><a href="evidence/log_quotes.html#q-right-questions">log_quotes, 24 Sep 2026</a>.</li>
+      <li id="n14"><a href="evidence/ledger_extract.html#L629">ledger_extract, L629</a>.</li>
+      <li id="n15"><a href="evidence/ledger_extract.html#L636">ledger_extract, L636</a>.</li>
+      <li id="n16"><a href="evidence/ledger_extract.html#L654">ledger_extract, L654</a>; <a href="evidence/log_quotes.html#t-roles">log_quotes, Who did what</a>.</li>
+      <li id="n17"><a href="evidence/ledger_extract.html#L626">ledger_extract, L626</a>.</li>
+      <li id="n18"><a href="evidence/log_quotes.html#t-stopping">log_quotes, Claude recommends stopping, twice</a>.</li>
+      <li id="n19"><a href="evidence/log_quotes.html#q-all-night">log_quotes, 22 Sep 2026</a>.</li>
+      <li id="n20"><a href="evidence/log_quotes.html#q-optimize">log_quotes, 21 Sep 2026</a>.</li>
+      <li id="n21">The #188 note, "How the coloring was found", in <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>; <a href="evidence/ledger_extract.html#L607">ledger_extract, L607</a>; <a href="evidence/withdrawn.html#w-188-63">withdrawn, 63</a>.</li>
+      <li id="n22"><a href="evidence/ledger_extract.html#L680">ledger_extract, L680</a>, <a href="evidence/ledger_extract.html#L676">L676</a>, <a href="evidence/ledger_extract.html#L663">L663</a>.</li>
+      <li id="n23"><a href="evidence/ledger_extract.html#L683">ledger_extract, L683</a>, <a href="evidence/ledger_extract.html#L649">L649</a>, <a href="evidence/ledger_extract.html#L660">L660</a>.</li>
+      <li id="n24"><a href="evidence/ledger_extract.html#L680">ledger_extract, L680</a>, <a href="evidence/ledger_extract.html#L645">L645</a> (combiner tamper tests); the #188 package, extra_checks/README.txt item 1.</li>
+      <li id="n25"><a href="evidence/log_quotes.html#q-another-llm">log_quotes, 21 Sep 2026</a>.</li>
+      <li id="n26"><a href="evidence/ledger_extract.html#L1">ledger_extract, L1</a>, <a href="evidence/ledger_extract.html#L229">L229</a>.</li>
+      <li id="n27"><a href="evidence/ledger_extract.html#L664">ledger_extract, L664</a>, <a href="evidence/ledger_extract.html#L229">L229</a>.</li>
+      <li id="n28"><a href="evidence/log_quotes.html#q-read-everything">log_quotes, 27 Sep 2026</a>.</li>
+      <li id="n29"><a href="evidence/log_quotes.html#t-checklist">log_quotes, the release checklist</a>, <a href="evidence/log_quotes.html#q-rules">21 Sep 2026</a>; <a href="evidence/ledger_extract.html#L229">ledger_extract, L229</a>; 48-hour hold: <a href="evidence/ledger_extract.html#L645">L645</a>.</li>
+      <li id="n30"><a href="evidence/ledger_extract.html#L659">ledger_extract, L659</a>; the Acknowledgements of both notes.</li>
+      <li id="n31"><a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>, <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>; <a href="evidence/ledger_extract.html#L681">ledger_extract, L681</a>.</li>
+      <li id="n32"><a href="evidence/log_quotes.html#q-who-is-we">log_quotes, 26 Sep 2026</a>.</li>
+      <li id="n33"><a href="evidence/ledger_extract.html#L668">ledger_extract, L668</a>, <a href="evidence/ledger_extract.html#L680">L680</a> ("header=body all four"); the #188 package, extra_checks/README.txt item 1.</li>
+      <li id="n34"><a href="evidence/ledger_extract.html#L649">ledger_extract, L649</a>, <a href="evidence/ledger_extract.html#L664">L664</a>.</li>
+      <li id="n35"><a href="evidence/ledger_extract.html#L679">ledger_extract, L679</a>, <a href="evidence/ledger_extract.html#L682">L682</a>.</li>
+    </ol>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>The math, code and checking described here were done by AI models (Claude and ChatGPT) inside a process I designed and ran. I take responsibility for every claim on this site. Corrections are welcome and will be dated.</p>
+  <p>Contact: <a href="https://github.com/carsoncrocker">github.com/carsoncrocker</a></p>
+</div></footer>
+</body>
+</html>

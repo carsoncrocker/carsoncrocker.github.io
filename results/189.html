@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erdős #189 · Carson Crocker</title>
+<meta name="description" content="Erdős Problem #189: every two-coloring of the plane has a monochromatic rectangle of area 1, so 3 ≤ r ≤ 21. Plain-English explanation, checks, and how to check it yourself.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="../">Home</a><a href="./" aria-current="page">Results</a><a href="../case-study.html">Case study</a><a href="../log.html">Log</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section>
+    <span class="eyebrow">Result · published 7 Oct 2026</span>
+    <h1>Erdős Problem #189</h1>
+    <p class="lede">Color every point of the plane with one of two colors. Must there be a rectangle of area exactly 1, of any shape and tilted any way, whose four corners all have the same color? Yes. In fact 180 specific points already force one.<sup class="cite"><a href="#n1">1</a></sup></p>
+    <div class="bound"><span class="was">r ≤ 21, only the trivial r ≥ 2</span><span class="arrow">→</span><span class="now">3 ≤ r ≤ 21</span></div>
+    <p class="small">Package and note: <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>. Computer-checked, with a Lean proof; not yet reviewed by a mathematician.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="known-h">
+    <h2 id="known-h">What was known</h2>
+    <p>Erdős Problem #189 asks whether, in every coloring of the plane with finitely many colors, one color contains the corners of rectangles of every area.<sup class="cite"><a href="#n2">2</a></sup> Kovač showed that the answer is no: he colored the plane with 25 colors so that no rectangle of area 1 has four corners of one color.<sup class="cite"><a href="#n3">3</a></sup> Hu and Liu brought 25 down to 21 and asked for the smallest number of colors r that can do this.<sup class="cite"><a href="#n4">4</a></sup> So r ≤ 21, and as far as I could find, nobody had shown that two colors are not enough.<sup class="cite"><a href="#n1">1</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="new-h">
+    <h2 id="new-h">What is new</h2>
+    <p>Every two-coloring of the plane has a rectangle of area 1 with four corners of one color. So two colors are never enough, and the smallest r satisfies 3 ≤ r ≤ 21.<sup class="cite"><a href="#n1">1</a></sup> To my knowledge this was not in the literature before; the note asks to be corrected if it was.<sup class="cite"><a href="#n1">1</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="idea-h">
+    <h2 id="idea-h">The idea in simple words</h2>
+    <p>If two colors could avoid such rectangles on the whole plane, they could also avoid them on any finite set of points. So it is enough to find one finite set of points that cannot be two-colored without a one-color rectangle of area 1.</p>
+    <p>The points come from a scaled triangular grid. On this grid, rectangles of area 1 come in very few shapes, 12 up to shifting, so the rectangles through each point overlap heavily, which helps a small set to work.<sup class="cite"><a href="#n1">1</a></sup> The final set has 180 points and contains exactly 676 rectangles of area 1.<sup class="cite"><a href="#n1">1</a></sup></p>
+    <p>Each rectangle gives a rule: "these four points are not all the same color". A SAT solver shows the rules cannot all hold at once and writes out a proof file that standard tools can check. The set is also as lean as it can be in one sense: remove any one of the 180 points and a valid coloring exists.<sup class="cite"><a href="#n1">1</a></sup> The approach is the one Moore and Sagdeev used for unit rhombi.<sup class="cite"><a href="#n1">1</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="checked-h">
+    <h2 id="checked-h">How it was checked</h2>
+    <ul>
+      <li><b>The geometry:</b> a checker using whole-number arithmetic only finds all area-1 rectangles in three different ways, requires them to agree, rebuilds the formula from them and compares it, clause by clause, with the published one.<sup class="cite"><a href="#n5">5</a></sup></li>
+      <li><b>The proof:</b> verified by <code>drat-trim</code> and <code>lrat-check</code>, a second proof from a different solver is also verified, and the proof passes <code>cake_lpr</code>, a formally verified checker.<sup class="cite"><a href="#n6">6</a></sup></li>
+      <li><b>Lean:</b> a sorry-free Lean 4 proof of the two-color statement. Its SAT step uses Lean's <code>bv_decide</code>, which trusts Lean's compiled code alongside the kernel.<sup class="cite"><a href="#n7">7</a></sup></li>
+      <li><b>Outside AI referee:</b> ChatGPT rebuilt the 676 rectangles and the formula with its own code and re-solved it with a different solver.<sup class="cite"><a href="#n8">8</a></sup></li>
+    </ul>
+    <p class="note">The checkers were written with Claude Code in separate sessions, which is not independence in the sense of different authors. No expert has checked the work yet, and independent checks are very welcome.<sup class="cite"><a href="#n9">9</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="yourself-h">
+    <h2 id="yourself-h">How to check it yourself</h2>
+    <p>Download the package from <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>, unzip it, install <code>drat-trim</code> and <code>lrat-check</code>, and in Linux or WSL run:<sup class="cite"><a href="#n5">5</a></sup></p>
+    <pre>bash verify.sh        # about 5 minutes, Python standard library only</pre>
+    <p>The last line says PASS or FAIL. <code>bash verify.sh full</code> also checks the second proof. The Lean proof is in the folder <code>lean/</code>.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="credits-h">
+    <h2 id="credits-h">Credits</h2>
+    <ul>
+      <li>The question, and the upper bound 21, are from Hu and Liu (<a href="https://arxiv.org/abs/2609.00583">arXiv:2609.00583</a>).<sup class="cite"><a href="#n4">4</a></sup></li>
+      <li>The 25-color construction that answered Erdős's question is Kovač's (<a href="https://arxiv.org/abs/2309.09973">arXiv:2309.09973</a>).<sup class="cite"><a href="#n3">3</a></sup></li>
+      <li>The method follows Moore and Sagdeev's work on unit rhombi, and Thomas Bloom maintains <a href="https://www.erdosproblems.com/189">erdosproblems.com</a>.<sup class="cite"><a href="#n1">1</a></sup></li>
+    </ul>
+  </section>
+
+  <section class="prose" aria-labelledby="not-h">
+    <h2 id="not-h">What is not claimed</h2>
+    <ul>
+      <li>It does not answer Erdős's original question for two colors. By scaling, every area appears in one color or the other, but which color may depend on the area.<sup class="cite"><a href="#n1">1</a></sup></li>
+      <li>It does not show that any single rectangle shape is forced: the proof uses four shapes together.<sup class="cite"><a href="#n1">1</a></sup></li>
+      <li>Three colors (r ≥ 4) is open.<sup class="cite"><a href="#n1">1</a></sup></li>
+      <li>180 is the smallest set I found, not a proven minimum size.<sup class="cite"><a href="#n1">1</a></sup></li>
+    </ul>
+  </section>
+
+  <section class="prose" aria-labelledby="ai-h">
+    <h2 id="ai-h">How AI was used</h2>
+    <p>The search, the computations, the verification programs and drafts of the note were produced with Claude Code under my direction, and ChatGPT re-checked the result. I take responsibility for the content.<sup class="cite"><a href="#n9">9</a></sup> How the whole system works is on the <a href="../case-study.html">case study</a> page.</p>
+  </section>
+
+  <section class="refs" aria-labelledby="refs-h">
+    <h2 id="refs-h">Sources</h2>
+    <ol>
+      <li id="n1">C. Crocker, "Every two-coloring of the plane contains a monochromatic rectangle of area one", note.pdf in <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>: Theorem 1, Corollary 2, Remark "What is not claimed", Sections 2–5, "Three colors", Acknowledgements.</li>
+      <li id="n2">Erdős Problem #189, <a href="https://www.erdosproblems.com/189">erdosproblems.com/189</a>.</li>
+      <li id="n3">V. Kovač, <a href="https://arxiv.org/abs/2309.09973">arXiv:2309.09973</a>.</li>
+      <li id="n4">G. Hu, Y. Liu, <a href="https://arxiv.org/abs/2609.00583">arXiv:2609.00583</a>, Theorem 1 and Problem 1.</li>
+      <li id="n5">Package README.txt, "What verify.sh does", in <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>.</li>
+      <li id="n6">Package README.txt; ledger, 5–6 Oct 2026: <a href="../evidence/ledger_extract.html#L654">evidence/ledger_extract, L654</a>, <a href="../evidence/ledger_extract.html#L676">L676</a>.</li>
+      <li id="n7">Package folder lean/ and README.txt; ledger, 6 Oct 2026: <a href="../evidence/ledger_extract.html#L663">evidence/ledger_extract, L663</a>.</li>
+      <li id="n8">The note, "Use of AI tools"; ledger, 5 Oct 2026: <a href="../evidence/ledger_extract.html#L660">evidence/ledger_extract, L660</a>.</li>
+      <li id="n9">The note, "Use of AI tools", in <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>.</li>
+    </ol>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>The searches, code and checks behind these results were produced with AI tools (Claude Code, with ChatGPT as a reviewer) inside a process I designed and ran. Corrections are welcome and will be dated.</p>
+  <p>Contact: <a href="https://github.com/carsoncrocker">github.com/carsoncrocker</a></p>
+</div></footer>
+</body>
+</html>

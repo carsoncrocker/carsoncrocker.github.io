@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Withdrawn · Carson Crocker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="../">Home</a><a href="../results/">Results</a><a href="../case-study.html">Case study</a><a href="../log.html">Log</a></nav>
+</div></header>
+<main class="wrap evidence">
+<p class="small"><a href="./">Evidence</a> / Withdrawn · plain text: <a href="withdrawn.md">withdrawn.md</a></p>
+<h1>Caught before publishing</h1>
+<p>Claims that looked new or true at first and did not survive a later check. None was ever published: each was caught before anything went public. Each item gives the evidence. This list contains only the items that can be described without revealing unreleased work; items that concern unreleased results will be added when those results are published.</p>
+<h2 id="w-188-63">A claimed 63 for Erdős #188 (2 Oct 2026)</h2>
+<p>The search reported a coloring whose longest blue run, on its sample of lines, was 63, which would have given k ≤ 64. The rigorous verifier (Method 2) failed on it in 14,013 direction boxes, and it contains blue runs of at least 68 points: the search had over-fitted its own sample. It was never announced. The search score was replaced by the verifier itself.</p>
+<ul><li>Published note, section "How the coloring was found", and the package file <code>upper_bound/logs/m63_NJ64.utf8.txt</code>: <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>.</li><li>Ledger, 2 Oct 2026: <a href="ledger_extract.html#L607">ledger_extract, L607-619</a>.</li></ul>
+<h2 id="w-polymath">A small-disk 5-chromatic unit-distance graph (20 Sep 2026)</h2>
+<p>Another AI session produced a certified 5-chromatic unit-distance graph in a small disk, and ChatGPT rated it potentially new. Within minutes a prior-art search found a smaller one by Parts in the Polymath16 thread (February 2021). Marked NOT NEW.</p>
+<ul><li>Ledger: <a href="ledger_extract.html#L16">ledger_extract, L16</a>.</li><li>Timeline: <a href="log_quotes.html#t-polymath">log_quotes, "found to be already known"</a>.</li></ul>
+<h2 id="w-tomon">A construction overtaken by Tomon's paper (5 Oct 2026)</h2>
+<p>One theorem prepared for release was already implied by a paper of István Tomon posted on 2 October 2026, found on 5 October before anything was released. The theorem was dropped and the paper cited.</p>
+<ul><li>Tomon, <a href="https://arxiv.org/abs/2610.03517">arXiv:2610.03517</a>, Theorem 1.3 and Corollary 1.4.</li><li>Ledger, <code>LEDGER.md</code> line 657, verbatim with redactions:</li></ul>
+<blockquote class="verbatim">- 10-05 ~01:00 CDT TOMON arXiv 2610.03517 (2 Oct 2026; Thm 1.3 / Cor 1.4) [redacted: unreleased result] is SUBSUMED. [redacted: unreleased result]</blockquote>
+<h2 id="w-cabello">A value already proved by Cabello (30 Sep 2026)</h2>
+<p>One exact value I had computed was already proved by Adán Cabello in 2012. Dropped.</p>
+<ul><li>Cabello, <a href="https://arxiv.org/abs/1112.5149">arXiv:1112.5149</a>, Theorem 2.</li><li>Release tracker (<code>RELEASE_TRACKER.md</code>, line 28), verbatim with redactions:</li></ul>
+<blockquote class="verbatim"><b>09-30: [redacted: unreleased result] is KNOWN (Cabello 2012, arXiv 1112.5149 Thm 2) - not ours.</b></blockquote>
+<h2 id="w-ckr">Table entries that followed from published graphs (29 Sep 2026)</h2>
+<p>Entries of a table I first counted as new followed from graphs that Cherkashin, Kulikov and Raigorodskii had already published. An adversarial reviewer agent recomputed every entry and read the sources; those entries are no longer counted as new.</p>
+<ul><li>Error log of the case-study draft (<code>case_study/v04_parts/C_errors.md</code>, row 10), verbatim with redactions:</li></ul>
+<blockquote class="verbatim"><b>[redacted: unreleased result] over-claimed.</b> [redacted: unreleased result] "OURS-routine" cells follow from Cherkashin–Kulikov–Raigorodskii graphs plus a trivial bound. It recomputed all [redacted: unreleased result] cells and read the sources. A new status, IMPLIED, was introduced.</blockquote>
+</main>
+<footer><div class="wrap">
+  <p>Generated from <a href="withdrawn.md">withdrawn.md</a> by build_evidence.py. Excerpts are verbatim except where marked [redacted: ...].</p>
+</div></footer>
+</body>
+</html>

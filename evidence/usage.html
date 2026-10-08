@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code usage · Carson Crocker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="../">Home</a><a href="../results/">Results</a><a href="../case-study.html">Case study</a><a href="../log.html">Log</a></nav>
+</div></header>
+<main class="wrap evidence">
+<p class="small"><a href="./">Evidence</a> / Claude Code usage · plain text: <a href="usage.md">usage.md</a></p>
+<h1>Claude Code usage</h1>
+<p>How much Claude Code was used on this project, measured from Claude Code's own session logs on my computer.</p>
+<h2 id="method">How it was measured</h2>
+<p>Claude Code writes a log file for every session, and each model response in it records its token counts. The script <a href="measure_usage.py"><code>measure_usage.py</code></a> reads every session log of this project (including the logs of sub-agents), counts each response once, and adds up the token counts. It was run on 7 October 2026, while this site was being built, so the last day is partial. Its complete output is <a href="usage_output.txt"><code>usage_output.txt</code></a>.</p>
+<p>The script is adapted from the project's earlier measuring script. Two changes: the log folder is now a command-line argument, so no local path is published, and the dollar estimate at API list prices was removed, because the prices in it had not been re-checked.</p>
+<h2 id="result">Result</h2>
+<ul><li>Model responses: 27,081</li><li>Active days (UTC): 23, from 15 September to 7 October 2026</li><li>Output tokens: 30,348,293</li><li>Input tokens read from cache: 5,797,772,883</li><li>Input tokens written to cache: 366,312,225</li><li>Uncached input tokens: 105,855</li></ul>
+<h2 id="limits">What it does not cover</h2>
+<ul><li>It covers the whole project, including problems that went nowhere and results that are not public yet; it cannot be split cleanly by problem, because many sessions ran in parallel.</li><li>It counts Claude Code only. ChatGPT and other models were used through their own apps and are not counted.</li><li>Most of the tokens are cache reads: the model re-reading its own context in long sessions.</li></ul>
+</main>
+<footer><div class="wrap">
+  <p>Generated from <a href="usage.md">usage.md</a> by build_evidence.py. Excerpts are verbatim except where marked [redacted: ...].</p>
+</div></footer>
+</body>
+</html>
