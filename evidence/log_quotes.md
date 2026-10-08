@@ -100,8 +100,20 @@ Source: `TIMELINE.md`, line 105.
 
 > - **The diameter < 3 result is not new.** Another AI session produced a certified 5-chromatic graph in a disc of radius 1.4583 (and later 1.10–1.125), and ChatGPT rated it "potentially new". Within minutes, a Claude prior-art subagent found **Parts, Polymath16 (Feb 2021): a 5-chromatic graph in a radius-1.00 disc**. The ledger marks it NOT NEW. It should not be presented as a second result, but it is a strong case-study example of a plausible false discovery being caught.
 
+## 2026-09-25: "well should we look asymetrically" {#q-asymmetric}
+
+Source: `USER_MESSAGES_2026-09-24_to_10-05.md`, lines 2883, 2889 and 2891.
+
+> **2026-09-25T18:38** well should we look asymetrically
+
+> **2026-09-25T19:03** You know math more than me why did it take me to say try asymettric and then you find in two minutes
+
+> **2026-09-25T19:11** well should we be using probes to ask different questions from here can we continue to descend that one past [redacted: unreleased result]
+
+After about eight hours of symmetric search on a problem whose result is not public yet, this suggestion led to a check that found a smaller certified example within two minutes. The details stay redacted until that result is published. The same evening, Carson's "should we be using probes to ask different questions" started the question-probe method used afterwards.
+
 ## Honest limits {#t-limits}
 
-Source: `TIMELINE.md`, line 165.
+Source: `TIMELINE.md`, line 165. This was written on 24 Sep, the day before the asymmetric suggestion above.
 
 > **Honest limits** (keep in the case study): The logs show no mathematical insights from Carson, and Carson says so too. Some redirections were dead ends: the χ≥6 pivot, and the Lean flagship before Carson's own challenge killed it. The methodology is management of an AI research team, and that is the claim to make.

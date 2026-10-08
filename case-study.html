@@ -20,7 +20,7 @@
   <section>
     <h1>How I built the system</h1>
     <p class="lede">How the system works, and what I learned.</p>
-    <p>I'm not a mathematician. Over three weeks I set up off-the-shelf AI tools, mainly Claude Code with ChatGPT as a critic, to work on open math problems, and built a process around them for choosing problems, exploring, checking and releasing. This page explains that process and the mistakes that shaped it. The results themselves are on the <a href="results/">Results</a> page, and the dated events are in the <a href="log.html">Log</a>.</p>
+    <p>Over three weeks I built a research process around off-the-shelf AI tools, mainly Claude Code with ChatGPT as a critic, for making progress on open math problems: choosing the problems, exploring them, checking every result and deciding what is ready to release. This page explains how it works and the mistakes that shaped it. The results themselves are on the <a href="results/">Results</a> page, and the dated events are in the <a href="log.html">Log</a>.</p>
   </section>
 
   <section aria-labelledby="produced-h">
@@ -32,7 +32,7 @@
       <div class="stat"><b>30.3M</b><span>Claude Code output tokens<sup class="cite"><a href="#n2">2</a></sup></span></div>
       <div class="stat"><b>5</b><span>claims caught before publishing, listed publicly<sup class="cite"><a href="#n3">3</a></sup></span></div>
     </div>
-    <p class="small">The usage numbers were measured from Claude Code's own session logs, with the script and its output published. They cover the whole project, including problems that went nowhere and results that are not public yet, and leave out ChatGPT. More results are in preparation.<sup class="cite"><a href="#n2">2</a></sup></p>
+    <p class="small">All of it on consumer Claude and ChatGPT subscriptions and one home PC. The counts cover the whole project, including problems that went nowhere, and were measured from Claude Code's session logs with the script published. More results are in preparation.<sup class="cite"><a href="#n2">2</a></sup></p>
 
     <figure>
       <svg class="fig" viewBox="0 0 580 290" role="img" aria-labelledby="chart-t chart-d">
@@ -78,11 +78,9 @@
 
   <section class="prose" aria-labelledby="why-h">
     <h2 id="why-h">Why I started</h2>
-    <p>I'm not a mathematician, and the logs show it: the mathematical ideas did not come from me.<sup class="cite"><a href="#n7">7</a></sup> I work in corporate strategy and AI implementation, and I wanted to see whether someone with the right questions and a good process could make real progress on hard problems they knew nothing about. For me it is more about how you do it than what it is.</p>
+    <p>I work in the corporate world, and I'm interested in how progress actually gets made on hard open problems: which problems to pick, how to search, and when to trust a result. I'm not a mathematician, and Claude and ChatGPT did almost all of the mathematics.<sup class="cite"><a href="#n7">7</a></sup> A few of the directions that worked were mine as I learned. On one problem, after hours of symmetric search, I suggested looking at asymmetric configurations instead, and a check along those lines found a smaller example within two minutes.<sup class="cite"><a href="#n7b">7a</a></sup> I wanted to see how far a good method could take them.</p>
     <p>It started, honestly, with a tweet. Someone had asked an AI to &ldquo;do a breakthrough&rdquo; on an unsolved problem. I laughed, and then thought it probably could.</p>
-    <p>My first attempts went nowhere. I aimed at a famous problem and asked the AI for a big result directly:</p>
-    <blockquote class="said">"do it all do a breakthrough dont limit yourself"<sup class="cite"><a href="#n8">8</a></sup></blockquote>
-    <p>Those searches were closed without anything new.<sup class="cite"><a href="#n9">9</a></sup> So I stopped asking the AI for answers and started building a system around it. Claude writes the code, runs the searches and produces the certificates; ChatGPT critiques. My part is the goals, the pushing, the infrastructure, the cross-checking and the release discipline.<sup class="cite"><a href="#n10">10</a></sup></p>
+    <p>My first attempts went nowhere. I aimed at a famous problem and asked the AI for a big result directly.<sup class="cite"><a href="#n8">8</a></sup><sup class="cite"><a href="#n9">9</a></sup> That was the first lesson: the AI is a powerful engine, but it needs a method around it. So I built one. Claude writes the code, runs the searches and produces the certificates; ChatGPT critiques. I set the goals and the process, push past the AI's stopping points, run the infrastructure, cross-check the results and decide what is ready to release.<sup class="cite"><a href="#n10">10</a></sup></p>
   </section>
 
   <section class="prose" aria-labelledby="system-h">
@@ -108,10 +106,9 @@
     <h3>1. Choose</h3>
     <p><b>Choose problems where search and computation can make progress, and where a program can check the answer.</b></p>
     <ul>
-      <li>Famous problems went nowhere.<sup class="cite"><a href="#n9">9</a></sup> What worked were bounds that were recent or loose: the #188 upper bound had been published in June 2026,<sup class="cite"><a href="#n4">4</a></sup> and #189 was the top pick from a list of loose published bounds.<sup class="cite"><a href="#n11">11</a></sup></li>
+      <li>Famous problems, which need a deep new idea, went nowhere.<sup class="cite"><a href="#n9">9</a></sup> The method helps most on active questions where a search can contribute: #188 builds on a construction published in June 2026,<sup class="cite"><a href="#n4">4</a></sup> and #189 answers a question Hu and Liu asked in September 2026.<sup class="cite"><a href="#n11">11</a></sup></li>
       <li>A literature check comes before any computing, and the list of dead targets is checked before one is relaunched.<sup class="cite"><a href="#n12">12</a></sup></li>
     </ul>
-    <blockquote class="said">"well are we even asking the right questions trying to solve this the best way are we trying to solve the right problems"<sup class="cite"><a href="#n13">13</a></sup></blockquote>
 
     <h3>2. Explore</h3>
     <p><b>Ask many small questions at once, keep the machine busy, and don't stop when the AI wants to.</b></p>
@@ -122,8 +119,6 @@
       <li><b>Speed.</b> The tools themselves are a target: one rebuilt search tool for #188 ran 4.3 times faster than the one it replaced.<sup class="cite"><a href="#n17">17</a></sup></li>
       <li><b>Past the stopping point.</b> On an earlier problem, Claude twice recommended stopping. Both times I asked it to keep going, and the work continued.<sup class="cite"><a href="#n18">18</a></sup></li>
     </ul>
-    <blockquote class="said">"hows it coming and how do i get this to run all night and evolve while i sleep to solve what were truly after"<sup class="cite"><a href="#n19">19</a></sup></blockquote>
-    <blockquote class="said">"you always say itll take longer then we immediately make a breakthrough but only when we optimize"<sup class="cite"><a href="#n20">20</a></sup></blockquote>
 
     <h3>3. Verify</h3>
     <p><b>Nothing is true until it has been checked by something that didn't produce it.</b></p>
@@ -133,15 +128,31 @@
       <li><b>Independent checks.</b> A second or third verifier written blind in a separate session, an attacker that tries to break the result, and ChatGPT as an outside referee.<sup class="cite"><a href="#n23">23</a></sup></li>
       <li><b>Tests of the tests.</b> Deliberately broken inputs must be rejected, or the check doesn't count.<sup class="cite"><a href="#n24">24</a></sup></li>
     </ul>
-    <blockquote class="said">"cant i feed this to another llm to verify"<sup class="cite"><a href="#n25">25</a></sup></blockquote>
 
     <h3>4. Learn</h3>
     <p><b>Results and mistakes are turned into written rules.</b></p>
     <ul>
-      <li>AI sessions forget, so the system remembers in files. A ledger records every claim and its status, and only files and certificates count, not a model's summary.<sup class="cite"><a href="#n26">26</a></sup></li>
       <li>Lessons are written back as rules. This isn't machine learning in the technical sense: the system learns by rewriting its own instructions.<sup class="cite"><a href="#n27">27</a></sup></li>
     </ul>
-    <blockquote class="said">"can you read everything we've done to know and our engines and machines weve built"<sup class="cite"><a href="#n28">28</a></sup></blockquote>
+
+    <h3 id="ledger">The ledger</h3>
+    <p>The most useful single thing in the system is a plain text file.</p>
+    <p>Every AI session starts with no memory of the last one, and a model will confidently "remember" things that never happened. So nothing counts because a model said it. Every claim goes into a ledger with a date, a status and a pointer to the files that prove it.<sup class="cite"><a href="#n26">26</a></sup> The statuses are simple: a <i>result</i> (certified), <i>closed</i> (certified negative), <i>dead</i> (refuted), <i>not new</i> (prior art found), a <i>lead</i> (not yet verified), or <i>open</i>.</p>
+    <p>Three rules make it work:</p>
+    <ol>
+      <li><b>It outranks memory.</b> Every session reads the ledger first. If a model's summary and the ledger disagree, the ledger wins.</li>
+      <li><b>It is append-only.</b> Mistakes are never erased; corrections are added as new dated rows. That is why this site can show what was caught before publishing: the record was never rewritten.</li>
+      <li><b>A claim is only real when its row points to a passing check.</b> That rule is what made the evidence pages on this site possible.</li>
+    </ol>
+    <p>Here is a real row, from the night before #188 was published. An outside review noticed that a "full clean run" of the package had really passed in two separate runs. The fix was a new row, not an edit:</p>
+    <pre class="ledger-row">10-06 ~22:45 CORRECTION to the 10-04 22:23 row: release_188_v4
+'verify_all.sh full' clean-copy run did NOT pass as one run - it
+passed manifest, Claim A x2, Method 2, Method 1 records + recheck,
+then stopped at step 5 (drat-trim not on PATH ...). Lower bound
+passed in a SEPARATE run (... 4 DRAT + LRAT VERIFIED). Caught by
+external review 10-06. Single full run relaunched 22:40 ...</pre>
+    <p class="small">Verbatim, with a local file path removed.<sup class="cite"><a href="#n33b">33a</a></sup> The single full run passed the next morning.<sup class="cite"><a href="#n33c">33b</a></sup></p>
+    <p>Reading the ledger back is also how the system learned where it can actually help. The method works best on questions where a computer search can contribute and a program can check the answer, often ones that researchers have raised recently, and much less on famous problems that need a deep new idea. The way new problems are chosen changed because of it.<sup class="cite"><a href="#n9">9</a></sup><sup class="cite"><a href="#n11">11</a></sup></p>
 
     <h3>5. Release</h3>
     <p><b>Experts first, credit always, and claim only what has been checked.</b></p>
@@ -150,23 +161,22 @@
       <li>Before posting, I write to the mathematicians whose work a result builds on, and credit where each idea came from.<sup class="cite"><a href="#n30">30</a></sup></li>
       <li>Each result ships with code anyone can re-run, and the AI session logs are archived with checksums, so who did what can be checked.<sup class="cite"><a href="#n31">31</a></sup></li>
     </ul>
-    <blockquote class="said">“who is "we"”<sup class="cite"><a href="#n32">32</a></sup></blockquote>
   </section>
 
   <section class="prose" aria-labelledby="wrong-h">
     <h2 id="wrong-h">What went wrong, and the rule each mistake left</h2>
-    <p>The AI is remarkably good at fooling itself. These are the mistakes I'd most want someone building a similar system to know about. Each links to its dated entry in the Log.</p>
+    <p>The AI is remarkably good at fooling itself. These are the mistakes I'd most want someone building a similar system to know about. Each links to its evidence.</p>
     <div class="tablewrap">
       <table>
         <thead><tr><th>What happened</th><th>The rule now</th></tr></thead>
         <tbody>
           <tr><td>A search reported 63 on #188. It had learned to game its own score; the rigorous verifier found runs of at least 68. <a href="log.html#2026-10-02-63">2 Oct</a></td><td>The verifier itself is the search's score.<sup class="cite"><a href="#n21">21</a></sup></td></tr>
           <tr><td>Claude twice recommended stopping on an earlier problem. Both times there was more to find. <a href="log.html#2026-09-21-stop">21 Sep</a></td><td>A stall means the method is stuck, not that the answer is reached.<sup class="cite"><a href="#n18">18</a></sup></td></tr>
-          <tr><td>A proof checker printed VERIFIED on a tampered file, because the file's header no longer matched its contents. <a href="log.html#2026-10-06-header">6 Oct</a></td><td>Header and body are checked against each other before a proof check counts.<sup class="cite"><a href="#n33">33</a></sup></td></tr>
+          <tr><td>A proof checker printed VERIFIED on a tampered file, because the file's header no longer matched its contents. <a href="evidence/ledger_extract.html#L668">6 Oct</a></td><td>Header and body are checked against each other before a proof check counts.<sup class="cite"><a href="#n33">33</a></sup></td></tr>
           <tr><td>A tamper test passed when it should have failed: it changed a clause the proof never used. <a href="log.html#2026-10-06-cake188">6 Oct</a></td><td>Tamper tests must change something the proof depends on.<sup class="cite"><a href="#n24">24</a></sup></td></tr>
           <tr><td>Results that looked new were already known, one of them found in a 2021 Polymath16 thread within minutes. <a href="log.html#2026-09-20-polymath">20 Sep</a></td><td>Literature check before computing and before any claim; the "not new after all" list is kept public.<sup class="cite"><a href="#n12">12</a></sup></td></tr>
-          <tr><td>A bound was described as "proved in two ways" when the second method had never been run on it. ChatGPT refused to sign. <a href="log.html#2026-10-04-chatgpt">4 Oct</a></td><td>Run every verifier you cite, on the exact object you claim.<sup class="cite"><a href="#n34">34</a></sup></td></tr>
-          <tr><td>A release package was described as passing one full clean run. It had passed in two separate runs. <a href="log.html#2026-10-06-fullrun">6 Oct</a></td><td>Corrected in the ledger, then re-run as one clean run, which passed.<sup class="cite"><a href="#n35">35</a></sup></td></tr>
+          <tr><td>A bound was described as "proved in two ways" when the second method had never been run on it. ChatGPT refused to sign. <a href="evidence/ledger_extract.html#L649">4 Oct</a></td><td>Run every verifier you cite, on the exact object you claim.<sup class="cite"><a href="#n34">34</a></sup></td></tr>
+          <tr><td>A release package was described as passing one full clean run. It had passed in two separate runs. <a href="evidence/ledger_extract.html#L679">6 Oct</a></td><td>Corrected in the ledger, then re-run as one clean run, which passed.<sup class="cite"><a href="#n35">35</a></sup></td></tr>
         </tbody>
       </table>
     </div>
@@ -191,6 +201,7 @@
       <li id="n5"><a href="evidence/ledger_extract.html#L585">ledger_extract, L585</a> (242), <a href="evidence/ledger_extract.html#N29-183">N29-183</a> (166), <a href="evidence/ledger_extract.html#L597">L597</a> (107, 85), <a href="evidence/ledger_extract.html#L607">L607</a> (69, 64), <a href="evidence/ledger_extract.html#L645">L645</a> (60).</li>
       <li id="n6">The #188 note, Introduction ("History") and Acknowledgements, in <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>; <a href="evidence/ledger_extract.html#L601">ledger_extract, L601</a>, <a href="evidence/ledger_extract.html#L629">L629</a>.</li>
       <li id="n7"><a href="evidence/log_quotes.html#t-limits">log_quotes, Honest limits</a>.</li>
+      <li id="n7b">7a. <a href="evidence/log_quotes.html#q-asymmetric">log_quotes, 25 Sep 2026</a>.</li>
       <li id="n8"><a href="evidence/log_quotes.html#q-breakthrough-2">log_quotes, 18 Sep 2026</a>; also <a href="evidence/log_quotes.html#q-breakthrough-1">15 Sep 2026</a>.</li>
       <li id="n9"><a href="evidence/ledger_extract.html#L8">ledger_extract, L8</a>.</li>
       <li id="n10"><a href="evidence/log_quotes.html#t-roles">log_quotes, Who did what</a>.</li>
@@ -216,6 +227,8 @@
       <li id="n30"><a href="evidence/ledger_extract.html#L659">ledger_extract, L659</a>; the Acknowledgements of both notes.</li>
       <li id="n31"><a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>, <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>; <a href="evidence/ledger_extract.html#L681">ledger_extract, L681</a>.</li>
       <li id="n32"><a href="evidence/log_quotes.html#q-who-is-we">log_quotes, 26 Sep 2026</a>.</li>
+      <li id="n33b">33a. <a href="evidence/ledger_extract.html#L679">ledger_extract, L679</a>.</li>
+      <li id="n33c">33b. <a href="evidence/ledger_extract.html#L682">ledger_extract, L682</a>.</li>
       <li id="n33"><a href="evidence/ledger_extract.html#L668">ledger_extract, L668</a>, <a href="evidence/ledger_extract.html#L680">L680</a> ("header=body all four"); the #188 package, extra_checks/README.txt item 1.</li>
       <li id="n34"><a href="evidence/ledger_extract.html#L649">ledger_extract, L649</a>, <a href="evidence/ledger_extract.html#L664">L664</a>.</li>
       <li id="n35"><a href="evidence/ledger_extract.html#L679">ledger_extract, L679</a>, <a href="evidence/ledger_extract.html#L682">L682</a>.</li>
