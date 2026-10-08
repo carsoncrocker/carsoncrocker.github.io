@@ -20,7 +20,7 @@
   <section>
     <h1>Results</h1>
     <p class="lede">What has been proven, and where each result stands.</p>
-    <p>Each result is a computer-checked proof that improves a published bound on an open problem. Each one comes with a package anyone can download and re-check, and a page that explains it in plain English.</p>
+    <p>Each result is a computer-checked proof that improves a published bound on an open problem. Each one has a page that explains it in plain English. Published results come with a full package anyone can download and re-check; results marked “package coming” already come with a short check-it-yourself kit.</p>
   </section>
 
   <section aria-labelledby="pub-h">
@@ -47,17 +47,51 @@
     </div>
   </section>
 
+  <section aria-labelledby="ver-h">
+    <h2 id="ver-h">Verified, package coming</h2>
+    <p>These are at stage 2: each was checked by separately written verifiers and a hostile review, and all were re-checked on 7 October 2026.<sup class="cite"><a href="#n2">2</a></sup> Their packages with DOIs are coming; each page already has files to check the result yourself. None has been reviewed by a professional mathematician yet.</p>
+    <div class="cards">
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="r3-31.html">Triangle-free 5-chromatic graph in 3D</a></h3>
+          <span class="small">verified · package coming</span>
+        </div>
+        <p>Points in space, joined when exactly 1 apart, with no three mutually 1 apart, that need 5 colors.</p>
+        <div class="bound"><span class="was">61 points</span><span class="arrow">→</span><span class="now">31 points</span></div>
+        <div class="links"><a href="r3-31.html">Explanation and files</a></div>
+      </article>
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="sphere-228.html">5-chromatic graph on a sphere</a></h3>
+          <span class="small">verified · package coming</span>
+        </div>
+        <p>Points on the sphere around the icosahedron with unit edges, joined when exactly 1 apart, that need 5 colors.</p>
+        <div class="bound"><span class="was">372 points</span><span class="arrow">→</span><span class="now">228 points</span></div>
+        <div class="links"><a href="sphere-228.html">Explanation and files</a></div>
+      </article>
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="hyperbolic-276.html">5-chromatic graph in the hyperbolic plane</a></h3>
+          <span class="small">verified · package coming</span>
+        </div>
+        <p>Points in the hyperbolic plane, joined at the distance d ≈ 1.375 of Exoo and Ismailescu, that need 5 colors.</p>
+        <div class="bound"><span class="was">622 points</span><span class="arrow">→</span><span class="now">276 points</span></div>
+        <div class="links"><a href="hyperbolic-276.html">Explanation and files</a></div>
+      </article>
+    </div>
+  </section>
+
   <section aria-labelledby="st-h">
     <h2 id="st-h">In progress</h2>
-    <p>Every result moves through five stages. Both published results are at stage 3.</p>
+    <p>Every result moves through five stages. Both published results are at stage 3; the three verified results above are at stage 2.</p>
     <div class="stages">
       <div class="stg"><b>1. Found</b><span>The system found a candidate and it passed a first rigorous computer check.</span></div>
-      <div class="stg"><b>2. Verified</b><span>Independent checkers, a formally verified checker or Lean proof where possible, hostile AI review, a literature check and a 48-hour hold.</span></div>
+      <div class="stg"><b>2. Verified</b><span>Independent checkers, a formally verified checker or Lean proof where possible, hostile AI review, a literature check and a 48-hour hold.</span><span class="dotc">31, 228, 276</span></div>
       <div class="stg"><b>3. Public</b><span>The authors of the prior work are told first. Then the note and code go public with a DOI.</span><span class="dotc">#188, #189</span></div>
       <div class="stg"><b>4. arXiv</b><span>A written paper on arXiv, ideally with a professional mathematician as co-author.</span></div>
       <div class="stg"><b>5. Peer-reviewed</b><span>Accepted by a journal after independent review.</span></div>
     </div>
-    <p>More results are in preparation. Each is listed here only after the authors of the work it builds on have had a chance to look, and its package has a DOI. A result is marked <b>expert-checked</b> when an independent mathematician has checked it; none has that mark yet.</p>
+    <p>More results are in preparation. A result reaches stage 3 only after the authors of the work it builds on have had a chance to look, and its package has a DOI. A result is marked <b>expert-checked</b> when an independent mathematician has checked it; none has that mark yet.</p>
   </section>
 
   <section class="prose" aria-labelledby="wd-h">
@@ -76,6 +110,7 @@
     <h2 id="refs-h">Sources</h2>
     <ol>
       <li id="n1">Ledger, 7 Oct 2026: <a href="../evidence/ledger_extract.html#L699">evidence/ledger_extract, L699</a>.</li>
+      <li id="n2">Ledger, 7 Oct 2026: <a href="../evidence/ledger_extract.html#L685">evidence/ledger_extract, L685</a>; the stage-2 checks for each result are cited on its page.</li>
     </ol>
   </section>
 </main>

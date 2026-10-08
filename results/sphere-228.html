@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5-chromatic graph on a sphere · Carson Crocker</title>
+<meta name="description" content="A unit-distance graph on the sphere around the unit icosahedron that needs 5 colors, with 228 vertices. Plain-English explanation, how it was checked, and files to check it yourself.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="../">Home</a><a href="./" aria-current="page">Results</a><a href="../case-study.html">Case study</a><a href="../log.html">Log</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section>
+    <span class="eyebrow">Result · verified · package coming</span>
+    <h1>A 5-chromatic graph on a sphere with 228 points</h1>
+    <p class="lede">Take a sphere of radius about 0.951 and pick some points on it. Draw a line between every two points that are exactly 1 apart, measured straight through space. Color the points so that no line joins two points of the same color. This page is about 228 such points that need 5 colors.<sup class="cite"><a href="#n2">2</a></sup></p>
+    <div class="bound"><span class="was">372 points</span><span class="arrow">→</span><span class="now">228 points</span></div>
+    <p class="small">Stage 2, verified. A package with a DOI is coming; the files below already let you check it. Not yet reviewed by a professional mathematician.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="problem-h">
+    <h2 id="problem-h">The problem in plain words</h2>
+    <p>The points and the lines between them form a <em>unit-distance graph</em>, and its <em>chromatic number</em> is the fewest colors that keep the two ends of every line different. The graph is <em>faithful</em>: two points are joined exactly when they are 1 apart, with no exceptions.<sup class="cite"><a href="#n2">2</a></sup></p>
+    <p>The radius is cos(π/10) ≈ 0.95106. This is the sphere through the 12 corners of an icosahedron whose edges have length 1, so the icosahedron is a natural place to start.<sup class="cite"><a href="#n2">2</a></sup> On a sphere, as in the plane, one asks how many colors are needed, and a small graph that needs 5 colors is the simplest kind of proof that 4 are not enough. Small examples are easier to check and to understand.</p>
+    <p>Voronov, Neopryatnaya and Dergachev built a 5-chromatic unit-distance graph on this sphere with 372 points. They also remark that deleting any one point keeps 5 colors necessary, which already gives 371.<sup class="cite"><a href="#n1">1</a></sup><sup class="cite"><a href="#n3">3</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="new-h">
+    <h2 id="new-h">What is new</h2>
+    <p>A faithful 5-chromatic unit-distance graph on this sphere with 228 points and 910 lines, with exact coordinates. It is vertex-critical: remove any one point and 4 colors are enough. A second example with 231 points also exists.<sup class="cite"><a href="#n2">2</a></sup><sup class="cite"><a href="#n3">3</a></sup></p>
+    <p>I do not claim that 228 is the smallest possible; the smallest size is not known.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="checked-h">
+    <h2 id="checked-h">How it was checked</h2>
+    <ul>
+      <li><b>Certificate:</b> every point and every distance is computed exactly, in a number field of degree 8. The pairs exactly 1 apart are exactly the 910 listed lines. A SAT solver's proof that 4 colors are not enough (a DRAT certificate) was checked with <code>drat-trim</code>, and a 4-coloring is stored for the graph with each point removed.<sup class="cite"><a href="#n3">3</a></sup></li>
+      <li><b>Blind verifier:</b> a separate program, written from the data without reading any project code, recomputed the geometry and the lines exactly. Three SAT solvers found no 4-coloring, and its own proof passed <code>drat-trim</code>.<sup class="cite"><a href="#n4">4</a></sup></li>
+      <li><b>Hostile review:</b> found no mathematical error, and confirmed that the graph is not a piece of the 372-point construction. The two have at most the 12 icosahedron points in common.<sup class="cite"><a href="#n4">4</a></sup></li>
+      <li><b>Re-check:</b> on 7 October 2026 the verifiers were run again and passed, and the literature was checked again.<sup class="cite"><a href="#n5">5</a></sup></li>
+      <li><b>The checker on this page</b> repeats the exact checks and the proof check in about a minute.<sup class="cite"><a href="#n2">2</a></sup></li>
+    </ul>
+    <p class="note">All the verifiers were written with the same AI tool (Claude Code), in separate sessions. That is not independence in the sense of different authors, which is why checks by others are very welcome.<sup class="cite"><a href="#n6">6</a></sup> To my knowledge, no mathematician has checked the result yet.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="status-h">
+    <h2 id="status-h">Status</h2>
+    <p><b>Stage 2 of 5: verified.</b> A package with a DOI, including the 231-point example, is coming. Not yet reviewed by a professional mathematician. The stages are explained on the <a href="./#st-h">Results</a> page.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="credits-h">
+    <h2 id="credits-h">Credits</h2>
+    <ul>
+      <li>The setting, this sphere with unit distances, and the 372-point construction are from Voronov, Neopryatnaya and Dergachev (<a href="https://arxiv.org/abs/2106.11824">arXiv:2106.11824</a>).<sup class="cite"><a href="#n1">1</a></sup></li>
+    </ul>
+  </section>
+
+  <section class="prose" aria-labelledby="yourself-h">
+    <h2 id="yourself-h">Check it yourself</h2>
+    <p>Download the files below into one folder and run:<sup class="cite"><a href="#n2">2</a></sup></p>
+    <pre>pip install python-flint python-sat    # python-sat is optional
+python verify_standalone.py           # about 1 minute</pre>
+    <p>The last line says ALL CHECKS PASS or lists what failed. The checker computes exactly, in the number field, that every point is on the sphere and that the pairs at distance exactly 1 are exactly the listed lines. It then rebuilds the coloring question from the line list and checks the bundled proof that it has no 4-coloring. It uses <code>drat-trim</code> if that is installed, and otherwise a built-in checker written in plain Python. It passes from a clean copy in about a minute and a half on an ordinary PC. <a class="small" href="../evidence/ledger_extract.html#Lkits">(evidence)</a></p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>File</th><th>Size</th><th>SHA-256</th></tr></thead>
+      <tbody>
+        <tr><td><a href="files/sphere-228/verify_standalone.py" download>verify_standalone.py</a></td><td class="num">23 KB</td><td class="hash">1ca7020c9066e554fe75a6616ec3af85aaae2aae96476fcb142a288d6306b0a5</td></tr>
+        <tr><td><a href="files/sphere-228/sphere_228.json" download>sphere_228.json</a></td><td class="num">210 KB</td><td class="hash">ae343ec6ee2a534a9eef5c081378075155b6f73ff06e6575329ea293a742a0ea</td></tr>
+        <tr><td><a href="files/sphere-228/sphere_228_edges.txt" download>sphere_228_edges.txt</a></td><td class="num">6 KB</td><td class="hash">91926ebce8847ee7265d26d476830ae480570cebc01b194fd31819aa86eb7d06</td></tr>
+        <tr><td><a href="files/sphere-228/sphere_228_minpolys.json" download>sphere_228_minpolys.json</a></td><td class="num">196 KB</td><td class="hash">2b94d01bd50468d19b7d24d00a733369824f988c6d22710a76a7086c09da3ac9</td></tr>
+        <tr><td><a href="files/sphere-228/sphere_228.cnf" download>sphere_228.cnf</a></td><td class="num">49 KB</td><td class="hash">e5163f710c38b994d2e77c31bbc9d6db5d7f754e06638de278316f115e27605a</td></tr>
+        <tr><td><a href="files/sphere-228/sphere_228.drat" download>sphere_228.drat</a></td><td class="num">798 KB</td><td class="hash">71d268e5190b5da405b8f67058fe495646905c51f7158c6df9fc026d705e61b5</td></tr>
+        <tr><td><a href="files/sphere-228/sphere_228_colourings.json" download>sphere_228_colourings.json</a></td><td class="num">53 KB</td><td class="hash">838fc9ea5d2470b745a1634b980a79b6a901661483446e3d3fa113cc067c85c7</td></tr>
+        <tr><td><a href="files/sphere-228/README.txt" download>README.txt</a></td><td class="num">2 KB</td><td class="hash">83a24457df4e4ead081efd9fa58c600cf9b8c02407768bd92c53509808411fb5</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">sphere_228.json holds the exact coordinates (in the field Q(√5, w<sub>2</sub>, w<sub>3</sub>) of degree 8), 30-digit decimals and the line list. Some file names keep the British spelling of the original data.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="note-h">
+    <h2 id="note-h">Note: how the construction works</h2>
+    <p>Start with the 12 corners of the icosahedron with edges of length 1. They lie on this sphere, and its 30 edges are lines of the graph. Add a second copy, turned about the axis through the center of one face by an angle θ with cos θ = (3√5 − 5)/4, about 64.72°. This angle is chosen so that a corner and its turned copy are exactly 1 apart.<sup class="cite"><a href="#n2">2</a></sup><sup class="cite"><a href="#n3">3</a></sup></p>
+    <p>Then grow the set. Around any point, the points of the sphere at distance 1 form a circle. Two such circles usually meet in two points, and each of those is exactly 1 from both starting points. Adding these meeting points again and again grew the set to 1,008 points.<sup class="cite"><a href="#n2">2</a></sup><sup class="cite"><a href="#n3">3</a></sup></p>
+    <p>A large set like that needs 5 colors, but most of its points are not needed for that. Computer searches removed points while keeping 4 colors insufficient: 1,008 to 407, then 292, then 231 and 228.<sup class="cite"><a href="#n3">3</a></sup></p>
+    <p>Every step is an exact construction, so all coordinates are exact numbers in one field of degree 8. That is what lets the checker decide "exactly 1 apart" without rounding.<sup class="cite"><a href="#n2">2</a></sup><sup class="cite"><a href="#n3">3</a></sup></p>
+  </section>
+
+  <section class="refs" aria-labelledby="refs-h">
+    <h2 id="refs-h">Sources</h2>
+    <ol>
+      <li id="n1">V. Voronov, A. Neopryatnaya, E. Dergachev, "Constructing 5-chromatic unit distance graphs embedded in the Euclidean plane and two-dimensional spheres", Discrete Math. 345(12) (2022), 113106, <a href="https://doi.org/10.1016/j.disc.2022.113106">doi:10.1016/j.disc.2022.113106</a>, <a href="https://arxiv.org/abs/2106.11824">arXiv:2106.11824</a>.</li>
+      <li id="n2">The files on this page: <a href="files/sphere-228/verify_standalone.py">verify_standalone.py</a> (the description at the top of the file), <a href="files/sphere-228/README.txt">README.txt</a>, and the "description", "field" and "construction" entries of <a href="files/sphere-228/sphere_228.json">sphere_228.json</a>.</li>
+      <li id="n3">Ledger, 27 Sep 2026: <a href="../evidence/ledger_extract.html#L560">evidence/ledger_extract, L560</a>.</li>
+      <li id="n4">Ledger, 27–28 Sep 2026: <a href="../evidence/ledger_extract.html#L567">evidence/ledger_extract, L567</a>.</li>
+      <li id="n5">Ledger, 7 Oct 2026: <a href="../evidence/ledger_extract.html#L685">evidence/ledger_extract, L685</a>.</li>
+      <li id="n6"><a href="../evidence/log_quotes.html#t-roles">evidence/log_quotes, Who did what</a>.</li>
+    </ol>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>The searches, code and checks behind these results were produced with AI tools (Claude Code, with ChatGPT as a reviewer) inside a process I designed and ran. Corrections are welcome and will be dated.</p>
+  <p>Contact: <a href="https://github.com/carsoncrocker">github.com/carsoncrocker</a></p>
+</div></footer>
+</body>
+</html>

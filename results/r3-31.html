@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Triangle-free 5-chromatic graph in 3D · Carson Crocker</title>
+<meta name="description" content="A triangle-free unit-distance graph in three-dimensional space that needs 5 colors, with 31 vertices. Plain-English explanation, how it was checked, and files to check it yourself.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="../">Home</a><a href="./" aria-current="page">Results</a><a href="../case-study.html">Case study</a><a href="../log.html">Log</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section>
+    <span class="eyebrow">Result · verified · package coming</span>
+    <h1>A triangle-free 5-chromatic graph in 3D with 31 points</h1>
+    <p class="lede">Pick some points in ordinary three-dimensional space and draw a line between every two points that are exactly 1 apart. Now color the points so that no line joins two points of the same color. How many colors do you need? This page is about a set of 31 points that needs 5 colors, even though no three of the points are all exactly 1 apart from each other.<sup class="cite"><a href="#n2">2</a></sup></p>
+    <div class="bound"><span class="was">61 points</span><span class="arrow">→</span><span class="now">31 points</span></div>
+    <p class="small">Stage 2, verified. A package with a DOI is coming; the files below already let you check it. Not yet reviewed by a professional mathematician.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="problem-h">
+    <h2 id="problem-h">The problem in plain words</h2>
+    <p>The points and the lines between them form a <em>unit-distance graph</em>. Its <em>chromatic number</em> is the fewest colors that keep every line's two ends different. Here the graph is <em>faithful</em>: two points are joined exactly when they are 1 apart, with no exceptions.<sup class="cite"><a href="#n2">2</a></sup></p>
+    <p>Three points all 1 apart form a triangle, and a triangle already needs 3 colors. A graph with no triangles has to force its colors in a less direct way, so triangle-free graphs that need many colors are harder to find. Small examples matter because they are easier to check, to understand and to build on.</p>
+    <p>In 2026 Aubrey de Grey gave a triangle-free unit-distance graph in three dimensions that needs 5 colors, with 61 points.<sup class="cite"><a href="#n1">1</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="new-h">
+    <h2 id="new-h">What is new</h2>
+    <p>A faithful, triangle-free unit-distance graph in three dimensions with 31 points and 96 lines that needs exactly 5 colors. It is also 5-critical: remove any point or any line and 4 colors are enough.<sup class="cite"><a href="#n2">2</a></sup><sup class="cite"><a href="#n4">4</a></sup> Variants with 33 and 35 points also exist.<sup class="cite"><a href="#n4">4</a></sup></p>
+    <p>I do not claim that 31 is the smallest possible. Every triangle-free graph that needs 5 colors has at least 22 points, so the smallest such set in space has between 22 and 31 points.<sup class="cite"><a href="#n7">7</a></sup><sup class="cite"><a href="#n4">4</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="checked-h">
+    <h2 id="checked-h">How it was checked</h2>
+    <ul>
+      <li><b>Certificate:</b> an interval-arithmetic test (the Krawczyk test) proves that exact points exist within 10<sup>−40</sup> of the listed coordinates, and SAT solvers show that 4 colors are not enough. Seventeen deliberately corrupted inputs were all rejected.<sup class="cite"><a href="#n4">4</a></sup></li>
+      <li><b>Blind verifier:</b> a second program, written from a short description of the claim without seeing the certifier's code, reached the same result with different arithmetic.<sup class="cite"><a href="#n4">4</a></sup></li>
+      <li><b>Hostile review:</b> a separate review repeated the interval test with a different setup and checked the coloring claims with its own search. It found no error.<sup class="cite"><a href="#n4">4</a></sup></li>
+      <li><b>Re-check:</b> on 7 October 2026 all the verifiers were run again and passed, and the literature was checked again.<sup class="cite"><a href="#n5">5</a></sup></li>
+      <li><b>The checker on this page</b> repeats the essential checks in about 25 seconds.<sup class="cite"><a href="#n2">2</a></sup></li>
+    </ul>
+    <p class="note">All the verifiers were written with the same AI tool (Claude Code), in separate sessions. That is not independence in the sense of different authors, which is why checks by others are very welcome.<sup class="cite"><a href="#n8">8</a></sup> To my knowledge, no mathematician has checked the result yet.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="status-h">
+    <h2 id="status-h">Status</h2>
+    <p><b>Stage 2 of 5: verified.</b> A package with a DOI, the note and the full set of certificates is coming. Not yet reviewed by a professional mathematician. The stages are explained on the <a href="./#st-h">Results</a> page.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="credits-h">
+    <h2 id="credits-h">Credits</h2>
+    <ul>
+      <li>The construction builds on Aubrey de Grey's 2026 graph and its reflection idea.<sup class="cite"><a href="#n1">1</a></sup></li>
+      <li>The 15-point base graph comes from Jan Goedgebeur's lists of graphs, available through the House of Graphs.<sup class="cite"><a href="#n6">6</a></sup></li>
+      <li>The step from 4 to 5 colors is Mycielski's construction (1955).<sup class="cite"><a href="#n3">3</a></sup></li>
+      <li>Thanks to Aubrey de Grey for encouragement.</li>
+    </ul>
+  </section>
+
+  <section class="prose" aria-labelledby="yourself-h">
+    <h2 id="yourself-h">Check it yourself</h2>
+    <p>Download the files below into one folder and run:<sup class="cite"><a href="#n2">2</a></sup></p>
+    <pre>pip install mpmath
+python check_31.py        # about 25 seconds</pre>
+    <p>The last line says PASS or FAIL. The checker uses only Python's standard library and mpmath. It checks every line's length exactly or with rigorous interval arithmetic, checks that there are no triangles, and searches every possible 4-coloring without a SAT solver. It passes from a clean copy in under a minute on an ordinary PC. <a class="small" href="../evidence/ledger_extract.html#Lkits">(evidence)</a></p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>File</th><th>Size</th><th>SHA-256</th></tr></thead>
+      <tbody>
+        <tr><td><a href="files/r3-31/check_31.py" download>check_31.py</a></td><td class="num">14 KB</td><td class="hash">bb5231a7407122c97a627bd7a5a0233c9e4eca08dbe4bcec14898da0dcc65d98</td></tr>
+        <tr><td><a href="files/r3-31/coordinates_31.txt" download>coordinates_31.txt</a></td><td class="num">6 KB</td><td class="hash">6f8bfd0b4b280042b55c5ea48f6bbc9ab19f829e7fe0bd21b92f91a03f370057</td></tr>
+        <tr><td><a href="files/r3-31/edges_31.txt" download>edges_31.txt</a></td><td class="num">1 KB</td><td class="hash">f1e7bf8f4a978c934f7105fbb2637deb0059572df6dbfb8e800ec1274447fd38</td></tr>
+        <tr><td><a href="files/r3-31/README.txt" download>README.txt</a></td><td class="num">2 KB</td><td class="hash">cef765059ab4cb7b553e1256d3708de88c2288fa7c2a4ec580c6ae8cc0bb915a</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">The coordinates are given to 70 digits. Exact algebraic coordinates exist, but they live in a number field of degree 704, so they will be in the full package rather than here.<sup class="cite"><a href="#n2">2</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="note-h">
+    <h2 id="note-h">Note: how the construction works</h2>
+    <p>Mycielski's construction turns a triangle-free graph that needs 4 colors into a triangle-free graph that needs 5. For every point v, add a "shadow" point joined to all of v's neighbors. Then add one more point, the apex, joined to all the shadows.<sup class="cite"><a href="#n3">3</a></sup> The hard part in geometry is placing the shadows and the apex so that every new line has length exactly 1.</p>
+    <p>De Grey's idea is to place each shadow at the mirror image of its point in the plane through that point's neighbors. The neighbors are the same distance from a point and from its mirror image, so the shadow's lines have length 1 automatically.<sup class="cite"><a href="#n1">1</a></sup> What remains is the apex, which must be exactly 1 from every shadow.</p>
+    <p>Here is the observation that makes the apex easy. Put all the starting points on a sphere of radius R. Then each shadow lands on the line from the center through its point, at distance |R − 1/R| from the center. That distance is exactly 1 when R is the golden ratio φ ≈ 1.618 or 1/φ ≈ 0.618. On such a sphere every shadow is 1 from the center, so the center itself can be the apex.<sup class="cite"><a href="#n2">2</a></sup></p>
+    <p>That leaves one task: find a triangle-free graph that needs 4 colors and can be drawn on the sphere of radius 1/φ with all its lines of length exactly 1. A 15-point graph from Goedgebeur's lists works.<sup class="cite"><a href="#n6">6</a></sup><sup class="cite"><a href="#n4">4</a></sup> It cannot be drawn this way in a flat plane, because its four-sided loops would have to be flat rhombuses, and together they force two joined points to coincide. On a sphere those loops do not have to close up flat, and that is what leaves room for the graph.<sup class="cite"><a href="#n4">4</a></sup></p>
+    <p>The positions were found numerically and then proved by the interval test. The result has 15 + 15 + 1 = 31 points: the base graph, its shadows, and the apex at the center.<sup class="cite"><a href="#n4">4</a></sup></p>
+  </section>
+
+  <section class="refs" aria-labelledby="refs-h">
+    <h2 id="refs-h">Sources</h2>
+    <ol>
+      <li id="n1">A. D. N. J. de Grey, "A 5-chromatic, triangle-free unit-distance graph in R<sup>3</sup> with 61 vertices", Geombinatorics 35(3) (2026), 102–110.</li>
+      <li id="n2">The files on this page: <a href="files/r3-31/check_31.py">check_31.py</a> (its steps 1–8 and the explanation at the top of the file) and <a href="files/r3-31/README.txt">README.txt</a>.</li>
+      <li id="n3">J. Mycielski, "Sur le coloriage des graphs", Colloquium Mathematicum 3 (1955), 161–162.</li>
+      <li id="n4">Ledger, 27 Sep 2026: <a href="../evidence/ledger_extract.html#L540">evidence/ledger_extract, L540</a> (the certificate, the blind verifier and the review); <a href="../evidence/ledger_extract.html#L538">L538</a> (how it was found, and why the base graph needs a sphere).</li>
+      <li id="n5">Ledger, 7 Oct 2026: <a href="../evidence/ledger_extract.html#L685">evidence/ledger_extract, L685</a>.</li>
+      <li id="n6">J. Goedgebeur, "On minimal triangle-free 6-chromatic graphs", J. Graph Theory 93(1) (2020), 34–48, <a href="https://doi.org/10.1002/jgt.22467">doi:10.1002/jgt.22467</a>, <a href="https://arxiv.org/abs/1707.07581">arXiv:1707.07581</a>; House of Graphs, <a href="https://houseofgraphs.org">houseofgraphs.org</a> (K. Coolsaet, S. D'hondt, J. Goedgebeur, Discrete Appl. Math. 325 (2023), 97–107).</li>
+      <li id="n7">T. R. Jensen, G. F. Royle, "Small graphs with chromatic number 5: a computer search", J. Graph Theory 19(1) (1995), 107–116.</li>
+      <li id="n8"><a href="../evidence/log_quotes.html#t-roles">evidence/log_quotes, Who did what</a>.</li>
+    </ol>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>The searches, code and checks behind these results were produced with AI tools (Claude Code, with ChatGPT as a reviewer) inside a process I designed and ran. Corrections are welcome and will be dated.</p>
+  <p>Contact: <a href="https://github.com/carsoncrocker">github.com/carsoncrocker</a></p>
+</div></footer>
+</body>
+</html>

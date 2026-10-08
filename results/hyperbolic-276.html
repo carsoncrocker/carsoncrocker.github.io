@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5-chromatic graph in the hyperbolic plane · Carson Crocker</title>
+<meta name="description" content="A same-distance graph in the hyperbolic plane that needs 5 colors, with 276 vertices, at the distance of Exoo and Ismailescu. Plain-English explanation, how it was checked, and files to check it yourself.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="../">Home</a><a href="./" aria-current="page">Results</a><a href="../case-study.html">Case study</a><a href="../log.html">Log</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section>
+    <span class="eyebrow">Result · verified · package coming</span>
+    <h1>A 5-chromatic graph in the hyperbolic plane with 276 points</h1>
+    <p class="lede">Pick some points in the hyperbolic plane and draw a line between every two points at one fixed distance d. Color the points so that no line joins two points of the same color. For d ≈ 1.375, Exoo and Ismailescu showed that 4 colors are never enough.<sup class="cite"><a href="#n1">1</a></sup> This page is about a smaller set of points that shows the same thing: 276 of them.<sup class="cite"><a href="#n2">2</a></sup></p>
+    <div class="bound"><span class="was">622 points</span><span class="arrow">→</span><span class="now">276 points</span></div>
+    <p class="small">Stage 2, verified. A package with a DOI is coming; the files below already let you check it. Not yet reviewed by a professional mathematician.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="problem-h">
+    <h2 id="problem-h">The problem in plain words</h2>
+    <p>The hyperbolic plane is a curved geometry in which space spreads out faster than on a flat sheet. It is often drawn inside a disk, with the edge of the disk infinitely far away. Unlike the flat plane, it has no scaling symmetry: zooming in or out changes the geometry, so different distances are genuinely different questions, and the coloring question is asked separately for each distance d.<sup class="cite"><a href="#n1">1</a></sup></p>
+    <p>The points and the lines between them form a <em>same-distance graph</em> (a unit-distance graph with d as the unit), and its <em>chromatic number</em> is the fewest colors that keep the two ends of every line different. To show that 4 colors are not enough at distance d, it is enough to give one finite set of points that cannot be 4-colored. A smaller set is easier to check and to understand.</p>
+    <p>Exoo and Ismailescu found the distance d ≈ 1.375033509 and a 762-point graph at that distance that needs 5 colors. Their paper notes that its first 622 points already suffice.<sup class="cite"><a href="#n1">1</a></sup><sup class="cite"><a href="#n3">3</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="new-h">
+    <h2 id="new-h">What is new</h2>
+    <p>A faithful 5-chromatic graph at the same distance d, with 276 points and 1,025 lines, with exact coordinates. Faithful means that two of the points are joined exactly when they are at distance d. It is vertex-critical: remove any one point and 4 colors are enough.<sup class="cite"><a href="#n2">2</a></sup><sup class="cite"><a href="#n4">4</a></sup></p>
+    <p>It is not a piece of their 762-point graph: 243 of its points are points of that graph and 33 are not.<sup class="cite"><a href="#n6">6</a></sup> I do not claim that 276 is the smallest possible.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="checked-h">
+    <h2 id="checked-h">How it was checked</h2>
+    <ul>
+      <li><b>Certificate:</b> every point is stored exactly, by coefficients in a number field of degree 4 together with fixed square-root factors, and every distance is computed exactly. The pairs exactly at distance d are exactly the 1,025 listed lines. A SAT solver's proof that 4 colors are not enough (a DRAT certificate) was checked with <code>drat-trim</code>, and a 4-coloring is stored for the graph with each point removed.<sup class="cite"><a href="#n4">4</a></sup></li>
+      <li><b>Blind verifiers:</b> separate programs, written without reading the certifier, recomputed all 37,950 pairs exactly and rebuilt the coloring question. Several SAT solvers found no 4-coloring, and their own proofs passed <code>drat-trim</code>.<sup class="cite"><a href="#n5">5</a></sup><sup class="cite"><a href="#n6">6</a></sup></li>
+      <li><b>Hostile review:</b> found no mathematical error, and confirmed the distance against Exoo and Ismailescu's paper.<sup class="cite"><a href="#n5">5</a></sup></li>
+      <li><b>Comparison with G762:</b> a direct check against Exoo and Ismailescu's own published coordinates.<sup class="cite"><a href="#n6">6</a></sup></li>
+      <li><b>Re-check:</b> on 7 October 2026 the verifiers were run again and passed, and the literature was checked again.<sup class="cite"><a href="#n7">7</a></sup></li>
+      <li><b>The checker on this page</b> repeats the exact checks and the proof check in under a minute.<sup class="cite"><a href="#n2">2</a></sup></li>
+    </ul>
+    <p class="note">All the verifiers were written with the same AI tool (Claude Code), in separate sessions. That is not independence in the sense of different authors, which is why checks by others are very welcome.<sup class="cite"><a href="#n8">8</a></sup> To my knowledge, no mathematician has checked the result yet.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="status-h">
+    <h2 id="status-h">Status</h2>
+    <p><b>Stage 2 of 5: verified.</b> A package with a DOI is coming. Not yet reviewed by a professional mathematician. The stages are explained on the <a href="./#st-h">Results</a> page.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="credits-h">
+    <h2 id="credits-h">Credits</h2>
+    <ul>
+      <li>The distance, the 9-point seed graph G9 and the rule for adding points are from Exoo and Ismailescu (<a href="https://arxiv.org/abs/2303.06801">arXiv:2303.06801</a>). This graph was obtained from their seed by their rule and then trimmed with a SAT solver.<sup class="cite"><a href="#n1">1</a></sup><sup class="cite"><a href="#n6">6</a></sup></li>
+    </ul>
+  </section>
+
+  <section class="prose" aria-labelledby="yourself-h">
+    <h2 id="yourself-h">Check it yourself</h2>
+    <p>Download the files below into one folder and run:<sup class="cite"><a href="#n2">2</a></sup></p>
+    <pre>pip install python-flint python-sat    # python-sat is optional
+python verify_standalone.py hyp_EI_276.json    # under a minute</pre>
+    <p>The last line says ALL CHECKS PASS or lists what failed. The checker computes exactly, in the number field, that every point is on the hyperboloid and that the pairs at distance exactly d are exactly the listed lines. It then rebuilds the coloring question from the line list and checks the bundled proof that it has no 4-coloring. It uses <code>drat-trim</code> if that is installed, and otherwise a built-in checker written in plain Python. It passes from a clean copy in about a minute on an ordinary PC. <a class="small" href="../evidence/ledger_extract.html#Lkits">(evidence)</a></p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>File</th><th>Size</th><th>SHA-256</th></tr></thead>
+      <tbody>
+        <tr><td><a href="files/hyperbolic-276/verify_standalone.py" download>verify_standalone.py</a></td><td class="num">21 KB</td><td class="hash">a35db303627ebf84f6f737e1ed86a7715386977e31728e6bfefcb64c7c372b93</td></tr>
+        <tr><td><a href="files/hyperbolic-276/hyp_EI_276.json" download>hyp_EI_276.json</a></td><td class="num">135 KB</td><td class="hash">d7e0ad44f323dec89f10a01efaca32c18283263a9a9ad613feb14d502768734b</td></tr>
+        <tr><td><a href="files/hyperbolic-276/hyp_EI_276_edges.txt" download>hyp_EI_276_edges.txt</a></td><td class="num">7 KB</td><td class="hash">62edab872b30ce572d8dcbd429aa46652a0b6f00a30a208c7e0483e159b24baf</td></tr>
+        <tr><td><a href="files/hyperbolic-276/cert2_hyp_276.cnf" download>cert2_hyp_276.cnf</a></td><td class="num">56 KB</td><td class="hash">303ff6ab198bbc3f009cae1ff12878f38645a5b63d8dc9cbdfae9dfdeb04e3b9</td></tr>
+        <tr><td><a href="files/hyperbolic-276/cert2_hyp_276.drat" download>cert2_hyp_276.drat</a></td><td class="num">423 KB</td><td class="hash">04f8ca81b585ea7f82a187aad3392be731ae61e857c259597bfaa1ef73e0acca</td></tr>
+        <tr><td><a href="files/hyperbolic-276/cert2_hyp_276_colourings.json" download>cert2_hyp_276_colourings.json</a></td><td class="num">77 KB</td><td class="hash">4ec249b7c779bd535f39da608663fe361a5aa0c19ef0509c310f226a37a717e1</td></tr>
+        <tr><td><a href="files/hyperbolic-276/README.txt" download>README.txt</a></td><td class="num">2 KB</td><td class="hash">ae90ba5aaafe0bf0a52c782a08950308487fdf6a128991ef27d0ec2c4a8a4ad1</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">hyp_EI_276.json holds the exact coordinates (in the hyperboloid model, over the field Q(c) of degree 4), 30-digit hyperboloid and Poincaré-disk coordinates, and the line list. Some file names keep the British spelling of the original data.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="note-h">
+    <h2 id="note-h">Note: how the construction works</h2>
+    <p>The distance is given exactly: cosh d = c/(1 − c), where c ≈ 0.67784 is the largest real root of 16c<sup>4</sup> + 8c<sup>3</sup> − 12c<sup>2</sup> − 2c + 1. So d = 1.3750335088…<sup class="cite"><a href="#n2">2</a></sup><sup class="cite"><a href="#n1">1</a></sup></p>
+    <p>Exoo and Ismailescu start from a 9-point graph and grow it with a simple rule. For a pair of existing points, add the two points that are at distance d from both of them, where two circles of radius d meet. Repeating this gives larger and larger graphs, and theirs needs 5 colors at 762 points.<sup class="cite"><a href="#n1">1</a></sup><sup class="cite"><a href="#n3">3</a></sup></p>
+    <p>I rebuilt their growth process from the paper and let it run, which produced many more points than their graph uses. A large set like that needs 5 colors, but most of its points are not needed for that. A SAT solver found small subsets that still cannot be 4-colored. The best of them shared a large common core, and an exact search chose the fewest extra points to add to that core. That search is not a global minimum search, so smaller examples may exist.<sup class="cite"><a href="#n4">4</a></sup><sup class="cite"><a href="#n6">6</a></sup></p>
+    <p>Each new point comes from two earlier ones by an exact computation, so every point is stored exactly: coefficients in one field of degree 4, times fixed square-root factors. That is what lets the checker decide "exactly at distance d" without rounding.<sup class="cite"><a href="#n2">2</a></sup><sup class="cite"><a href="#n4">4</a></sup></p>
+  </section>
+
+  <section class="refs" aria-labelledby="refs-h">
+    <h2 id="refs-h">Sources</h2>
+    <ol>
+      <li id="n1">G. Exoo, D. Ismailescu, "A 5-chromatic same-distance graph in the hyperbolic plane", Geombinatorics 32(4) (2023), 145–158 (as listed in the journal's table of contents); <a href="https://arxiv.org/abs/2303.06801">arXiv:2303.06801</a>.</li>
+      <li id="n2">The files on this page: <a href="files/hyperbolic-276/verify_standalone.py">verify_standalone.py</a> (the description at the top of the file), <a href="files/hyperbolic-276/README.txt">README.txt</a>, and the "distance" and "field" entries of <a href="files/hyperbolic-276/hyp_EI_276.json">hyp_EI_276.json</a>.</li>
+      <li id="n3">Ledger, 26 Sep 2026: <a href="../evidence/ledger_extract.html#L523">evidence/ledger_extract, L523</a>.</li>
+      <li id="n4">Ledger, 26 Sep 2026: <a href="../evidence/ledger_extract.html#L528">evidence/ledger_extract, L528</a>.</li>
+      <li id="n5">Ledger, 27–28 Sep 2026: <a href="../evidence/ledger_extract.html#L567">evidence/ledger_extract, L567</a>.</li>
+      <li id="n6">Ledger, 28 Sep 2026: <a href="../evidence/ledger_extract.html#L569">evidence/ledger_extract, L569</a> (including the later correction of the overlap with G762).</li>
+      <li id="n7">Ledger, 7 Oct 2026: <a href="../evidence/ledger_extract.html#L685">evidence/ledger_extract, L685</a>.</li>
+      <li id="n8"><a href="../evidence/log_quotes.html#t-roles">evidence/log_quotes, Who did what</a>.</li>
+    </ol>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>The searches, code and checks behind these results were produced with AI tools (Claude Code, with ChatGPT as a reviewer) inside a process I designed and ran. Corrections are welcome and will be dated.</p>
+  <p>Contact: <a href="https://github.com/carsoncrocker">github.com/carsoncrocker</a></p>
+</div></footer>
+</body>
+</html>

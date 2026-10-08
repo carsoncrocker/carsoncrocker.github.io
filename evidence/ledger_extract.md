@@ -49,6 +49,66 @@ Source: `LEDGER.md`, lines 229, 230, 231, 233.
 
 Supports: Lessons are written back as rules: LLMs as code-running verifiers, independence, literature check before compute, files over AI summaries; the 7-rule release checklist came after Carson asked whether the rules were right.
 
+## 26 Sep 2026: choosing the hyperbolic-plane problem {#L523}
+
+Source: `LEDGER.md`, line 523.
+
+> | 2026-09-26 02:00-02:50 | Next problem = smallest 5-chromatic distance-d graph in H^2 (record 762, Exoo-Ismailescu arXiv 2303.06801 = Geombinatorics 32(4) 2023; first 622 vertices suffice per their Sec. 5) | 4 scouts + paper read directly | closure rebuilt from paper: control 28/61, 42/111, 68/201 match; our stage 1 has 31 vs 28 points (seed pairs (6,8),(2,6),(2,9)); later stages larger | OPEN -> lane chosen (NIGHT_2026-09-26.md) |
+
+Supports: The hyperbolic target was chosen from Exoo and Ismailescu's paper: their 762-vertex graph, of which the first 622 vertices already suffice; their construction was rebuilt from the paper.
+
+## 26 Sep 2026: hyperbolic 276 certified {#L528}
+
+Source: `LEDGER.md`, line 528.
+
+> | 2026-09-26 23:55 | **276-vertex (1025 edges) H^2 graph at EI d, not 4-colourable, vertex-critical** | exact backbone method: 5 best cores share 243 points; pysat OptUx smallest MUS with backbone hard, 74 swing points soft (330 s); cert2_hyp.py | exact in Q(c), 0 extra pairs among 36,925, DRAT drat-trim VERIFIED, 276/276 deletions coloured, controls pass | RESULT (internal; blind check + 48 h + Exoo owed) |
+
+Supports: The 276-vertex graph at the Exoo-Ismailescu distance: 1025 edges, exact coordinates, no extra pairs at distance d, a DRAT proof checked by drat-trim, and every vertex deletion 4-colorable.
+
+## 27 Sep 2026: the 31-vertex candidate, and why it needs a sphere {#L538}
+
+Source: `LEDGER.md`, line 538.
+
+> | 2026-09-27 01:40 | **CANDIDATE 31** (numeric; cert + blind running) = golden-sphere Mycielskian M(n15_1825) on the 1/phi-sphere (X_sphere15). Engine: collapse-excluding realiser (4-cycle a-u-b-v forces v = reflection of u in plane (O,a,b)). In the plane this graph has NO injective realisation (7 rhombus relations force z0=z13); on the sphere rhombi fail to close. 4 congruence classes; best (class 2): sep 0.0890, non-edge |d-1| 0.00640. Main check: n 31 m 96 edge err 9e-47, tri 0, not 4-col (CaDiCaL+Glucose), 5-col, radii {0, 1/phi, 1}. [redacted: unreleased result] | [redacted: local path] |
+
+Supports: The 31-vertex graph was found as a Mycielskian on the sphere of radius 1/phi; its 15-vertex base graph cannot be drawn in the plane with unit edges and distinct points (rhombus relations), while on the sphere the rhombi need not close.
+
+## 27 Sep 2026: the 31-vertex graph in R^3 certified, blind-verified and reviewed {#L540}
+
+Source: `LEDGER.md`, lines 540, 541, 545.
+
+> | 2026-09-27 02:10 | 31 BLIND-VERIFIED (spec-only, mpmath.iv 320 bit, R=(sqrt5-1)/2 interval, 42x42 system, box 1e-40 unique root; identities sympy; non-edge |d-1| >= 0.006402346 at (16,29); sep >= 0.089004921; not 4-col Glucose4+CaDiCaL; 8/8 mutations rejected). Owner cert (tf5_31) still running. | [redacted: local path] |
+> | 2026-09-27 02:20 | **CERTIFIED 31** (owner cert, flint 256 bit): M(n15_1825) on the 1/phi sphere (shadows -phi x = antipodes on the unit sphere). 42x42 system, Krawczyk box 1e-40, centre residual <= 1.56e-70; identities sympy (tR=-1 enforced); non-edge |d-1| >= 0.0064023460 (60-deg shadow pair 16,29); sep >= 0.089004921; not 4-col CaDiCaL+Glucose + Mycielski; 17/17 mutants rejected (incl. R=phi, R=0.62). With the blind verifier: certified + blind-verified. Owed: adversarial review (launched), 48 h. | [redacted: local path] |
+> | 2026-09-27 03:15 | REVIEW_31: HOLDS WITH CAVEATS (own mpmath Krawczyk with different gauge; not 4-col by own backtracking + 4 extra solvers; M(G) 5-critical, G 4-critical; G = Goedgebeur n=15 idx 38; 130-digit geometry; best margins of the three; radius continuation = closed loop R in [0.577,0.646], never plane). Majors: release ONE note headed by 31 (33, 35 as further examples); 'optimal' not proved (n<=14 over by >=1 generically; bound 22..31). Minor fixed now: blind verifier re-run on RELEASE file tf5_31/g31_cert.json -> ACCEPT (|d-1| >= 0.0064023460, 8/8 mutations rejected; verify_blind_31_release.py/.log, patch = G_edges fallback only). | [redacted: local path] |
+
+Supports: The 31-vertex graph was certified (Krawczyk interval test, not 4-colorable), verified by a blind verifier written from a short specification, and adversarially reviewed; the review found no error and noted that 31 is not proved to be the least possible order (the known lower bound is 22).
+
+## 27 Sep 2026: the sphere graphs certified {#L560}
+
+Source: `LEDGER.md`, line 560.
+
+> | 2026-09-27 02:40-07:25 | **Sphere S^2(r), r^2=(5+sqrt5)/8: faithful unit-distance (chord 1) graph with 231 vertices, chromatic number 5, vertex-critical** (smallest published: 372, Voronov-Neopryatnaya-Dergachev Discrete Math 2022; 371 implicit from their remark) | new construction: icosahedron + face-axis rotated copy (cos th=(3sqrt5-5)/4), closure (sph_closure.py) 1008 -> gtrim 407 -> xwin exact windows 292 -> local augmentation sph_local/sph_dyn 231 (and 228) | certsph_cert.py: exact in Q(sqrt5)(w2)(w3) (deg 8), all edges exact, full unit-distance graph (0 extra pairs), DRAT drat-trim VERIFIED, all deletions 4-colourable; independent certsph_verify.py (306; 231 running); BLIND blindsph/ PASS (3 solvers, own DRUP verified, chi=5); adversarial review: no math error, NOT a subgraph of G372 (shares only base icosahedron), wording fixed | RESULT (231 blind+review; 228 internal only; 48 h from 09-27 06:10; Voronov contact by user) |
+
+Supports: The 231- and 228-vertex graphs on the sphere r^2 = (5+sqrt5)/8: exact coordinates, faithful, DRAT proof checked by drat-trim, every vertex deletion 4-colorable; compared with the published 372 of Voronov, Neopryatnaya and Dergachev; not a subgraph of their graph.
+
+## 27-28 Sep 2026: blind verification and adversarial review of the sphere 228 and hyperbolic 276 {#L567}
+
+Source: `LEDGER.md`, lines 567, 568.
+
+> | 2026-09-27 23:00 | BLIND verification ([redacted: local path], own code, no project .py read): sphere 228, hyperbolic EI 276, [redacted: unreleased result] -- all PASS: exact geometry + edge sets recomputed identical; CaDiCaL, Minisat, Glucose UNSAT; own Glucose DRAT proofs s VERIFIED by drat-trim (544 s, 415 s, [redacted: unreleased result]); 5-colourings; 228 and 276 vertex-critical (blind); [redacted: unreleased result]. Release packages: release_sphere_228/, release_hyperbolic/ (standalone verifiers PASS). | [redacted: local path] | owed: adversarial review of 228/276/[redacted: unreleased result], 48 h, expert contact |
+> | 2026-09-28 00:30 | ADVERSARIAL REVIEWS (fast mode, ~12-14 min each): sphere 228 -- NO MATH ERROR (graph has trivial automorphism group vs icosahedral G372; mpmath spot check exact 910 unit pairs); hyperbolic 276 + [redacted: unreleased result] -- NO MATH ERROR (EI distance confirmed vs arXiv 2303.06801 eq. 8; [redacted: unreleased result]; spot check 1025/[redacted: unreleased result] unit pairs exact). Must-fixes applied: CV question wording (chi(G)=chi(S^2(r)), not "min 5-chromatic"); internal status lines; [redacted: unreleased result]. G372 REBUILT exactly (H12,1 o H9,1 = 732 v/3390 e -> deg>=8 prune = 372/1710); our 228/231 share only the 12 ico points with the 732 product => not sub-configurations of G372. | release_sphere_228/, release_hyperbolic/, [redacted: local path] | owed: 48 h, [redacted: unreleased result], expert contact |
+
+Supports: Blind verifiers written from the data alone (no project code read) and adversarial reviews confirmed the sphere 228 and the hyperbolic 276: exact geometry, three SAT solvers, their own proofs checked by drat-trim, vertex-criticality; the 228 shares only the 12 icosahedron points with the 372-vertex construction it was compared against.
+
+## 28 Sep 2026: hyperbolic 276, blind check and relation to G762 {#L569}
+
+Source: `LEDGER.md`, lines 569, 576.
+
+> | 2026-09-28 01:13 (lane REL; ledger by PKG 05:35) | **Hyperbolic 276 (EI distance, cosh d = c/(1-c), d = 1.37503350881625...; 276 v, 1025 e), stage S2: blind verification + relation to G762** | [redacted: local path] (BLIND_276.txt; blind276.py, blind276_sat.py, blind276_proof.py; a2_subset.py/.log, a2_margin.py/.log) | BLIND (own code from README + JSON field descriptions only; no project certifier read): exact in K = Q[c]/(m), m = 16c^4+8c^3-12c^2-2c+1 irreducible, c = largest root isolated; <X,X> = -1 for all 276, t > 0; 0 of 37,950 pairs coincide; pairs at cosh d exactly recomputed = the listed 1025 edges; faithful. d matches Exoo-Ismailescu 2303.06801. Own CNF from the recomputed edges, own symmetry break (last triangle fixed): CaDiCaL 1.9.5 and Lingeling DRAT proofs both drat-trim s VERIFIED (60 s, 224 s); MapleChrono UNSAT; Minisat22 WITHOUT symmetry breaking UNSAT; 5-colouring checked -> chi = 5. **FAILED CHECK (trap, fixed):** the first drat-trim run said "no conflict / NOT VERIFIED": on Windows PySAT get_proof() returned the proof truncated at a 4096-byte boundary (C stdio buffer not flushed). Fix: ctypes ucrtbase.fflush(NULL) before reading the proof file (blind276_proof.py); both proofs then end with the empty clause and verify. Subset test: EI's rule rebuilt from their G28 gives orders 28, 42, 68, 121, 234, 523, 1469 (paper 28, 42, 68, 119, 226, 455, 762); 258 of the 276 vertices lie in the 7-generation closure (distance <= 2.4e-6), the other 18 (indices 258-275) are >= 0.043 from every point of it (our 1570-point closure, a superset of G762 by REL's induction argument) | RESULT, S2 done (blind PASS + adversarial review 09-28 00:30 no math error). **NOT a subgraph of G762 or of its 622 prefix.** Wording: "obtained from EI's seed G9 by their augmentation rule carried one generation further, then trimmed; not a subgraph of G762". Owed: 48 h (ends 09-28 23:54); direct check against EI's g762coords.txt (needs Carson's download OK); [redacted: private correspondence]; [redacted: unreleased result]; Zenodo |
+> - 2026-09-28 (late) CORRECTION, hyperbolic 276 vs G762: direct check against Exoo–Ismailescu's own g762coords.txt (download approved by Carson; [redacted: local path]). Verdict unchanged: NOT a subgraph (all 7602 triangle alignments incl. reflections; best 254/276; VF2 abstract test also negative). But the earlier indirect numbers were wrong: 243 of the 276 vertices are G762 points and 33 are not (not 258/18), because G762 is a proper subset of our rebuilt 7-generation closure. Wording "carried one generation further" retired; use "obtained from their seed G9 by closing under their augmentation rule and then trimming by SAT". Their data verified: 762 distinct points, 2983 edges at distance d to 1.6e-57, faithful.
+
+Supports: A blind verifier confirmed the 276 exactly. A later direct check against Exoo and Ismailescu's own coordinates corrected the overlap figures: 243 of the 276 vertices are points of their G762 and 33 are not, and the 276 is not a subgraph of G762.
+
 ## 27 Sep 2026: #188 lower bound k >= 7 {#L552}
 
 Source: `LEDGER.md`, line 552.
@@ -270,6 +330,14 @@ Source: `LEDGER.md`, lines 683, 684.
 
 Supports: A third blind verifier and an adversarial search, both written without reading the other verifiers.
 
+## 7 Oct 2026: all three re-checked before listing {#L685}
+
+Source: `LEDGER.md`, line 685.
+
+> | 2026-10-07 ~01:30 | PRECHECK public (R3 31, [redacted: unreleased result], sphere 228, hyperbolic 276) | All shipped verifiers re-ran PASS 10-07 (release_P2 21 min, sphere 228/231, hyperbolic 276/[redacted: unreleased result]). No newer literature overlap (Tomon v2 checked; OpenAI repo unchanged, no overlap). GO for tracker lines with credits. Hyperbolic headline = 276 (279 superseded; RELEASE_TRACKER line 14 + memory still say 279). [redacted: unreleased result] "Parts's 31" is a different problem (two-distance planar), no credit owed, never juxtapose. | agent report in session log |
+
+Supports: On 7 October all shipped verifiers for the 31, the sphere 228 and the hyperbolic 276 were re-run and passed, and the literature was checked again.
+
 ## 7 Oct 2026: the #188 package that was published {#L695}
 
 Source: `LEDGER.md`, line 695.
@@ -302,3 +370,11 @@ Source: `NIGHT_2026-09-29.md` (the running log of that night), line 183. The led
 > * 13:25 UB188_FINAL VERDICT READY (K = 166), technical: snap_C (36 red, sha256 e24c9638...) Claim A exact (Q(sqrt3)) + Claim B certified by verifier3 (interval arithmetic, exact theta tiling, 20000 boxes, 0 failures): no red unit pair, no blue l_166 -> Erdos #188 k <= 166 (snap_B backup: k <= 188). Corroboration: RV4 code on snap_C 293, FE 395. Certified blue runs 140 (snap_C) / 155 (snap_B). Owed: 48 h, human read of reduction, clean-machine rerun, Carson gate; [redacted: private correspondence]. [redacted: local path]
 
 Supports: the upper bound 166 on 29 September.
+
+## 8 Oct 2026: the check-it-yourself kits, run from clean copies {#Lkits}
+
+Source: `LEDGER.md`, line 710.
+
+> | 2026-10-08 ~07:30 | Site kits re-run after review fixes | ChatGPT review of the 3 new result pages: fixed hyperbolic wording (no scaling symmetry; coordinates stored as degree-4 coefficients times fixed square-root factors), sphere checker no longer fails when optional python-sat is absent, data-file prose American spelling, hyperbolic JSON paths/claim, results index wording; page SHA-256s recomputed (5 files changed). Clean-copy runs (native Windows Python, machine under load): r3-31 check_31.py PASS 44 s; sphere-228 verify_standalone.py ALL CHECKS PASS 89 s; hyperbolic-276 verify_standalone.py hyp_EI_276.json ALL CHECKS PASS (20 checks) 67 s. |
+
+Supports: each of the three check-it-yourself kits passes from a clean copy (r3-31 in 44 s, sphere-228 in 89 s, hyperbolic-276 in 67 s, on a loaded machine).

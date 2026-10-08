@@ -98,6 +98,8 @@ pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 
 /* footnotes */
 .refs li:target, .evidence h2:target { background: var(--accent-soft); }
 .refs a { overflow-wrap: anywhere; }
+.tablewrap td a { overflow-wrap: anywhere; }
+.hash { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); overflow-wrap: anywhere; word-break: break-all; }
 
 /* quotes from the logs */
 blockquote { margin: 0; border-left: 3px solid var(--rule); padding: 2px 0 2px 14px; }
