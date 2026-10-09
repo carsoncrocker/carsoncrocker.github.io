@@ -138,3 +138,5 @@ svg.fig .val { fill: var(--fg); font-family: var(--mono); font-size: 15px; font-
 .refs ol { font-size: 0.82rem; gap: 4px; }
 .refs a { text-decoration: none; }
 .refs a:hover { text-decoration: underline; }
+.principles { padding-left: 1.4rem; display: grid; gap: 6px; }
+.principles a { font-size: 0.86rem; color: var(--muted); white-space: nowrap; }

@@ -28,3 +28,17 @@ in it had not been re-checked.
   split cleanly by problem, because many sessions ran in parallel.
 - It counts Claude Code only. ChatGPT and other models were used through their own apps and are not counted.
 - Most of the tokens are cache reads: the model re-reading its own context in long sessions.
+
+## How many agents at once {#concurrency}
+
+The script [`measure_concurrency.py`](measure_concurrency.py) reads the same session logs. For every minute since
+15 September 2026 it counts how many separate logs recorded a model response in that minute; each main session and each
+sub-agent has its own log. This measures response activity per minute, not open sessions, and minutes with no responses
+are left out. It was run on 8 October 2026. Its complete output is [`concurrency_output.txt`](concurrency_output.txt).
+
+- All agents (main sessions and sub-agents) responding in the same minute: median 2; 8 or fewer in 96% of minutes;
+  12 or fewer in 99% of minutes; at most 20 (during an overnight run on 28 September).
+- Main Claude Code sessions responding in the same minute: at most 4.
+
+So the system usually ran fewer than ten agents at a time. It counts Claude Code only; ChatGPT and other models are not
+included.

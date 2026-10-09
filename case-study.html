@@ -30,6 +30,7 @@
       <div class="stat"><b>23</b><span>days of Claude Code use, 15 Sep to 7 Oct 2026<sup class="cite"><a href="#n2">2</a></sup></span></div>
       <div class="stat"><b>27,081</b><span>Claude Code responses<sup class="cite"><a href="#n2">2</a></sup></span></div>
       <div class="stat"><b>30.3M</b><span>Claude Code output tokens<sup class="cite"><a href="#n2">2</a></sup></span></div>
+      <div class="stat"><b>&lt;10</b><span>agents responding in the same minute, usually; at most 4 main sessions<sup class="cite"><a href="#n2b">2b</a></sup></span></div>
       <div class="stat"><b>5</b><span>claims caught before publishing, listed publicly<sup class="cite"><a href="#n3">3</a></sup></span></div>
     </div>
     <p class="small">All of it on consumer Claude and ChatGPT subscriptions and one home PC. The counts cover the whole project, including problems that went nowhere, and were measured from Claude Code's session logs with the script published. More results are in preparation.<sup class="cite"><a href="#n2">2</a></sup></p>
@@ -86,6 +87,16 @@
   <section class="prose" aria-labelledby="system-h">
     <h2 id="system-h">The system</h2>
     <p>Claude runs every stage: it generates the questions, launches parallel lines of attack, writes its own checkers, attacks its own results and reports back. ChatGPT and other models act as critics and outside checkers.<sup class="cite"><a href="#n10">10</a></sup> I designed the process they work in, I correct it, and I decide what is real enough to go out.</p>
+    <p>The working rules, in short. Each is explained, with evidence, below.</p>
+    <ol class="principles">
+      <li>Choose problems a search can move and a program can check, and check the literature before spending any compute. <a href="#choose">Choose</a></li>
+      <li>When something is expensive, find a cheaper way to answer the same question instead of spending more compute. <a href="#explore">Explore</a></li>
+      <li>When progress stalls, ask many different small questions in parallel, each tested by a short probe with a one-line verdict. <a href="#explore">Explore</a></li>
+      <li>Grade every search with the rigorous checker, never its own score; nothing counts as verified until something that didn't produce it has checked it. <a href="#verify">Verify</a></li>
+      <li>Push past the point where the AI recommends stopping. <a href="#explore">Explore</a></li>
+      <li>Every claim and mistake goes into an append-only ledger that every session reads first. <a href="#ledger">The ledger</a></li>
+      <li>Experts first, credit always, and claim only what has been checked. <a href="#release">Release</a></li>
+    </ol>
     <figure>
       <svg class="fig" viewBox="0 0 640 236" role="img" aria-labelledby="dg-t">
         <title id="dg-t">Choose, Explore, Verify and Release in sequence, all reading from and writing to a shared memory (Learn). I design, correct and decide what goes out.</title>
@@ -103,24 +114,24 @@
       </svg>
     </figure>
 
-    <h3>1. Choose</h3>
+    <h3 id="choose">1. Choose</h3>
     <p><b>Choose problems where search and computation can make progress, and where a program can check the answer.</b></p>
     <ul>
       <li>Famous problems, which need a deep new idea, went nowhere.<sup class="cite"><a href="#n9">9</a></sup> The method helps most on active questions where a search can contribute: #188 builds on a construction published in June 2026,<sup class="cite"><a href="#n4">4</a></sup> and #189 answers a question Hu and Liu asked in September 2026.<sup class="cite"><a href="#n11">11</a></sup></li>
       <li>A literature check comes before any computing, and the list of dead targets is checked before one is relaunched.<sup class="cite"><a href="#n12">12</a></sup></li>
     </ul>
 
-    <h3>2. Explore</h3>
+    <h3 id="explore">2. Explore</h3>
     <p><b>Ask many small questions at once, keep the machine busy, and don't stop when the AI wants to.</b></p>
     <ul>
       <li><b>Question storms.</b> When progress stalls, the system asks several different questions in parallel instead of running one search longer. On #188, one such storm produced the idea of letting a small red cell sit very close to a larger one.<sup class="cite"><a href="#n14">14</a></sup></li>
       <li><b>Probes.</b> Each idea gets a short test that ends in a one-line verdict. A probe whose positive control never passed counts as uninformative, not as a negative.<sup class="cite"><a href="#n15">15</a></sup></li>
       <li><b>Parallel and overnight.</b> Several Claude Code sessions and agents run at once, and runs continue overnight; the #189 certificate came from one such night.<sup class="cite"><a href="#n16">16</a></sup></li>
-      <li><b>Speed.</b> The tools themselves are a target: one rebuilt search tool for #188 ran 4.3 times faster than the one it replaced.<sup class="cite"><a href="#n17">17</a></sup></li>
+      <li><b>Cheaper, not longer.</b> When a run is expensive, the system looks for a cheaper way to answer the same question instead of more compute. The tools themselves are a target: one rebuilt search tool for #188 ran 4.3 times faster than the one it replaced,<sup class="cite"><a href="#n17">17</a></sup> and each drop in the chart above came from a new idea rather than more computing time.<sup class="cite"><a href="#n6">6</a></sup></li>
       <li><b>Past the stopping point.</b> On an earlier problem, Claude twice recommended stopping. Both times I asked it to keep going, and the work continued.<sup class="cite"><a href="#n18">18</a></sup></li>
     </ul>
 
-    <h3>3. Verify</h3>
+    <h3 id="verify">3. Verify</h3>
     <p><b>Nothing is true until it has been checked by something that didn't produce it.</b></p>
     <ul>
       <li><b>Honest scoring.</b> A search is graded by the rigorous verifier, not by its own shortcut.<sup class="cite"><a href="#n21">21</a></sup></li>
@@ -154,7 +165,7 @@ external review 10-06. Single full run relaunched 22:40 ...</pre>
     <p class="small">Verbatim, with a local file path removed.<sup class="cite"><a href="#n33b">33a</a></sup> The single full run passed the next morning.<sup class="cite"><a href="#n33c">33b</a></sup></p>
     <p>Reading the ledger back is also how the system learned where it can actually help. The method works best on questions where a computer search can contribute and a program can check the answer, often ones that researchers have raised recently, and much less on famous problems that need a deep new idea. The way new problems are chosen changed because of it.<sup class="cite"><a href="#n9">9</a></sup><sup class="cite"><a href="#n11">11</a></sup></p>
 
-    <h3>5. Release</h3>
+    <h3 id="release">5. Release</h3>
     <p><b>Experts first, credit always, and claim only what has been checked.</b></p>
     <ul>
       <li>A 7-point release checklist, which came from asking whether the rules were right, and a 48-hour hold.<sup class="cite"><a href="#n29">29</a></sup></li>
@@ -196,6 +207,7 @@ external review 10-06. Single full run relaunched 22:40 ...</pre>
     <ol>
       <li id="n1"><a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>, <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>, <a href="https://doi.org/10.5281/zenodo.23241767">doi:10.5281/zenodo.23241767</a>, <a href="https://doi.org/10.5281/zenodo.23241819">doi:10.5281/zenodo.23241819</a>, <a href="https://doi.org/10.5281/zenodo.23241840">doi:10.5281/zenodo.23241840</a>; <a href="evidence/ledger_extract.html#L699">ledger_extract, L699</a>.</li>
       <li id="n2"><a href="evidence/usage.html#result">usage, Result</a> and <a href="evidence/usage.html#limits">What it does not cover</a>.</li>
+      <li id="n2b"><a href="evidence/usage.html#concurrency">usage, How many agents at once</a>.</li>
       <li id="n3"><a href="evidence/withdrawn.html">caught before publishing</a>.</li>
       <li id="n4">Currier, Mody, Xie, Zhang, <a href="https://arxiv.org/abs/2606.17194">arXiv:2606.17194</a> (June 2026).</li>
       <li id="n5"><a href="evidence/ledger_extract.html#L585">ledger_extract, L585</a> (242), <a href="evidence/ledger_extract.html#N29-183">N29-183</a> (166), <a href="evidence/ledger_extract.html#L597">L597</a> (107, 85), <a href="evidence/ledger_extract.html#L607">L607</a> (69, 64), <a href="evidence/ledger_extract.html#L645">L645</a> (60).</li>
