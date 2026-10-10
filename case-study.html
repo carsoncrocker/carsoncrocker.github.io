@@ -26,7 +26,7 @@
   <section aria-labelledby="produced-h">
     <h2 id="produced-h">What it produced</h2>
     <div class="stats">
-      <div class="stat"><b>5</b><span>published results, each with a DOI<sup class="cite"><a href="#n1">1</a></sup></span></div>
+      <div class="stat"><b>6</b><span>published results, each with a DOI<sup class="cite"><a href="#n1">1</a></sup></span></div>
       <div class="stat"><b>23</b><span>days of Claude Code use, 15 Sep to 7 Oct 2026<sup class="cite"><a href="#n2">2</a></sup></span></div>
       <div class="stat"><b>27,081</b><span>Claude Code responses<sup class="cite"><a href="#n2">2</a></sup></span></div>
       <div class="stat"><b>30.3M</b><span>Claude Code output tokens<sup class="cite"><a href="#n2">2</a></sup></span></div>
@@ -138,6 +138,7 @@
       <li><b>Certificates.</b> Exact or ball arithmetic, and SAT proofs checked by standard tools and by a formally verified checker; a Lean proof where possible.<sup class="cite"><a href="#n22">22</a></sup></li>
       <li><b>Independent checks.</b> A second or third verifier written blind in a separate session, an attacker that tries to break the result, and ChatGPT as an outside referee.<sup class="cite"><a href="#n23">23</a></sup></li>
       <li><b>Tests of the tests.</b> Deliberately broken inputs must be rejected, or the check doesn't count.<sup class="cite"><a href="#n24">24</a></sup></li>
+      <li><b>Literature last as well as first.</b> On a note about the chromatic number of 3-space, the AI referees passed the argument, but only a separate literature check, run just before release, found a paper posted the day before that already covered dimensions four and up. The note was cut to the one case that was still new.<sup class="cite"><a href="#n36">36</a></sup></li>
     </ul>
 
     <h3>4. Learn</h3>
@@ -197,7 +198,7 @@ external review 10-06. Single full run relaunched 22:40 ...</pre>
     <h2 id="learned-h">What I learned</h2>
     <div class="note prose">
       <p>Most of what I learned is about working with AI, not math. It is remarkably good at exploring once the process is right, and remarkably good at fooling itself. My job turned out to be building the process and not believing anything until it was checked.</p>
-      <p>If you see something I got wrong, or want to try this in your own field, I'd like to hear from you through my <a href="https://github.com/carsoncrocker">GitHub profile</a>.</p>
+      <p>If you see something I got wrong, or want to try this in your own field, I'd like to hear from you through my <a href="https://github.com/carsoncrocker">GitHub profile</a>. I'm glad to walk teams through the full workflow, including how the agents are organised and kept honest.</p>
     </div>
   </section>
 
@@ -205,7 +206,7 @@ external review 10-06. Single full run relaunched 22:40 ...</pre>
     <h2 id="refs-h">Sources</h2>
     <p>Evidence files are verbatim excerpts with marked redactions; see <a href="evidence/">Evidence</a>.</p>
     <ol>
-      <li id="n1"><a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>, <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>, <a href="https://doi.org/10.5281/zenodo.23241767">doi:10.5281/zenodo.23241767</a>, <a href="https://doi.org/10.5281/zenodo.23241819">doi:10.5281/zenodo.23241819</a>, <a href="https://doi.org/10.5281/zenodo.23241840">doi:10.5281/zenodo.23241840</a>; <a href="evidence/ledger_extract.html#L699">ledger_extract, L699</a>.</li>
+      <li id="n1"><a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>, <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>, <a href="https://doi.org/10.5281/zenodo.23241767">doi:10.5281/zenodo.23241767</a>, <a href="https://doi.org/10.5281/zenodo.23241819">doi:10.5281/zenodo.23241819</a>, <a href="https://doi.org/10.5281/zenodo.23241840">doi:10.5281/zenodo.23241840</a>, <a href="https://doi.org/10.5281/zenodo.23273952">doi:10.5281/zenodo.23273952</a> (conditional); <a href="evidence/ledger_extract.html#L699">ledger_extract, L699</a>.</li>
       <li id="n2"><a href="evidence/usage.html#result">usage, Result</a> and <a href="evidence/usage.html#limits">What it does not cover</a>.</li>
       <li id="n2b"><a href="evidence/usage.html#concurrency">usage, How many agents at once</a>.</li>
       <li id="n3"><a href="evidence/withdrawn.html">caught before publishing</a>.</li>
@@ -244,6 +245,7 @@ external review 10-06. Single full run relaunched 22:40 ...</pre>
       <li id="n33"><a href="evidence/ledger_extract.html#L668">ledger_extract, L668</a>, <a href="evidence/ledger_extract.html#L680">L680</a> ("header=body all four"); the #188 package, extra_checks/README.txt item 1.</li>
       <li id="n34"><a href="evidence/ledger_extract.html#L649">ledger_extract, L649</a>, <a href="evidence/ledger_extract.html#L664">L664</a>.</li>
       <li id="n35"><a href="evidence/ledger_extract.html#L679">ledger_extract, L679</a>, <a href="evidence/ledger_extract.html#L682">L682</a>.</li>
+      <li id="n36">The note's "Related work" paragraph and Disclosure, in <a href="https://doi.org/10.5281/zenodo.23273952">doi:10.5281/zenodo.23273952</a>; Davies, <a href="https://arxiv.org/abs/2610.12301">arXiv:2610.12301</a> (8 Oct 2026).</li>
     </ol>
   </section>
 </main>

@@ -20,12 +20,21 @@
   <section>
     <h1>Results</h1>
     <p class="lede">What has been proven, and where each result stands.</p>
-    <p>Each result is a computer-checked proof that improves a published bound on an open problem. Each one has a page that explains it in plain English. Each comes with a full package, with a DOI, that anyone can download and re-check; the three graph results also have a short check-it-yourself kit on their pages.</p>
+    <p>Five results are computer-checked proofs that improve a published bound on an open problem, and each has a page that explains it in plain English. The sixth is a written proof that depends on a theorem in OpenAI's recent preprint. Each comes with a full package, with a DOI, that anyone can download and re-check; the three graph results also have a short check-it-yourself kit on their pages.</p>
   </section>
 
   <section aria-labelledby="pub-h">
     <h2 id="pub-h">Published</h2>
     <div class="cards">
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="https://doi.org/10.5281/zenodo.23273952">Chromatic number of 3D space (conditional)</a></h3>
+          <span class="small">published 10 Oct 2026<sup class="cite"><a href="#n3">3</a></sup></span>
+        </div>
+        <p>Color all of space so that no two points exactly 1 apart share a color. How many colors are needed? Assuming one theorem from OpenAI's proof that the plane needs at least 6, at least 7. A written proof, not a computer certificate, and not yet reviewed by a mathematician. For 4D and up, James Davies proved stronger results unconditionally two days earlier.</p>
+        <div class="bound"><span class="was">χ(ℝ³) ≥ 6</span><span class="arrow">→</span><span class="now">χ(ℝ³) ≥ 7, conditionally</span></div>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23273952">doi:10.5281/zenodo.23273952</a><a href="https://arxiv.org/abs/2610.12301">Davies, arXiv:2610.12301</a></div>
+      </article>
       <article class="card">
         <div class="card-head">
           <h3><a href="188.html">Erdős Problem #188</a></h3>
@@ -76,7 +85,7 @@
 
   <section aria-labelledby="st-h">
     <h2 id="st-h">In progress</h2>
-    <p>Every result moves through five stages. All five results are at stage 3.</p>
+    <p>Every result moves through five stages. The five computer-checked results are at stage 3; the conditional 3D note is public with a DOI.</p>
     <div class="stages">
       <div class="stg"><b>1. Found</b><span>The system found a candidate and it passed a first rigorous computer check.</span></div>
       <div class="stg"><b>2. Verified</b><span>Independent checkers, a formally verified checker or Lean proof where possible, hostile AI review, a literature check and a 48-hour hold.</span></div>
@@ -104,6 +113,7 @@
     <ol>
       <li id="n1">Ledger, 7 Oct 2026: <a href="../evidence/ledger_extract.html#L699">evidence/ledger_extract, L699</a>.</li>
       <li id="n2">Zenodo deposits, published 8 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23241767">doi:10.5281/zenodo.23241767</a> (31 points in 3D), <a href="https://doi.org/10.5281/zenodo.23241819">doi:10.5281/zenodo.23241819</a> (sphere) and <a href="https://doi.org/10.5281/zenodo.23241840">doi:10.5281/zenodo.23241840</a> (hyperbolic plane).</li>
+      <li id="n3">Zenodo preprint, published 10 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23273952">doi:10.5281/zenodo.23273952</a>.</li>
     </ol>
   </section>
 </main>
