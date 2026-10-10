@@ -25,6 +25,13 @@ One theorem prepared for release was already implied by a paper of István Tomon
 
 > - 10-05 ~01:00 CDT TOMON arXiv 2610.03517 (2 Oct 2026; Thm 1.3 / Cor 1.4) [redacted: unreleased result] is SUBSUMED. [redacted: unreleased result]
 
+## Higher-dimension claims overtaken by Davies's paper (9 Oct 2026) {#w-davies}
+
+A note extending OpenAI's planar transfer argument originally claimed new lower bounds for the chromatic number of R^n for every n from 3 to 11. AI referees (ChatGPT, Gemini and separate Claude reviewers) passed the argument, but a separate literature check, run just before release, found a paper by James Davies posted the day before that proves stronger results for dimension 4 and up, unconditionally. The note was cut to dimension 3, the case his paper does not cover, and credits him before it was released on 10 October.
+
+- Davies, [arXiv:2610.12301](https://arxiv.org/abs/2610.12301) (8 Oct 2026), Theorem 1.1 and Table 1.
+- The released note, "Related work" paragraph: [doi:10.5281/zenodo.23273952](https://doi.org/10.5281/zenodo.23273952).
+
 ## A value already proved by Cabello (30 Sep 2026) {#w-cabello}
 
 One exact value I had computed was already proved by Adán Cabello in 2012. Dropped.

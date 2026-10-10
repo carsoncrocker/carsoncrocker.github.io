@@ -1,6 +1,6 @@
-model responses: 27,081
-active days (UTC): 23, from 2026-09-15 to 2026-10-07
-input_tokens: 105,855
-cache_creation_input_tokens: 366,312,225
-cache_read_input_tokens: 5,797,772,883
-output_tokens: 30,348,293
+model responses: 36,085
+active days (UTC): 26, from 2026-09-15 to 2026-10-10
+input_tokens: 124,391
+cache_creation_input_tokens: 472,250,854
+cache_read_input_tokens: 7,646,067,459
+output_tokens: 38,247,438
