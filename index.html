@@ -20,12 +20,24 @@
   <section>
     <span class="eyebrow">Open problems · AI · verification</span>
     <h1>Carson Crocker</h1>
-    <p class="lede">I use AI to work on open math problems. I'm not a mathematician (I actually got a B- in college calculus), and I work in the corporate world. I believe process and method matter more than raw compute, so I built a system using off-the-shelf AI on <a href="evidence/usage.html#result">consumer subscriptions and one home PC</a>, attempting to learn some of the mathematics as I go. In three weeks it improved the bounds on five of them, each published with proof files and code anyone can rerun. As AI labs race into research mathematics, I'd like to work with mathematicians on problems they care about, so if you have one you'd like me to try, please <a href="https://github.com/carsoncrocker">reach out</a>.</p>
+    <p class="lede">I use AI to work on open math problems. I'm not a mathematician (I actually got a B- in college calculus), and I work in the corporate world. I believe process and method matter more than raw compute, so I built a system using off-the-shelf AI on <a href="evidence/usage.html#result">consumer subscriptions and one home PC</a>, attempting to learn some of the mathematics as I go. In three weeks it improved the bounds on five of them, each published with proof files and code anyone can rerun, and most recently it extended OpenAI's new proof about coloring the plane to 3D space, conditionally. As AI labs race into research mathematics, I'd like to work with mathematicians on problems they care about, so if you have one you'd like me to try, please <a href="https://github.com/carsoncrocker">reach out</a>.</p>
   </section>
 
   <section aria-labelledby="results-h">
     <h2 id="results-h">Results</h2>
     <div class="cards">
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="https://doi.org/10.5281/zenodo.23273952">Chromatic number of 3D space</a></h3>
+          <span class="small">published 10 Oct 2026</span>
+        </div>
+        <p>Color all of space so that no two points exactly 1 apart share a color. How many colors are needed? Last week OpenAI proved the plane needs at least 6. Their argument appears to extend to 3D: assuming one theorem from their preprint, space needs at least 7. The best known bound was 6.</p>
+        <div class="bound"><span class="was">χ(ℝ³) ≥ 6</span><span class="arrow">→</span><span class="now">χ(ℝ³) ≥ 7, conditionally</span></div>
+        <div class="tags"><span class="tag">conditional on OpenAI's Theorem 2.3</span><span class="tag">written proof, not a computer certificate</span><span class="tag ok">checked by ChatGPT, Gemini and separate Claude reviewers</span><span class="tag">not yet reviewed by a mathematician</span></div>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23273952">Note (doi:10.5281/zenodo.23273952)</a></div>
+        <p class="small">Extends the planar argument of OpenAI's <em>The Euclidean plane is not five-colorable</em> (<a href="https://github.com/openai/math">github.com/openai/math</a>, item 158). For 4D and up, James Davies proved stronger results unconditionally two days earlier (<a href="https://arxiv.org/abs/2610.12301">arXiv:2610.12301</a>); 3D is the case his method does not reach.</p>
+      </article>
+
       <article class="card">
         <div class="card-head">
           <h3><a href="results/188.html">Erdős Problem #188</a></h3>
@@ -86,6 +98,8 @@
   <section aria-labelledby="latest-h">
     <h2 id="latest-h">Latest</h2>
     <ol class="entries">
+      <li><time datetime="2026-10-10">10 Oct 2026</time><span>A conditional note on the chromatic number of 3D space was published: <a href="https://doi.org/10.5281/zenodo.23273952">doi:10.5281/zenodo.23273952</a>. <a href="log.html#2026-10-10-r3">More</a></span></li>
+      <li><time datetime="2026-10-08">8 Oct 2026</time><span>Three graph results were published on Zenodo. <a href="log.html#2026-10-08-published">More</a></span></li>
       <li><time datetime="2026-10-07">7 Oct 2026</time><span>This site launched.<sup class="cite"><a href="#n13">13</a></sup></span></li>
       <li><time datetime="2026-10-07">7 Oct 2026</time><span>The Erdős #188 package was published on Zenodo: <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>.<sup class="cite"><a href="#n14">14</a></sup></span></li>
       <li><time datetime="2026-10-07">7 Oct 2026</time><span>The Erdős #189 package was published on Zenodo: <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>.<sup class="cite"><a href="#n14">14</a></sup></span></li>
