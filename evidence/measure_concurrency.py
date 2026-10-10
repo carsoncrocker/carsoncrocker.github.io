@@ -7,6 +7,8 @@ For each minute (UTC) since 15 September 2026, it counts how many separate logs 
 response in that minute. This measures response activity per minute, not open sessions; minutes with
 no responses are left out. A log is one main session or one sub-agent. It prints the distribution
 of that count, and the same for main sessions only (logs not under a 'subagents' folder).
+When a session is resumed, Claude Code copies its earlier messages into a new log file, so each
+model response is counted once, in the first log where it appears.
 """
 import collections, datetime, glob, json, os, statistics, sys
 
@@ -19,6 +21,7 @@ def main(folders):
     files = sorted({os.path.realpath(f) for f in files})   # no path counted twice
     every = collections.defaultdict(set)   # minute -> logs active
     mains = collections.defaultdict(set)
+    seen = set()   # each response once, even when a resumed session copies it into a new log
     for f in files:
         sub = 'subagents' in f.replace('\\', '/').split('/')
         with open(f, encoding='utf-8', errors='ignore') as fh:
@@ -29,6 +32,11 @@ def main(folders):
                     continue
                 if rec.get('type') != 'assistant' or not rec.get('timestamp'):
                     continue
+                key = ((rec.get('message') or {}).get('id'), rec.get('requestId'), rec.get('uuid'))
+                key = key[:2] if key[0] else key[2]
+                if key in seen:
+                    continue
+                seen.add(key)
                 t = datetime.datetime.fromisoformat(rec['timestamp'].replace('Z', '+00:00'))
                 if t < START:
                     continue

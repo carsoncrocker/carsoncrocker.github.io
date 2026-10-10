@@ -36,9 +36,14 @@ The script [`measure_concurrency.py`](measure_concurrency.py) reads the same ses
 sub-agent has its own log. This measures response activity per minute, not open sessions, and minutes with no responses
 are left out. It was last run on 10 October 2026. Its complete output is [`concurrency_output.txt`](concurrency_output.txt).
 
-- All agents (main sessions and sub-agents) responding in the same minute: median 2; 7 or fewer in 95% of minutes;
-  12 or fewer in 99% of minutes; at most 20 (during an overnight run on 28 September).
-- Main Claude Code sessions responding in the same minute: at most 4.
+- All agents (main sessions and sub-agents) responding in the same minute: median 1; 6 or fewer in 97% of minutes;
+  8 or fewer in 99.5% of minutes; at most 13 (during an overnight run on 28 September).
+- Main Claude Code sessions responding in the same minute: 2 or fewer in 99.7% of minutes; at most 3.
+
+Correction, 10 October 2026: earlier versions of this page said median 2, at most 20 agents and at most 4 main
+sessions. Those figures double-counted: when a session is resumed, Claude Code copies its earlier messages into a new
+log file, and the script counted both copies. It now counts each response once. The totals in "Result" above were not
+affected, because measure_usage.py already counted each response once.
 
 So the system usually ran fewer than ten agents at a time. It counts Claude Code only; ChatGPT and other models are not
 included.
