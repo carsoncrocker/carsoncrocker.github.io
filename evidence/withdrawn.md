@@ -32,6 +32,20 @@ A note extending OpenAI's planar transfer argument originally claimed new lower 
 - Davies, [arXiv:2610.12301](https://arxiv.org/abs/2610.12301) (8 Oct 2026), Theorem 1.1 and Table 1.
 - The released note, "Related work" paragraph: [doi:10.5281/zenodo.23273952](https://doi.org/10.5281/zenodo.23273952).
 
+## A better bound for Graham's $100 problem, already beaten (10 Oct 2026) {#w-graham}
+
+An overnight run certified a new lower bound for Erdős problem #1186 (Graham's $100 problem: in every 2-coloring of 1..n, how many one-color 3-term arithmetic progressions must there be?). It improved the published 0.0511 to 0.0527, with an exact certificate that passed two checkers. A blind reviewer then found a proof claim posted five days earlier on the problem's proof-claims page by Carlos Toledo, who reports the exact value 117/2192. The search had read the problem page but not its proof-claims page. Dropped. Every novelty check now includes the proof-claims page.
+
+- Toledo's claim: [erdosproblems.com/forum/thread/1186/proof-claims](https://www.erdosproblems.com/forum/thread/1186/proof-claims) (5 Oct 2026; [doi:10.5281/zenodo.23171167](https://doi.org/10.5281/zenodo.23171167)).
+- Ledger, `LEDGER.md` line 761: "NOT NOVEL ... NT9's novelty check missed the proof-claims page."
+
+## Bounds for rational spaces, overtaken by Davies's paper (10 Oct 2026) {#w-qn}
+
+The same night produced correct, checked lower bounds for the number of colors needed for rational space Q^n (at least 11 for n = 5, 15 for n = 6, 25 for n = 7). A blind checker confirmed the proofs, and then pointed out that Davies's paper proves that rational and real space need the same number of colors from dimension 5 up, with much larger values. Dropped. This was the second time in two days that the same new paper overtook our work, so new papers in the area are now read in full before any follow-up search starts.
+
+- Davies, [arXiv:2610.12301](https://arxiv.org/abs/2610.12301), Theorem 1.1.
+- Night log, `NIGHT_2026-10-10.md` line 52: "QBLIND NOVELTY KILL: Davies ... gives chi(Q^d) = chi(R^d) ..."
+
 ## A value already proved by Cabello (30 Sep 2026) {#w-cabello}
 
 One exact value I had computed was already proved by Adán Cabello in 2012. Dropped.
