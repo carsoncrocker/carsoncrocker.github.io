@@ -27,7 +27,7 @@
     <h1>Erdős Problem #188</h1>
     <p class="lede">Color every point of the plane red or blue, with one rule: no two red points may be exactly 1 apart. Now look for a blue run: points on a straight line, each exactly 1 from the next, all blue. How long a blue run are you forced to have? Erdős asked for the smallest k such that some coloring has no blue run of k points.<sup class="cite"><a href="#n1">1</a></sup></p>
     <div class="bound"><span class="was">6 ≤ k ≤ 6330</span><span class="arrow">→</span><span class="now">7 ≤ k ≤ 60</span></div>
-    <p class="small">Package and note: <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>. Computer-checked; not yet reviewed by a mathematician.</p>
+    <p class="small">Package and note, current version v5 (15 Oct 2026, text corrections in sections 5.2, 5.5 and 5.6): <a href="https://doi.org/10.5281/zenodo.23405962">doi:10.5281/zenodo.23405962</a>; first version: <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>. Computer-checked; not yet reviewed by a mathematician.</p>
   </section>
 
   <section class="prose" aria-labelledby="known-h">
@@ -69,7 +69,7 @@
 
   <section class="prose" aria-labelledby="yourself-h">
     <h2 id="yourself-h">How to check it yourself</h2>
-    <p>Download the package from <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>, unzip it, and in Linux or WSL run:<sup class="cite"><a href="#n7">7</a></sup></p>
+    <p>Download the package from <a href="https://doi.org/10.5281/zenodo.23405962">doi:10.5281/zenodo.23405962</a>, unzip it, and in Linux or WSL run:<sup class="cite"><a href="#n7">7</a></sup></p>
     <pre>pip install numpy numba python-flint
 bash verify_all.sh          # upper bound, about 20-25 min on 8 cores
 bash verify_all.sh full     # adds Method 1 and the lower bound (needs drat-trim), about 40 min</pre>
