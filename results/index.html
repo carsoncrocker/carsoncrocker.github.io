@@ -28,6 +28,30 @@
     <div class="cards">
       <article class="card">
         <div class="card-head">
+          <h3><a href="https://doi.org/10.5281/zenodo.23379787">Exact distances of five quantum codes</a></h3>
+          <span class="small">published 14 Oct 2026<sup class="cite"><a href="#n4">4</a></sup></span>
+        </div>
+        <p>A quantum code's distance is the fewest qubit errors that can corrupt the stored data without being detected. Cain et al. (2026) printed upper bounds of 16 and 20 for two codes, and Xu et al. (2024) printed 16 and 20 for two more; for the second of those, Webster et al. later found a logical of weight 16. For Panteleev and Kalachev's Example 4, decoder searches found nothing below 20, but no bound was proved. An exhaustive computer search gives the exact values. It is a search result, not an independently checkable certificate, and not yet reviewed by an expert.</p>
+        <table class="small"><thead><tr><th>code</th><th>before</th><th>exact</th></tr></thead><tbody>
+          <tr><td>Cain et al. lp16 [[2610,744]]</td><td>&le; 16</td><td><b>16</b></td></tr>
+          <tr><td>Cain et al. lp20 [[1122,148]]</td><td>&le; 20</td><td><b>20</b></td></tr>
+          <tr><td>Xu et al. [[714,100]]</td><td>&le; 16</td><td><b>16</b></td></tr>
+          <tr><td>Xu et al. [[1020,136]]</td><td>&le; 16 (Webster et al.; printed &le; 20)</td><td><b>16</b></td></tr>
+          <tr><td>Panteleev &amp; Kalachev [[1054,140]]</td><td>nothing found below 20; unproved</td><td><b>20</b></td></tr>
+        </tbody></table>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23379787">doi:10.5281/zenodo.23379787</a><a href="https://arxiv.org/abs/2603.28627">Cain et al.</a><a href="https://arxiv.org/abs/2308.08648">Xu et al.</a><a href="https://arxiv.org/abs/2012.04068">Panteleev &amp; Kalachev</a></div>
+      </article>
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="https://doi.org/10.5281/zenodo.23352655">Exact distance of IBM's [[360,12]] code</a></h3>
+          <span class="small">published 13 Oct 2026<sup class="cite"><a href="#n5">5</a></sup></span>
+        </div>
+        <p>The [[360,12]] bivariate bicycle code of Bravyi et al. at IBM (Nature 2024) was printed with distance at most 24; the best posted lower bound was 16, from Kirtchakov (August 2026). An exhaustive search, confirmed by a second program written separately, gives exactly 24. A search result, not an independently checkable certificate.</p>
+        <div class="bound"><span class="was">16 &le; d &le; 24</span><span class="arrow">&rarr;</span><span class="now">d = 24</span></div>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23352655">doi:10.5281/zenodo.23352655</a><a href="https://github.com/unitaryfoundation/qldpc-challenge/pull/3399">qLDPC board note</a></div>
+      </article>
+      <article class="card">
+        <div class="card-head">
           <h3><a href="https://doi.org/10.5281/zenodo.23273952">Chromatic number of 3D space (conditional)</a></h3>
           <span class="small">published 10 Oct 2026<sup class="cite"><a href="#n3">3</a></sup></span>
         </div>
@@ -98,8 +122,9 @@
 
   <section class="prose" aria-labelledby="wd-h">
     <h2 id="wd-h">Caught before publishing</h2>
-    <p>Things that looked new or true at first, until the checks said otherwise. None of these were ever published; they were caught before anything went public. They are listed because catching them is the point. Items about unpublished work will be added when that work is published.</p>
+    <p>Things that looked new or true at first, until the checks said otherwise. Each mistaken claim was caught before release; in one case the underlying computation was later published as a reproduction of the known result. They are listed because catching them is the point. Items about unpublished work will be added when that work is published.</p>
     <ul>
+      <li><b>A quantum code distance already found by Liang et al.</b> (14 Oct 2026). The [[248,10]] code from the same 10,000-atom paper had been solved exactly in 2025 (<a href="https://arxiv.org/abs/2503.03827">arXiv:2503.03827</a>). The novelty claim was dropped before release; the computation stays in the package as a reproduction. <a href="../evidence/withdrawn.html#w-bb18">Evidence</a></li>
       <li><b>A claimed 63 for #188</b> (2 Oct 2026). The search had graded itself on a sample of lines; the true figure was at least 68. Never announced. <a href="../evidence/withdrawn.html#w-188-63">Evidence</a></li>
       <li><b>A 5-chromatic unit-distance graph in a small disk</b> (20 Sep 2026) was already beaten in the Polymath16 project in 2021. <a href="../evidence/withdrawn.html#w-polymath">Evidence</a></li>
       <li><b>A theorem overtaken by Tomon's paper</b> (<a href="https://arxiv.org/abs/2610.03517">arXiv:2610.03517</a>, 2 Oct 2026), found before release. Dropped. <a href="../evidence/withdrawn.html#w-tomon">Evidence</a></li>
@@ -115,6 +140,8 @@
       <li id="n1">Ledger, 7 Oct 2026: <a href="../evidence/ledger_extract.html#L699">evidence/ledger_extract, L699</a>.</li>
       <li id="n2">Zenodo deposits, published 8 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23241767">doi:10.5281/zenodo.23241767</a> (31 points in 3D), <a href="https://doi.org/10.5281/zenodo.23241819">doi:10.5281/zenodo.23241819</a> (sphere) and <a href="https://doi.org/10.5281/zenodo.23241840">doi:10.5281/zenodo.23241840</a> (hyperbolic plane).</li>
       <li id="n3">Zenodo preprint, published 10 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23273952">doi:10.5281/zenodo.23273952</a>.</li>
+      <li id="n4">Zenodo dataset and code, published 14 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23379787">doi:10.5281/zenodo.23379787</a>.</li>
+      <li id="n5">Zenodo dataset and code, version 1.2, 13 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23352655">doi:10.5281/zenodo.23352655</a> (all versions: <a href="https://doi.org/10.5281/zenodo.23342751">doi:10.5281/zenodo.23342751</a>).</li>
     </ol>
   </section>
 </main>
