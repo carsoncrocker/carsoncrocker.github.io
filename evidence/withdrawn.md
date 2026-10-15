@@ -1,6 +1,13 @@
-# Caught before publishing
+# Corrections and withdrawn claims
 
-Claims that looked new or true at first and did not survive a later check. None was ever published: each was caught before anything went public. Each item gives the evidence. This list contains only the items that can be described without revealing unreleased work; items that concern unreleased results will be added when those results are published.
+Claims that looked new or true at first and did not survive a later check. Each was caught before anything went public, except the first item below, found after publishing. Each item gives the evidence. This list contains only the items that can be described without revealing unreleased work; items that concern unreleased results will be added when those results are published.
+
+## A prior posting we missed: Lee's database entry for [[360,12]] = 24 predates our release (found 15 Oct 2026, after publishing) {#w-lee360}
+
+On 13 Oct we published the exact distance 24 for IBM's [[360,12]] bivariate bicycle code and called it new; our note said the best posted lower bound was 16. On 15 Oct we found that Gideon Lee's public database bicycle-race, first released on 11 Oct 2026, already lists this code (from Bravyi et al.'s Table 3) with distance 24, "exact-recomputed-here". We had already cited Lee's companion paper but did not inspect the database it links. This is the one item caught after publishing. We withdraw the novelty claim; our result is now described as an independent recomputation, the Zenodo record gets a new version saying so, and code novelty checks now include GitHub code databases.
+
+- Lee's database, first release (commit aed705a, 11 Oct 2026), `data/literature/status_v8.jsonl` line 6: [github.com/gideonlsx/bicycle-race](https://github.com/gideonlsx/bicycle-race).
+- Our record: [doi:10.5281/zenodo.23342751](https://doi.org/10.5281/zenodo.23342751).
 
 ## A claimed 63 for Erdős #188 (2 Oct 2026) {#w-188-63}
 
