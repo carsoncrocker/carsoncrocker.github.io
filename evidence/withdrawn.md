@@ -1,13 +1,27 @@
 # Corrections and withdrawn claims
 
-Claims that looked new or true at first and did not survive a later check. Each was caught before anything went public, except the first item below, found after publishing. Each item gives the evidence. This list contains only the items that can be described without revealing unreleased work; items that concern unreleased results will be added when those results are published.
+Claims that looked new or true at first and did not survive a later check. Each mistaken claim was caught before release, except the first two items below, which we found after publishing; in one case the underlying computation was later published as a reproduction of the known result. Each item gives the evidence. This list contains only the items that can be described without revealing unreleased work; items that concern unreleased results will be added when those results are published.
+
+## A prior posting we missed: DistQLDPC's entries for two Xu et al. codes predate our release (found 17 Oct 2026, after publishing) {#w-distqldpc}
+
+On 14 Oct we published exact distances for five lifted-product quantum codes and said none had been established before. On 17 Oct we found that Yu-Fang Chen's public repository DistQLDPC had listed distance 16 for two of them, Xu et al.'s [[714,100]] and [[1020,136]], on 11 Oct 2026. Their entries are the same codes as ours, up to relabelling qubits, and their values agree with ours. Our prior-work check for that release covered papers, the qLDPC challenge board and one benchmark repository, and missed DistQLDPC's entries; other code databases were added to the check on 15 Oct, the day after (see the next item). We withdraw the novelty claim for these two codes; our values are an independent recomputation, and the Zenodo record has a new version saying so. The other three values are unaffected.
+
+- DistQLDPC, `data/matrices/README.md` at commit 3add5ab (11 Oct 2026), listing both codes with d = 16: [README.md at 3add5ab](https://github.com/guluchen/DistQLDPC/blob/3add5ab/data/matrices/README.md). The [[714,100]] entry was first added in commit 1e40928, the same day.
+- Our record: version 1.1, [doi:10.5281/zenodo.23445463](https://doi.org/10.5281/zenodo.23445463); version 1.0, [doi:10.5281/zenodo.23379787](https://doi.org/10.5281/zenodo.23379787).
 
 ## A prior posting we missed: Lee's database entry for [[360,12]] = 24 predates our release (found 15 Oct 2026, after publishing) {#w-lee360}
 
-On 13 Oct we published the exact distance 24 for IBM's [[360,12]] bivariate bicycle code and called it new; our note said the best posted lower bound was 16. On 15 Oct we found that Gideon Lee's public database bicycle-race, first released on 11 Oct 2026, already lists this code (from Bravyi et al.'s Table 3) with distance 24, "exact-recomputed-here". We had already cited Lee's companion paper but did not inspect the database it links. This is the one item caught after publishing. We withdraw the novelty claim; our result is now described as an independent recomputation, the Zenodo record gets a new version saying so, and code novelty checks now include GitHub code databases.
+On 13 Oct we published the exact distance 24 for IBM's [[360,12]] bivariate bicycle code and called it new; our note said the best posted lower bound was 16. On 15 Oct we found that Gideon Lee's public database bicycle-race, first released on 11 Oct 2026, already lists this code (from Bravyi et al.'s Table 3) with distance 24, "exact-recomputed-here". We had already cited Lee's companion paper but did not inspect the database it links. This was the first item on this page caught after publishing rather than before. We withdraw the novelty claim; our result is now described as an independent recomputation, the Zenodo record gets a new version saying so, and every code novelty check now includes GitHub code databases.
 
-- Lee's database, first release (commit aed705a, 11 Oct 2026), `data/literature/status_v8.jsonl` line 6: [github.com/gideonlsx/bicycle-race](https://github.com/gideonlsx/bicycle-race).
+- Lee's database, first release (commit aed705a, 11 Oct 2026), file `data/literature/status_v8.jsonl`, line 6: [status_v8.jsonl at aed705a, line 6](https://github.com/gideonlsx/bicycle-race/blob/aed705a/data/literature/status_v8.jsonl#L6).
 - Our record: [doi:10.5281/zenodo.23342751](https://doi.org/10.5281/zenodo.23342751).
+
+## A quantum code distance already found by Liang et al. (14 Oct 2026) {#w-bb18}
+
+An overnight run computed the exact distance 18 of the [[248,10]] "bb18" code listed in the 10,000-atom paper of Cain, Preskill, Bluvstein et al. (printed there as at most 18), and two separately written programs agreed. Our literature check said the qLDPC challenge board had no entry for it. A fuller novelty sweep later that day found that the same code, up to an equivalence we checked, appears with exact distance 18 in Liang, Liu, Song and Chen (PRX Quantum, 2025), and that the board has listed it since July 2026. The claim of a new result was dropped before release; the computation stays in the released package as a reproduction of their value. The board file is `248-10-18.json`. Our board checks now use the repository's full file index for every code size.
+
+- Liang et al., [arXiv:2503.03827](https://arxiv.org/abs/2503.03827), Table 3.
+- The released package lists it as a control: [doi:10.5281/zenodo.23379787](https://doi.org/10.5281/zenodo.23379787).
 
 ## A claimed 63 for Erdős #188 (2 Oct 2026) {#w-188-63}
 
