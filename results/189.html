@@ -54,8 +54,9 @@
       <li><b>The proof:</b> verified by <code>drat-trim</code> and <code>lrat-check</code>, a second proof from a different solver is also verified, and the proof passes <code>cake_lpr</code>, a formally verified checker.<sup class="cite"><a href="#n6">6</a></sup></li>
       <li><b>Lean:</b> a sorry-free Lean 4 proof of the two-color statement. Its SAT step uses Lean's <code>bv_decide</code>, which trusts Lean's compiled code alongside the kernel.<sup class="cite"><a href="#n7">7</a></sup></li>
       <li><b>Outside AI referee:</b> ChatGPT rebuilt the 676 rectangles and the formula with its own code and re-solved it with a different solver.<sup class="cite"><a href="#n8">8</a></sup></li>
+      <li><b>Outside checks:</b> on 18 Oct 2026 Alex Towell posted an audit, as an open pull request with his own checking program, that corroborates the two-color certificate: the 676 rectangles on 180 points, the formula and the saved proof (<a href="https://github.com/queelius/computational-explorations/pull/7">PR 7</a>, reported on <a href="https://github.com/plasma-ai/erdos/issues/62">plasma-ai/erdos issue #62</a>). As he states, it is not blind, it is substantially AI-assisted (OpenAI Codex), and it is not human peer review or kernel verification. It does not cover the Lean proof.</li>
     </ul>
-    <p class="note">The checkers were written with Claude Code in separate sessions, which is not independence in the sense of different authors. No expert has checked the work yet, and independent checks are very welcome.<sup class="cite"><a href="#n9">9</a></sup></p>
+    <p class="note">Our checkers were written with Claude Code in separate sessions, which is not independence in the sense of different authors. No expert has checked the work yet, and independent checks are very welcome.<sup class="cite"><a href="#n9">9</a></sup></p>
   </section>
 
   <section class="prose" aria-labelledby="yourself-h">

@@ -63,8 +63,9 @@
       <li><b>Lower bound:</b> the four proof files pass <code>drat-trim</code> and <code>lrat-check</code>, and also <code>cake_lpr</code>, a formally verified proof checker. A separate verifier rebuilt the puzzles with its own arithmetic and its own solvers.<sup class="cite"><a href="#n9">9</a></sup></li>
       <li><b>Outside AI referee:</b> ChatGPT reproduced the checks and signed off on 7 ≤ k ≤ 60.<sup class="cite"><a href="#n10">10</a></sup></li>
       <li><b>One clean run:</b> the whole package passed in one uninterrupted run from a clean copy (about 43 minutes).<sup class="cite"><a href="#n11">11</a></sup></li>
+      <li><b>Outside checks:</b> on 18 Oct 2026 Alex Towell posted audits, as open pull requests with his own checking programs, that corroborate both parts of the upper bound: no red pair 1 apart (<a href="https://github.com/queelius/computational-explorations/pull/8">PR 8</a>) and no blue run of 60 (<a href="https://github.com/queelius/computational-explorations/pull/10">PR 10</a>), reported on <a href="https://github.com/plasma-ai/erdos/issues/62">plasma-ai/erdos issue #62</a>. As he states, they are not blind, they are substantially AI-assisted (OpenAI Codex), and they are not human peer review or kernel verification. They do not cover the lower bound.</li>
     </ul>
-    <p class="note">All the verifiers were written with the same AI tool (Claude Code), in separate sessions. That is not independence in the sense of different authors, which is why checks by others are very welcome.<sup class="cite"><a href="#n12">12</a></sup> To my knowledge, no mathematician has checked the result yet.</p>
+    <p class="note">All of our verifiers were written with the same AI tool (Claude Code), in separate sessions. That is not independence in the sense of different authors, which is why checks by others are very welcome.<sup class="cite"><a href="#n12">12</a></sup> To my knowledge, no mathematician has checked the result yet.</p>
   </section>
 
   <section class="prose" aria-labelledby="yourself-h">

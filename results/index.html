@@ -20,7 +20,7 @@
   <section>
     <h1>Results</h1>
     <p class="lede">What has been proven, and where each result stands.</p>
-    <p>Five results are computer-checked proofs that improve a published bound on an open problem, and each has a page that explains it in plain English. One further result is a written proof that depends on a theorem in OpenAI's recent preprint. The three quantum-code packages were established by exhaustive searches using two separately written programs; none has an independently checkable certificate. Every result comes with a full package, with a DOI, that anyone can download and re-check; the three graph results also have a short check-it-yourself kit on their pages.</p>
+    <p>Six results are computer-checked proofs that improve a published bound on an open problem; five of them have a page that explains them in plain English. One further result is a written proof that depends on a theorem in OpenAI's recent preprint. The four quantum-code packages were established by exhaustive searches using two separately written programs; none has an independently checkable certificate. Every result comes with a full package, with a DOI, that anyone can download and re-check; the three graph results also have a short check-it-yourself kit on their pages.</p>
   </section>
 
   <section aria-labelledby="pub-h">
@@ -28,6 +28,32 @@
     <p>A further package, published on 16 October, reports exact distances from 14 to 24 for 27 quantum codes:
     <a href="https://doi.org/10.5281/zenodo.23423011">package and note</a>.</p>
     <div class="cards">
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="https://doi.org/10.5281/zenodo.23452754">Circuit-level distance of the gross code's syndrome circuit</a></h3>
+          <span class="small">published 18 Oct 2026<sup class="cite"><a href="#n6">6</a></sup></span>
+        </div>
+        <p>A quantum code is read out by a circuit that repeatedly measures its checks, and faults can occur anywhere in that circuit. The circuit-level distance is the fewest faults, for a given circuit and fault model, that cause a logical error without setting off any detector. For the [[144,12,12]] gross code and their syndrome circuit, Bravyi et al. at IBM (Nature 2024) proved this distance is at most 10 and conjectured that it equals 10; Cross, He, Rall and Yoder (2024) reported 10 from numerical evidence. An exhaustive search, run by two separately written programs, found no such set of 9 or fewer faults, for their circuit and fault model with 12 noisy rounds followed by 2 noiseless ones, in both memory bases; explicit sets of 10 faults do cause one. The two programs share the same mathematics and inputs, so they check the implementation, not the method. The same value 10 holds for the CZ-compiled version of the circuit in the Tesseract decoder's test files, and the distance is 8 for both versions of the [[108,8,10]] circuit. The Tesseract files are from Aghababaie Beni, Higgott and Shutty and the tesseract-decoder project, whose earlier MaxSAT values 6 and 8 for two smaller circuits were reproduced as controls. Webster, Jacob and Higgott earlier filtered the detector error model by detector type, the idea behind one of the search's reductions, and benchmarked distance solvers on these circuits; the solvers that certify the minimum completed only on the [[72,12,6]] circuit. We found no earlier exhaustive proof that 10 is the minimum. It is a search result, not an independently checkable certificate, and not yet reviewed by an expert.</p>
+        <div class="bound"><span class="was">d<sub>circ</sub> &le; 10, conjectured 10</span><span class="arrow">&rarr;</span><span class="now">d<sub>circ</sub> = 10 (stated circuit and rounds)</span></div>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23452754">doi:10.5281/zenodo.23452754</a><a href="https://arxiv.org/abs/2308.07915">Bravyi et al.</a><a href="https://arxiv.org/abs/2407.18393">Cross, He, Rall and Yoder</a><a href="https://arxiv.org/abs/2503.10988">Aghababaie Beni, Higgott and Shutty (Tesseract)</a><a href="https://arxiv.org/abs/2603.22532">Webster, Jacob and Higgott</a></div>
+      </article>
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="https://doi.org/10.5281/zenodo.23452776">Measurable chromatic numbers above Davies's Table 1</a></h3>
+          <span class="small">published 18 Oct 2026<sup class="cite"><a href="#n7">7</a></sup></span>
+        </div>
+        <p>Color d-dimensional space so that no two points exactly 1 apart share a color, where each color class must be a measurable set. If every measurable set with no two points 1 apart has density at most B, at least 1/B colors are needed. James Davies's preprint (<a href="https://arxiv.org/abs/2610.12301">arXiv:2610.12301</a>, Table 1) gave such bounds in each dimension. Adding a few inequalities, mostly the triangle inequality, of the kind DeCorte, de Oliveira Filho and Vallentin used earlier (Math. Program. 2022) to Davies's linear program raises his lower bounds in seven dimensions. Each new bound comes with an exact certificate accepted by three checking programs in rigorous interval arithmetic, one of them written blind by a separate AI agent; the bounds also rest on a lemma proved in the accompanying note. Certificates for d = 15, 16, 18, 20, 22 and 23 are also in the package; two of the three checkers have accepted them. The same numbers bound the ordinary chromatic number only if Davies's Theorem 1.1 holds (preprint, not yet refereed). Not yet reviewed by a mathematician.</p>
+        <table class="small"><thead><tr><th>d</th><th>Davies, Table 1</th><th>new</th></tr></thead><tbody>
+          <tr><td>6</td><td>&ge; 52</td><td><b>&ge; 54</b></td></tr>
+          <tr><td>7</td><td>&ge; 98</td><td><b>&ge; 108</b></td></tr>
+          <tr><td>8</td><td>&ge; 174</td><td><b>&ge; 180</b></td></tr>
+          <tr><td>10</td><td>&ge; 729</td><td><b>&ge; 756</b></td></tr>
+          <tr><td>11</td><td>&ge; 1384</td><td><b>&ge; 1492</b></td></tr>
+          <tr><td>12</td><td>&ge; 2516</td><td><b>&ge; 2819</b></td></tr>
+          <tr><td>14</td><td>&ge; 12688</td><td><b>&ge; 13123</b></td></tr>
+        </tbody></table>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23452776">doi:10.5281/zenodo.23452776</a><a href="https://arxiv.org/abs/2610.12301">Davies, arXiv:2610.12301</a></div>
+      </article>
       <article class="card">
         <div class="card-head">
           <h3><a href="https://doi.org/10.5281/zenodo.23445463">Exact distances of five quantum codes (two posted earlier by DistQLDPC)</a></h3>
@@ -144,6 +170,8 @@
       <li id="n3">Zenodo preprint, published 10 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23273952">doi:10.5281/zenodo.23273952</a>.</li>
       <li id="n4">Zenodo dataset and code, version 1.1 (correction crediting DistQLDPC), 17 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23445463">doi:10.5281/zenodo.23445463</a>; version 1.0, 14 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23379787">doi:10.5281/zenodo.23379787</a> (all versions: <a href="https://doi.org/10.5281/zenodo.23379786">doi:10.5281/zenodo.23379786</a>).</li>
       <li id="n5">Zenodo dataset and code, version 1.3 (correction crediting Lee), 15 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23405904">doi:10.5281/zenodo.23405904</a>; version 1.2, 13 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23352655">doi:10.5281/zenodo.23352655</a> (all versions: <a href="https://doi.org/10.5281/zenodo.23342751">doi:10.5281/zenodo.23342751</a>).</li>
+      <li id="n6">Zenodo dataset and code, published 18 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23452754">doi:10.5281/zenodo.23452754</a> (note, programs, witnesses, logs, LIMITATIONS.md).</li>
+      <li id="n7">Zenodo dataset and code, published 18 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23452776">doi:10.5281/zenodo.23452776</a> (note, certificates, three checkers, LIMITATIONS.md).</li>
     </ol>
   </section>
 </main>
