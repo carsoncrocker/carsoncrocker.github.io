@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Carson Crocker</title>
-<meta name="description" content="Computer-checked results on open math problems, produced by a system of off-the-shelf AIs. Every result links to a citable package with code anyone can re-run.">
+<meta name="description" content="AI-assisted work on open math problems, with public notes, code for computational results, and dated corrections.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
@@ -20,7 +20,7 @@
   <section>
     <span class="eyebrow">Open problems · AI · verification</span>
     <h1>Carson Crocker</h1>
-    <p class="lede">I use AI to work on open math problems. I'm not a mathematician (I actually got a B- in college calculus), and I work in the corporate world. I believe process and method matter more than raw compute, so I built a system using off-the-shelf AI on <a href="evidence/usage.html#result">consumer subscriptions and one home PC</a>, attempting to learn some of the mathematics as I go. In three weeks it improved the bounds on five of them, each published with proof files and code anyone can rerun, and most recently it extended OpenAI's new proof about coloring the plane to 3D space, conditionally. As AI labs race into research mathematics, I'd like to work with mathematicians on problems they care about, so if you have one you'd like me to try, please <a href="https://github.com/carsoncrocker">reach out</a>.</p>
+    <p class="lede">I use AI to work on open math problems. I'm not a mathematician (I actually got a B- in college calculus), and I work in the corporate world. I believe process and method matter more than raw compute, so I built a system using off-the-shelf AI on <a href="evidence/usage.html#result">consumer subscriptions and one home PC</a>, attempting to learn some of the mathematics as I go. The public packages include five computer-checked improvements to published bounds, a conditional note on three-dimensional colorings, and quantum-code distance computations. I'd like to work with mathematicians on problems they care about, so if you have one you'd like me to try, please <a href="https://github.com/carsoncrocker">reach out</a>.</p>
   </section>
 
   <section aria-labelledby="results-h">
@@ -28,14 +28,14 @@
     <div class="cards">
       <article class="card">
         <div class="card-head">
-          <h3><a href="https://doi.org/10.5281/zenodo.23273952">Chromatic number of 3D space</a></h3>
+          <h3><a href="https://doi.org/10.5281/zenodo.23273952">Chromatic number of 3D space (conditional)</a></h3>
           <span class="small">published 10 Oct 2026</span>
         </div>
-        <p>Color all of space so that no two points exactly 1 apart share a color. How many colors are needed? Last week OpenAI proved the plane needs at least 6. Their argument appears to extend to 3D: assuming one theorem from their preprint, space needs at least 7. The best known bound was 6.</p>
-        <div class="bound"><span class="was">χ(ℝ³) ≥ 6</span><span class="arrow">→</span><span class="now">χ(ℝ³) ≥ 7</span></div>
+        <p>Color three-dimensional space so that points exactly 1 apart have different colors. This note argues that at least 7 colors are needed, assuming Theorem 2.3 of OpenAI's preprint. It has been reviewed by AI tools but has not yet been reviewed by a mathematician.</p>
+        <div class="bound"><span class="was">χ(ℝ³) ≥ 6</span><span class="arrow">→</span><span class="now">χ(ℝ³) ≥ 7, conditionally</span></div>
         <div class="tags"><span class="tag ok">written proof</span><span class="tag ok">checked by ChatGPT, Gemini and Claude</span><span class="tag">conditional on OpenAI's Theorem 2.3</span><span class="tag">open to a mathematician co-author</span></div>
         <div class="links"><a href="https://doi.org/10.5281/zenodo.23273952">Note (doi:10.5281/zenodo.23273952)</a></div>
-        <p class="small">Extends the planar argument of OpenAI's <em>The Euclidean plane is not five-colorable</em> (<a href="https://github.com/openai/math">github.com/openai/math</a>, item 158). For 4D and up, James Davies proved stronger results unconditionally two days earlier (<a href="https://arxiv.org/abs/2610.12301">arXiv:2610.12301</a>); 3D is the case his method does not reach.</p>
+        <p class="small">Extends the planar argument of OpenAI's <em>The Euclidean plane is not five-colorable</em> (<a href="https://github.com/openai/math">github.com/openai/math</a>, item 158). <a href="https://arxiv.org/abs/2610.12301">James Davies's preprint</a>, submitted on 8 October 2026, proves stronger results unconditionally in dimensions 4 and above; its theorems do not cover dimension 3. On 11 October 2026, Koshelev, Kupavskii and Voronov submitted &ldquo;Ordinary and measurable colorings of Euclidean three-space&rdquo; (<a href="https://arxiv.org/abs/2610.18907">arXiv:2610.18907</a>). Assuming OpenAI's Theorem 2.3, they prove the stronger statement that the ordinary and measurable chromatic numbers of three-dimensional space are equal, with both between 7 and 15.</p>
       </article>
 
       <article class="card">
@@ -96,15 +96,8 @@
   </section>
 
   <section aria-labelledby="latest-h">
-    <h2 id="latest-h">Latest</h2>
-    <ol class="entries">
-      <li><time datetime="2026-10-10">10 Oct 2026</time><span>A conditional note on the chromatic number of 3D space was published: <a href="https://doi.org/10.5281/zenodo.23273952">doi:10.5281/zenodo.23273952</a>. <a href="log.html#2026-10-10-r3">More</a></span></li>
-      <li><time datetime="2026-10-08">8 Oct 2026</time><span>Three graph results were published on Zenodo. <a href="log.html#2026-10-08-published">More</a></span></li>
-      <li><time datetime="2026-10-07">7 Oct 2026</time><span>This site launched.<sup class="cite"><a href="#n13">13</a></sup></span></li>
-      <li><time datetime="2026-10-07">7 Oct 2026</time><span>The Erdős #188 package was published on Zenodo: <a href="https://doi.org/10.5281/zenodo.23151059">doi:10.5281/zenodo.23151059</a>.<sup class="cite"><a href="#n14">14</a></sup></span></li>
-      <li><time datetime="2026-10-07">7 Oct 2026</time><span>The Erdős #189 package was published on Zenodo: <a href="https://doi.org/10.5281/zenodo.23178517">doi:10.5281/zenodo.23178517</a>.<sup class="cite"><a href="#n14">14</a></sup></span></li>
-    </ol>
-    <p class="small"><a href="log.html">The full log</a>, with evidence for each entry.</p>
+    <h2 id="latest-h">Updates</h2>
+    <p>See the <a href="log.html">dated log</a> for releases and corrections.</p>
   </section>
 
   <section class="prose" aria-labelledby="why-h">
@@ -137,7 +130,7 @@
       <li><b>Explore</b> by asking many small questions in parallel; one such storm produced an idea used in the final #188 coloring.<sup class="cite"><a href="#n5">5</a></sup></li>
       <li><b>Verify:</b> nothing counts until something that didn't produce it has checked it, including ChatGPT as an outside referee.<sup class="cite"><a href="#n6">6</a></sup></li>
       <li><b>Learn:</b> mistakes and lessons are written into the project's ledger as rules.<sup class="cite"><a href="#n7">7</a></sup></li>
-      <li><b>Release:</b> the authors of the prior work hear first, every idea is credited, and every result ships with code anyone can re-run.<sup class="cite"><a href="#n8">8</a></sup></li>
+      <li><b>Release:</b> Before release, we try to identify and contact the relevant authors. Each result has a public note; computational results also include code. Missed work is credited in dated corrections.<sup class="cite"><a href="#n8">8</a></sup></li>
     </ol>
   </section>
 
@@ -159,7 +152,7 @@
 
   <section aria-labelledby="how-h">
     <h2 id="how-h">How to check a result yourself</h2>
-    <p>Download a package from its DOI link, unzip it, and run one command in Linux (or WSL on Windows). It re-checks the proof with standard, independent tools and prints PASS or FAIL. For #188, add <code>full</code> to include the lower bound and the second method.</p>
+    <p>For the Erdős packages, download and unzip the files, then run the commands below in Linux or WSL. These check the proof files and print PASS or FAIL. The graph pages have separate checking kits. The conditional 3D note requires mathematical review; the quantum-code claims require rerunning searches. For #188, add <code>full</code> to include the lower bound and the second method.</p>
     <pre>bash verify_all.sh full    # Erdős #188
 bash verify.sh             # Erdős #189</pre>
   </section>
