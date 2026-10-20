@@ -1,13 +1,13 @@
 # Corrections and withdrawn claims
 
-Claims that looked new or true at first and did not survive a later check. Each mistaken claim was caught before release, except the first two items below, which we found after publishing; in one case the underlying computation was later published as a reproduction of the known result. Each item gives the evidence. This list contains only the items that can be described without revealing unreleased work; items that concern unreleased results will be added when those results are published.
+Claims that looked new or true at first and did not survive a later check. Each mistaken claim was caught before release, except the first three items below, which we found after publishing; in one case the underlying computation was later published as a reproduction of the known result. Each item gives the evidence. This list contains only the items that can be described without revealing unreleased work; items that concern unreleased results will be added when those results are published.
 
 ## A prior posting we missed: DistQLDPC's entries for two Xu et al. codes predate our release (found 17 Oct 2026, after publishing) {#w-distqldpc}
 
 On 14 Oct we published exact distances for five lifted-product quantum codes and said none had been established before. On 17 Oct we found that Yu-Fang Chen's public repository DistQLDPC had listed distance 16 for two of them, Xu et al.'s [[714,100]] and [[1020,136]], on 11 Oct 2026. Their entries are the same codes as ours, up to relabelling qubits, and their values agree with ours. Our prior-work check for that release covered papers, the qLDPC challenge board and one benchmark repository, and missed DistQLDPC's entries; other code databases were added to the check on 15 Oct, the day after (see the next item). We withdraw the novelty claim for these two codes; our values are an independent recomputation, and the Zenodo record has a new version saying so. The other three values are unaffected.
 
 - DistQLDPC, `data/matrices/README.md` at commit 3add5ab (11 Oct 2026), listing both codes with d = 16: [README.md at 3add5ab](https://github.com/guluchen/DistQLDPC/blob/3add5ab/data/matrices/README.md). The [[714,100]] entry was first added in commit 1e40928, the same day.
-- Our record: version 1.1, [doi:10.5281/zenodo.23445463](https://doi.org/10.5281/zenodo.23445463); version 1.0, [doi:10.5281/zenodo.23379787](https://doi.org/10.5281/zenodo.23379787).
+- Our record: version 1.1, [doi:10.5281/zenodo.23445463](https://doi.org/10.5281/zenodo.23445463); version 1.0, [doi:10.5281/zenodo.23379787](https://doi.org/10.5281/zenodo.23379787). The version 1.0 record now carries a note crediting DistQLDPC and pointing to version 1.1 (added 18 Oct 2026).
 
 ## A prior posting we missed: Lee's database entry for [[360,12]] = 24 predates our release (found 15 Oct 2026, after publishing) {#w-lee360}
 
@@ -15,6 +15,13 @@ On 13 Oct we published the exact distance 24 for IBM's [[360,12]] bivariate bicy
 
 - Lee's database, first release (commit aed705a, 11 Oct 2026), file `data/literature/status_v8.jsonl`, line 6: [status_v8.jsonl at aed705a, line 6](https://github.com/gideonlsx/bicycle-race/blob/aed705a/data/literature/status_v8.jsonl#L6).
 - Our record: [doi:10.5281/zenodo.23342751](https://doi.org/10.5281/zenodo.23342751).
+
+## A related posting we missed: Shukla's 231-vertex graph on the same sphere (credited on this site 15 Oct 2026, after publishing) {#w-shukla}
+
+On 8 Oct 2026 we published a 228-vertex 5-chromatic unit-distance graph on the sphere of radius cos(π/10). The description of that record omitted closely related work by Chandan Kumar Shukla. His preprint, posted on 8 October 2026, the same calendar date as our deposit, reports a 231-vertex vertex-critical 5-chromatic graph with 938 edges on this sphere, obtained by SAT-based vertex minimisation of the 372-vertex graph of Voronov, Neopryatnaya and Dergachev, and a 961-vertex vertex-critical 5-chromatic graph on the second icosahedral sphere. The 231-vertex graph in our package has 924 edges, so it is a different graph. The Zenodo description was updated on 18 Oct 2026 to credit his preprint and to reword the sentence about Voronov et al.; the package itself is unchanged.
+
+- Shukla, Preprints.org 202610.0589: [doi:10.20944/preprints202610.0589.v1](https://doi.org/10.20944/preprints202610.0589.v1).
+- Our record: [doi:10.5281/zenodo.23241819](https://doi.org/10.5281/zenodo.23241819).
 
 ## A quantum code distance already found by Liang et al. (14 Oct 2026) {#w-bb18}
 

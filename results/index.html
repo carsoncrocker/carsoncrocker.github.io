@@ -25,9 +25,31 @@
 
   <section aria-labelledby="pub-h">
     <h2 id="pub-h">Published</h2>
-    <p>A further package, published on 16 October, reports exact distances from 14 to 24 for 27 quantum codes:
+    <p>Two packages published on 19 October, certificates for equilateral sets in &ell;<sub>p</sub><sup>n</sup> (Kusner's question) and an explicit girth-5 5-chromatic unit-distance graph in R<sup>3</sup>, are the first two cards below. A further package, published on 16 October, reports exact distances from 14 to 24 for 27 quantum codes:
     <a href="https://doi.org/10.5281/zenodo.23423011">package and note</a>.</p>
     <div class="cards">
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="https://doi.org/10.5281/zenodo.23462743">Certified equilateral sets in &ell;<sub>p</sub><sup>n</sup>: 31 points in &ell;<sub>8</sub><sup>29</sup>, 55 points in &ell;<sub>5</sub><sup>53</sup>, and six further configurations</a></h3>
+          <span class="small">published 19 Oct 2026<sup class="cite"><a href="#n8">8</a></sup></span>
+        </div>
+        <p>An equilateral set in &ell;<sub>p</sub><sup>n</sup> is a set of points that are all the same distance apart in the p-norm. Kusner's question (Guy 1983) asks whether such a set can contain more than n + 1 points. This deposit provides certificates for n + 2 equilateral points in &ell;<sub>p</sub><sup>n</sup> at eight pairs (p, n): (8,29), (9,30), (8,30), (7,30), (9,40), (6,40), (5,53) and (5,55). In particular, e(&ell;<sub>8</sub><sup>29</sup>) &ge; 31 and e(&ell;<sub>5</sub><sup>53</sup>) &ge; 55, where e denotes the maximum cardinality of an equilateral set. Each configuration is the unique zero of the normalised system (some coordinates fixed at given dyadic values) in the certified box. By the implicit function theorem, equilateral sets of the same size also exist for all p in some open interval around each stated value; no explicit interval is certified. No claim is made that these dimensions are the least possible.</p>
+        <p>Swanepoel proved the n + 1 bound for p = 4 and constructed larger sets for every 1 &lt; p &lt; 2 in sufficiently large dimension. Ge, Xu and Zhou proved the bound throughout 2 &le; p &le; 4. Chalmers constructed 58 equilateral points in &ell;<sub>5</sub><sup>56</sup>, and Xiong established the existence of larger-than-(n + 1) sets for every p &gt; 4. Chalmers and Ziegler studied linear excess and proved that, for each fixed positive excess over n + 1, the least dimension admitting that excess is p<sup>1+o(1)</sup> as p tends to infinity. This deposit supplies certificates for the eight specific configurations listed above.</p>
+        <p>Three separately written certificate checkers use different arithmetic: a Krawczyk test in Arb ball arithmetic, a Newton&ndash;Kantorovich contraction test in exact rational arithmetic, and a Krawczyk test in mpmath interval arithmetic. Positive and negative controls are included. The author is not a professional mathematician. The search, certificates, checking programs and drafts of the note were produced using Anthropic's Claude through Claude Code under the author's direction; separate AI agents wrote the checker implementations. No human expert has reviewed the work to date. Checks and corrections are welcome.</p>
+        <div class="bound"><span class="was">n + 2 points at eight pairs (p, n)</span><span class="arrow">&rarr;</span><span class="now">certified, e.g. &ge; 31 in &ell;<sub>8</sub><sup>29</sup>, &ge; 55 in &ell;<sub>5</sub><sup>53</sup></span></div>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23462743">doi:10.5281/zenodo.23462743</a></div>
+      </article>
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="https://doi.org/10.5281/zenodo.23483410">An explicit faithful unit-distance graph in R<sup>3</sup> of girth 5 and chromatic number 5 (5,942 vertices)</a></h3>
+          <span class="small">published 19 Oct 2026<sup class="cite"><a href="#n9">9</a></sup></span>
+        </div>
+        <p>This deposit provides a graph with 5,942 vertices and 17,806 edges, of girth 5 and chromatic number 5, together with a faithful unit-distance embedding in R<sup>3</sup>. Adjacent vertices are at distance exactly 1, non-adjacent vertices are not at distance 1, and all points are distinct. No claim is made that 5,942 is the minimum possible number of vertices.</p>
+        <p>De Grey (Geombinatorics 35(3), 2026) asked whether 5-chromatic unit-distance graphs in R<sup>3</sup> exist with any girth, as is known for 4-chromatic unit-distance graphs in the plane. Tomon's Theorem 1.3 and Corollary 1.4 establish a stronger existence result: for every prescribed g, there is a faithful 5-chromatic unit-distance graph in R<sup>2</sup> with girth at least g (<a href="https://arxiv.org/abs/2610.03517">arXiv:2610.03517v2</a>). This deposit supplies one explicit, checkable example of girth exactly 5 in R<sup>3</sup>. An abstract comparison is Royle's 80-vertex graph of girth 5, whose chromatic number 5 was established by Exoo and Goedgebeur (2019).</p>
+        <p>The deposit gives coordinates to 45 digits and two separately written checkers. Using interval Krawczyk tests (python-flint/Arb), they certify that an exact unit-distance realisation lies within 10<sup>&minus;35</sup> of these coordinates. They also check the colourings and the girth, and rigorously check, over all pairs of points, that all points are distinct and that no non-adjacent pair is at distance 1. Separate AI agents produced the checking implementations; an additional review used ChatGPT. The author is not a professional mathematician. The search, construction, certificates and checking programs were produced using Anthropic's Claude through Claude Code under the author's direction. No human expert has reviewed the work to date. Corrections are welcome.</p>
+        <div class="bound"><span class="was">de Grey's question: any girth in R<sup>3</sup>?</span><span class="arrow">&rarr;</span><span class="now">one explicit example: girth 5, 5,942 vertices</span></div>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23483410">doi:10.5281/zenodo.23483410</a><a href="https://arxiv.org/abs/2610.03517">Tomon, arXiv:2610.03517</a></div>
+      </article>
       <article class="card">
         <div class="card-head">
           <h3><a href="https://doi.org/10.5281/zenodo.23452754">Circuit-level distance of the gross code's syndrome circuit</a></h3>
@@ -150,7 +172,7 @@
 
   <section class="prose" aria-labelledby="wd-h">
     <h2 id="wd-h">Caught before publishing</h2>
-    <p>Things that looked new or true at first, until the checks said otherwise. Each claim listed here was caught before release; in one case the underlying computation was later published as a reproduction of the known result. They are listed because catching them is the point. Two earlier postings we missed were found only after publishing; they are on the <a href="../evidence/withdrawn.html">corrections page</a>. Items about unpublished work will be added when that work is published.</p>
+    <p>Things that looked new or true at first, until the checks said otherwise. Each claim listed here was caught before release; in one case the underlying computation was later published as a reproduction of the known result. They are listed because catching them is the point. Three earlier postings we missed were found only after publishing; they are on the <a href="../evidence/withdrawn.html">corrections page</a>. Items about unpublished work will be added when that work is published.</p>
     <ul>
       <li><b>A quantum code distance already found by Liang et al.</b> (14 Oct 2026). The [[248,10]] code from the same 10,000-atom paper had been solved exactly in 2025 (<a href="https://arxiv.org/abs/2503.03827">arXiv:2503.03827</a>). The novelty claim was dropped before release; the computation stays in the package as a reproduction. <a href="../evidence/withdrawn.html#w-bb18">Evidence</a></li>
       <li><b>A claimed 63 for #188</b> (2 Oct 2026). The search had graded itself on a sample of lines; the true figure was at least 68. Never announced. <a href="../evidence/withdrawn.html#w-188-63">Evidence</a></li>
@@ -172,6 +194,8 @@
       <li id="n5">Zenodo dataset and code, version 1.3 (correction crediting Lee), 15 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23405904">doi:10.5281/zenodo.23405904</a>; version 1.2, 13 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23352655">doi:10.5281/zenodo.23352655</a> (all versions: <a href="https://doi.org/10.5281/zenodo.23342751">doi:10.5281/zenodo.23342751</a>).</li>
       <li id="n6">Zenodo dataset and code, published 18 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23452754">doi:10.5281/zenodo.23452754</a> (note, programs, witnesses, logs, LIMITATIONS.md).</li>
       <li id="n7">Zenodo dataset and code, published 18 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23452776">doi:10.5281/zenodo.23452776</a> (note, certificates, three checkers, LIMITATIONS.md).</li>
+      <li id="n8">Zenodo dataset and code, published 19 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23462743">doi:10.5281/zenodo.23462743</a>.</li>
+      <li id="n9">Zenodo dataset and code, published 19 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23483410">doi:10.5281/zenodo.23483410</a>.</li>
     </ol>
   </section>
 </main>
