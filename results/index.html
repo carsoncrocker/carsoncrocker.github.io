@@ -25,9 +25,19 @@
 
   <section aria-labelledby="pub-h">
     <h2 id="pub-h">Published</h2>
-    <p>Two packages published on 19 October, certificates for equilateral sets in &ell;<sub>p</sub><sup>n</sup> (Kusner's question) and an explicit girth-5 5-chromatic unit-distance graph in R<sup>3</sup>, are the first two cards below. A further package, published on 16 October, reports exact distances from 14 to 24 for 27 quantum codes:
+    <p>The newest package, on the two-gross quantum code (21&ndash;22 October), is the first card below. It is followed by certificates for equilateral sets in &ell;<sub>p</sub><sup>n</sup> (Kusner's question; version 2 on 22 October) and an explicit girth-5 5-chromatic unit-distance graph in R<sup>3</sup> (19 October). A further package, published on 16 October, reports exact distances from 14 to 24 for 27 quantum codes:
     <a href="https://doi.org/10.5281/zenodo.23423011">package and note</a>.</p>
     <div class="cards">
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="https://doi.org/10.5281/zenodo.23550503">Two-gross code [[288,12,18]]: a 16-fault logical error in the depth-8 syndrome cycle, and every uniform depth-8 cycle is at most 16</a></h3>
+          <span class="small">published 21 Oct 2026; version 2, 22 Oct 2026</span>
+        </div>
+        <p>The two-gross code is the bivariate bicycle code in IBM's planned modular architecture (Tour de gross, <a href="https://arxiv.org/abs/2506.03094">arXiv:2506.03094</a>). For the depth-8 syndrome cycle of Bravyi et al. (<a href="https://arxiv.org/abs/2308.07915">arXiv:2308.07915</a>), this deposit gives, in our reconstruction, sets of 16 circuit faults that trigger no detector and apply a nontrivial logical operator, inside the memory setup of IBM's Fail fast paper (<a href="https://arxiv.org/abs/2511.15177">arXiv:2511.15177</a>), whose search reported 18 as the lowest weight found. Version 2 shows that every one of the 22,608 valid uniform (translation-invariant, single-ancilla) depth-8 cycles has such a failure with at most 16 faults.</p>
+        <p>Two separately written circuit builds reproduce Fail fast's matrix sizes; the fault sets are listed gate by gate; a script replays a certificate on all 22,608 cycles, and a separately written program re-derived the count and every class. These are upper bounds only: no lower bound is claimed, cycles outside the uniform family are not covered, and no claim is made about logical error rates. The work was produced with Claude Code under my direction, with ChatGPT as a reviewer; no human expert has reviewed it yet.</p>
+        <div class="bound"><span class="was">Fail fast: lowest weight found was 18</span><span class="arrow">&rarr;</span><span class="now">our reconstruction: circuit distance &le; 16, for this cycle and every uniform depth-8 cycle</span></div>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23535390">v1: doi:10.5281/zenodo.23535390</a> &middot; <a href="https://doi.org/10.5281/zenodo.23550503">v2: doi:10.5281/zenodo.23550503</a></div>
+      </article>
       <article class="card">
         <div class="card-head">
           <h3><a href="https://doi.org/10.5281/zenodo.23462743">Certified equilateral sets in &ell;<sub>p</sub><sup>n</sup>: 31 points in &ell;<sub>8</sub><sup>29</sup>, 55 points in &ell;<sub>5</sub><sup>53</sup>, and six further configurations</a></h3>
@@ -37,7 +47,8 @@
         <p>Swanepoel proved the n + 1 bound for p = 4 and constructed larger sets for every 1 &lt; p &lt; 2 in sufficiently large dimension. Ge, Xu and Zhou proved the bound throughout 2 &le; p &le; 4. Chalmers constructed 58 equilateral points in &ell;<sub>5</sub><sup>56</sup>, and Xiong established the existence of larger-than-(n + 1) sets for every p &gt; 4. Chalmers and Ziegler studied linear excess and proved that, for each fixed positive excess over n + 1, the least dimension admitting that excess is p<sup>1+o(1)</sup> as p tends to infinity. This deposit supplies certificates for the eight specific configurations listed above.</p>
         <p>Three separately written certificate checkers use different arithmetic: a Krawczyk test in Arb ball arithmetic, a Newton&ndash;Kantorovich contraction test in exact rational arithmetic, and a Krawczyk test in mpmath interval arithmetic. Positive and negative controls are included. The author is not a professional mathematician. The search, certificates, checking programs and drafts of the note were produced using Anthropic's Claude through Claude Code under the author's direction; separate AI agents wrote the checker implementations. No human expert has reviewed the work to date. Checks and corrections are welcome.</p>
         <div class="bound"><span class="was">n + 2 points at eight pairs (p, n)</span><span class="arrow">&rarr;</span><span class="now">certified, e.g. &ge; 31 in &ell;<sub>8</sub><sup>29</sup>, &ge; 55 in &ell;<sub>5</sub><sup>53</sup></span></div>
-        <div class="links"><a href="https://doi.org/10.5281/zenodo.23462743">doi:10.5281/zenodo.23462743</a></div>
+        <p><strong>Version 2 (22 Oct 2026)</strong> adds eleven certified sets from a cyclic two-orbit construction, including 54 points in &ell;<sub>5</sub><sup>52</sup>, 36 in &ell;<sub>6</sub><sup>34</sup> and 30 in &ell;<sub>p</sub><sup>28</sup> for p = 7, 8, 9, 10.</p>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23462743">v1: doi:10.5281/zenodo.23462743</a> &middot; <a href="https://doi.org/10.5281/zenodo.23554239">v2: doi:10.5281/zenodo.23554239</a></div>
       </article>
       <article class="card">
         <div class="card-head">
