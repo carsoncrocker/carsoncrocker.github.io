@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Girth-5 5-chromatic graph in 3D · Carson Crocker</title>
+<meta name="description" content="An explicit set of 5,942 points in three-dimensional space, joined when exactly 1 apart, with no loops of length 3 or 4 and needing 5 colors. Plain-English explanation, what is not new, how it was checked, and how to check it yourself.">
+<meta name="citation_title" content="An explicit faithful unit-distance graph in R^3 of girth 5 and chromatic number 5 (5,942 vertices)">
+<meta name="citation_author" content="Crocker, Carson">
+<meta name="citation_publication_date" content="2026/10/19">
+<meta name="citation_doi" content="10.5281/zenodo.23483410">
+<link rel="canonical" href="https://carsoncrocker.github.io/results/girth5-5942.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="../">Home</a><a href="./" aria-current="page">Results</a><a href="../case-study.html">Case study</a><a href="../log.html">Log</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section>
+    <span class="eyebrow">Result · public deposit</span>
+    <h1>An explicit 5-chromatic graph in 3D with no short loops (5,942 points)</h1>
+    <p class="lede">Pick points in ordinary three-dimensional space and draw a line between every two points exactly 1 apart. Now color the points so that no line joins two points of the same color. This page is about a set of 5,942 points that needs 5 colors even though the lines form no loop of length 3 or 4. The package supplies approximate coordinates and certificates for an exact realization nearby.<sup class="cite"><a href="#n1">1</a></sup></p>
+    <div class="bound"><span class="was">Target: girth 5 in R<sup>3</sup></span><span class="arrow">&rarr;</span><span class="now">one explicit example: girth 5, 5,942 vertices</span></div>
+    <p class="small">Stage 3, published 19 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23483410">doi:10.5281/zenodo.23483410</a>.<sup class="cite"><a href="#n1">1</a></sup> No human expert has reviewed the checks.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="problem-h">
+    <h2 id="problem-h">The problem in plain words</h2>
+    <p>The points and lines form a <em>unit-distance graph</em>, and its <em>chromatic number</em> is the fewest colors that keep the two ends of every line different. The graph here is <em>faithful</em>: two points are joined exactly when they are at distance 1, with no exceptions. The <em>girth</em> is the length of the shortest cycle, a closed path that repeats no point except its starting point at the end; girth exactly 5 means there is a 5-cycle and no cycle of length 3 or 4.<sup class="cite"><a href="#n1">1</a></sup></p>
+    <p>This construction needs 5 colors while excluding triangles and four-cycles. In the plane, 4-chromatic examples with any girth are known. De Grey asked whether 5-chromatic unit-distance graphs exist in R<sup>3</sup> with any girth.<sup class="cite"><a href="#n2">2</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="new-h">
+    <h2 id="new-h">What is new, and what is not</h2>
+    <p><b>Not new:</b> existence. Tomon has proved a stronger statement: for every g there is a faithful 5-chromatic unit-distance graph with girth at least g, already in the plane, and so in R<sup>3</sup>. His proof uses probabilistic methods; this deposit supplies a particular coordinate dataset and verification files.<sup class="cite"><a href="#n3">3</a></sup></p>
+    <p><b>This deposit:</b> one explicit example with 5,942 vertices and 17,806 edges. Approximate coordinates are given to 45 digits, with certificates for a nearby exact realization, and the supplied programs check girth exactly 5, chromatic number 5 and faithfulness.<sup class="cite"><a href="#n1">1</a></sup> I do not claim 5,942 is the smallest number of vertices possible. Without the geometric requirement, Royle's 80-vertex graph has girth 5 and chromatic number 5, as established by Exoo and Goedgebeur; I make no claim here about whether it can be drawn with unit edges in R<sup>3</sup>.<sup class="cite"><a href="#n4">4</a></sup></p>
+    <p><b>Not claimed:</b> larger girths, minimality, and anything about the plane.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="how-h">
+    <h2 id="how-h">How the graph is built</h2>
+    <p>Start with a host graph P with 17 points and 31 edges, drawn in R<sup>3</sup> with every edge of length 1. Every way of coloring P with 4 colors makes some set of 5 pairwise non-adjacent points all one color, and there are 237 such candidate sets. For each of these 237 sets, attach a fresh copy of a 25-point gadget H that has girth 5 and cannot be colored with 3 colors: each of the gadget's five groups of five points is joined to one point of the set. Each copy is placed in space by solving its own 75 equations in 75 unknowns so that every edge has length 1.<sup class="cite"><a href="#n1">1</a></sup></p>
+    <p>The total is 17 + 237 &times; 25 = 5,942 points and 31 + 237 &times; 75 = 17,806 edges. If the whole graph were colored with 4 colors, some candidate set would be one color, so every point of its gadget would see that color. Every point of that gadget would then have only the other three colors available, contradicting the gadget having no proper 3-coloring. To exclude 3- and 4-cycles the construction uses these facts: P and the gadget have none; each gadget point has exactly one neighbor in P; the five attachment points in P are pairwise non-adjacent; and two points in the same group of five are at distance at least 3 within the gadget.<sup class="cite"><a href="#n1">1</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="checked-h">
+    <h2 id="checked-h">How it was checked</h2>
+    <ul>
+      <li><b>Combinatorics:</b> exhaustive search shows the gadget has girth at least 5 and no proper 3-coloring; all 78,156 proper 4-colorings of P (up to renaming colors) are constant on one of the 237 sets; the whole graph has no 3- or 4-cycle; and an explicit proper 5-coloring is found and verified.<sup class="cite"><a href="#n1">1</a></sup></li>
+      <li><b>Geometry:</b> interval-arithmetic Krawczyk tests (python-flint, Arb) certify that an exact unit-distance realization lies within 10<sup>&minus;35</sup> of the listed coordinates, for the host and all 237 copies. A scan over all pairs of points then shows that points are distinct and that no non-adjacent pair is at distance 1. The 37 non-adjacent pairs that come close to 1 are separated rigorously in interval arithmetic.<sup class="cite"><a href="#n1">1</a></sup></li>
+      <li><b>Two checkers:</b> a second program, written separately and without access to the main checker, repeats the claims with its own enumeration and its own Krawczyk test. A tamper control, in which one coordinate is changed in its 20th decimal, makes the main checker fail.<sup class="cite"><a href="#n1">1</a></sup></li>
+      <li><b>Re-check on 1 Nov 2026:</b> From a fresh copy of the package, <code>bash verify.sh</code> ended <code>SUMMARY: PASS</code> in 41 seconds, with the main and independent checkers both passing.<sup class="cite"><a href="#nE">5</a></sup></li>
+    </ul>
+    <p class="note">Both checkers were produced by Claude, under my direction, in separate sessions, and ChatGPT reviewed the work. That is not independence in the sense of different authors. No human expert has reviewed it. I am not a professional mathematician. Corrections are welcome.<sup class="cite"><a href="#n1">1</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="status-h">
+    <h2 id="status-h">Status</h2>
+    <p><b>Stage 3 of 5: public.</b> The data and certificates are on Zenodo: <a href="https://doi.org/10.5281/zenodo.23483410">doi:10.5281/zenodo.23483410</a>.<sup class="cite"><a href="#n1">1</a></sup> The stages are explained on the <a href="./#st-h">Results</a> page.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="credits-h">
+    <h2 id="credits-h">Credits</h2>
+    <ul>
+      <li>The question: A. D. N. J. de Grey.<sup class="cite"><a href="#n2">2</a></sup></li>
+      <li>Existence for every girth, in the plane: I. Tomon.<sup class="cite"><a href="#n3">3</a></sup></li>
+      <li>The comparison graph: G. Royle; its chromatic number: G. Exoo and J. Goedgebeur.<sup class="cite"><a href="#n4">4</a></sup> Earlier, larger versions of my construction used Royle's 21-vertex 4-chromatic graphs of girth 5.<sup class="cite"><a href="#n1">1</a></sup></li>
+    </ul>
+  </section>
+
+  <section class="prose" aria-labelledby="yourself-h">
+    <h2 id="yourself-h">Check it yourself</h2>
+    <p>Download the package from <a href="https://doi.org/10.5281/zenodo.23483410">doi:10.5281/zenodo.23483410</a>, unpack it, and in its folder run:<sup class="cite"><a href="#n1">1</a></sup></p>
+    <pre>pip install numpy scipy python-flint==0.9.0 python-sat
+bash verify.sh</pre>
+    <p>The script checks the file hashes and runs both separately written checkers. It ends with <code>SUMMARY: PASS</code> or <code>SUMMARY: FAIL</code>. The package's README gives the commands and about 3 minutes, and TEST_RUN.txt holds its archived output; you can also run one checker alone with <code>python verify_all.py</code>.<sup class="cite"><a href="#n1">1</a></sup></p>
+  </section>
+
+  <section class="refs" aria-labelledby="refs-h">
+    <h2 id="refs-h">Sources</h2>
+    <ol>
+      <li id="n1">Zenodo deposit, published 19 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23483410">doi:10.5281/zenodo.23483410</a> (README.txt, verify_all.py, independent_check/, TEST_RUN.txt).</li>
+      <li id="n2">A. D. N. J. de Grey, "A 5-chromatic, triangle-free unit-distance graph in R<sup>3</sup> with 61 vertices", Geombinatorics 35(3) (January 2026), starting on p. 111.</li>
+      <li id="n3">I. Tomon, "Geometric triangle-free graphs of large chromatic number", <a href="https://arxiv.org/abs/2610.03517">arXiv:2610.03517</a> (v2), Theorem 1.3 and Corollary 1.4.</li>
+      <li id="n4">G. Exoo, J. Goedgebeur, "Bounds for the smallest k-chromatic graphs of given girth", Discrete Math. Theor. Comput. Sci. 21(3) (2019), <a href="https://doi.org/10.23638/DMTCS-21-3-9">doi:10.23638/DMTCS-21-3-9</a>.</li>
+          <li id="nE">Re-run log, 1 Nov 2026: <a href="../evidence/rerun_2026-11-01.txt">evidence/rerun_2026-11-01.txt</a>.</li>
+    </ol>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>The searches, code and checks behind these results were produced with AI tools (Claude Code, with ChatGPT as a reviewer) inside a process I designed and ran. Corrections are welcome and will be dated.</p>
+  <p>Contact: <a href="https://github.com/carsoncrocker">github.com/carsoncrocker</a></p>
+</div></footer>
+</body>
+</html>

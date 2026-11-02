@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gross code circuit distance 10 · Carson Crocker</title>
+<meta name="description" content="In my reconstruction of IBM's syndrome circuit for the gross code, an exhaustive computer search finds no set of 9 or fewer faults that corrupts the stored data unnoticed, so the circuit-level distance is 10 for the stated rounds and fault model. Plain-English explanation, what is not new, how it was checked, and how to check it yourself.">
+<meta name="citation_title" content="Circuit-level distance 10 for the gross code's syndrome circuit">
+<meta name="citation_author" content="Crocker, Carson">
+<meta name="citation_publication_date" content="2026/10/18">
+<meta name="citation_doi" content="10.5281/zenodo.23452754">
+<link rel="canonical" href="https://carsoncrocker.github.io/results/gross-code-10.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="../">Home</a><a href="./" aria-current="page">Results</a><a href="../case-study.html">Case study</a><a href="../log.html">Log</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section>
+    <span class="eyebrow">Result · public deposit</span>
+    <h1>My reconstruction of the gross code's syndrome circuit has circuit-level distance 10</h1>
+    <p class="lede">A quantum memory is protected by checking it again and again, and each check is a small circuit that can itself make mistakes. The circuit-level distance is the fewest mistakes, anywhere in that circuit, that can silently corrupt the stored data. IBM's authors showed that for the gross code it is at most 10 and conjectured that it is exactly 10. In my reconstruction of that circuit, an exhaustive computer search found no way to do it with 9 or fewer mistakes, and explicit sets of 10 mistakes do it.<sup class="cite"><a href="#n1">1</a></sup><sup class="cite"><a href="#n2">2</a></sup></p>
+    <div class="bound"><span class="was">d<sub>circ</sub> &le; 10, conjectured 10</span><span class="arrow">&rarr;</span><span class="now">d<sub>circ</sub> = 10 in my reconstruction, stated rounds and fault model</span></div>
+    <p class="small">Stage 3, published 18 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23452754">doi:10.5281/zenodo.23452754</a>.<sup class="cite"><a href="#n2">2</a></sup> The lower bound rests on an exhaustive computer search, not on a standalone certificate, and no human expert has reviewed it.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="problem-h">
+    <h2 id="problem-h">The problem in plain words</h2>
+    <p>The gross code is the [[144,12,12]] bivariate bicycle code of Bravyi et al. at IBM. It stores 12 logical qubits in 144 physical ones, and its <em>code distance</em> is 12: at least 12 qubit errors are needed to damage the stored data without being noticed.<sup class="cite"><a href="#n1">1</a></sup></p>
+    <p>In practice the checks are measured by a circuit of gates, idle steps, preparations and measurements, and any of those can fail. A set of failures that sets off no detector but still flips a logical qubit is an <em>undetectable logical error</em>. The <em>circuit-level distance</em> is the size of the smallest such set, for a given circuit and fault model. It can be lower than the code distance, because one failed gate can spread to several qubits. For this circuit, Bravyi et al. exhibited a set of 10 faults, so the distance is at most 10, and conjectured that 10 is the true value.<sup class="cite"><a href="#n1">1</a></sup> Cross, He, Rall and Yoder reported 10 from numerical evidence.<sup class="cite"><a href="#n3">3</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="new-h">
+    <h2 id="new-h">What is new, and what is not</h2>
+    <p><b>New:</b> an exhaustive search over fault sets finds none of size 9 or fewer in my reconstruction of the Bravyi et al. circuit, with 12 noisy rounds followed by 2 noiseless ones, in both memory bases. Explicit sets of 10 faults do cause a logical error, so the distance of that reconstructed model is exactly 10. The same value 10 holds for the CZ-compiled version of the circuit in the Tesseract decoder's test files, and the distance is 8 for both versions of the smaller [[108,8,10]] circuit.<sup class="cite"><a href="#n2">2</a></sup></p>
+    <p><b>Not new:</b> the upper bound 10 and the conjecture are from Bravyi et al.<sup class="cite"><a href="#n1">1</a></sup> The numerical value 10 was reported by Cross, He, Rall and Yoder.<sup class="cite"><a href="#n3">3</a></sup> The Tesseract authors obtained exact MaxSAT values 6 and 8 for two smaller circuits, which I reproduced as controls.<sup class="cite"><a href="#n4">4</a></sup> Webster, Jacob and Higgott had already filtered the fault model by detector type, the idea behind one of my search's reductions, and benchmarked solvers on these circuits; the solvers that certify the minimum finished only on the [[72,12,6]] circuit.<sup class="cite"><a href="#n5">5</a></sup> The deposit also reports the weaker lower bounds 8 (gross) and 6 ([[108,8,10]]), obtained by applying Proposition 3 of Strikis, Browne and Beverland to these circuits.<sup class="cite"><a href="#n2">2</a></sup><sup class="cite"><a href="#n6">6</a></sup> I found no earlier exhaustive proof that 10 is the minimum for this circuit, but my literature search stopped on 17 Oct 2026 and did not read every recent paper in full.<sup class="cite"><a href="#n2">2</a></sup></p>
+    <p><b>Related but different:</b> G. Pan has a public repository that reports circuit distances for related circuits, including an interleaved circuit for the same code with a larger distance (12). That is a different circuit, so it does not conflict with 10 here.<sup class="cite"><a href="#n7">7</a></sup></p>
+    <p><b>Not claimed:</b> anything for other numbers of rounds, other compilations or other noise placements.<sup class="cite"><a href="#n2">2</a></sup> Nothing here is about logical error rates or decoder performance.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="checked-h">
+    <h2 id="checked-h">How it was checked</h2>
+    <ul>
+      <li><b>Two search programs:</b> one in Python with numba and one in C, written in separate sessions. Both use the irreducible-cluster method of Dumer, Kovalev and Pryadko. In the [[144,12,12]] cases, both found no undetectable logical error involving 9 or fewer faults. Agreement is a consistency check; a shared error in the method or the circuit inputs would survive.<sup class="cite"><a href="#n2">2</a></sup><sup class="cite"><a href="#n8">8</a></sup></li>
+      <li><b>Controls:</b> the same programs reproduce the Tesseract paper's exact values for the [[72,12,6]] and [[90,8,10]] circuits, and they find planted logical errors.<sup class="cite"><a href="#n2">2</a></sup></li>
+      <li><b>Witnesses:</b> all 13 explicit fault sets were replayed as concrete faults in a Stim simulation: no detector fires, and a logical observable flips.<sup class="cite"><a href="#n2">2</a></sup></li>
+      <li><b>The circuit model:</b> the Tesseract circuits are the project's own unmodified files. The model of the Bravyi et al. circuit is my rebuild of their published simulation code, made with two builders and a third build in a separate session; all agreed exactly. I did not run their published code. My matrices have one column fewer than the counts printed in the paper; I have not established the reason for that difference.<sup class="cite"><a href="#n2">2</a></sup></li>
+      <li><b>Re-check on 1 Nov 2026:</b> From a fresh copy of the package, <code>bash verify.sh light</code> ran all 22 program runs with the expected results and ended <code>SUMMARY: PASS</code> (748 seconds). I did not re-run the eight weight-9 searches of full mode; those results rest on the package's own logs.<sup class="cite"><a href="#nE">10</a></sup></li>
+    </ul>
+    <p class="note">The programs, builders and checks were all written by Claude, under my direction, in separate sessions, with reviews by Claude and ChatGPT. That is not independence in the sense of different authors. I have not had confirmation from the IBM authors that my reconstruction matches their circuit. No human expert has reviewed the work, and I am not a professional mathematician or physicist. Corrections are welcome.<sup class="cite"><a href="#n2">2</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="status-h">
+    <h2 id="status-h">Status</h2>
+    <p><b>Stage 3 of 5: public.</b> The package, with the note, programs, witnesses, logs and a LIMITATIONS file, is on Zenodo: <a href="https://doi.org/10.5281/zenodo.23452754">doi:10.5281/zenodo.23452754</a>.<sup class="cite"><a href="#n2">2</a></sup> The Error Correction Zoo entry lists distance 10 "for a reconstruction" and cites the deposit. Its maintainer edited and merged the entry; that does not verify my circuit model or my search.<sup class="cite"><a href="#n9">9</a></sup> The stages are explained on the <a href="./#st-h">Results</a> page.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="credits-h">
+    <h2 id="credits-h">Credits</h2>
+    <ul>
+      <li>The circuit, the fault model, the upper bound 10 and the conjecture: S. Bravyi, A. W. Cross, J. M. Gambetta, D. Maslov, P. Rall and T. J. Yoder, and their published simulation code.<sup class="cite"><a href="#n1">1</a></sup></li>
+      <li>The numerical value 10: A. Cross, Z. He, P. Rall and T. Yoder.<sup class="cite"><a href="#n3">3</a></sup></li>
+      <li>The Tesseract circuit files and the MaxSAT values used as controls: L. Aghababaie Beni, O. Higgott, N. Shutty and the tesseract-decoder project.<sup class="cite"><a href="#n4">4</a></sup></li>
+      <li>Detector-type filtering: M. Webster, A. Jacob and O. Higgott.<sup class="cite"><a href="#n5">5</a></sup> Weaker bounds from extended codes: A. Strikis, D. Browne and M. Beverland.<sup class="cite"><a href="#n6">6</a></sup></li>
+      <li>The search method: I. Dumer, A. Kovalev and L. Pryadko.<sup class="cite"><a href="#n8">8</a></sup> Simulation: Stim, by C. Gidney (<a href="https://arxiv.org/abs/2103.02202">arXiv:2103.02202</a>).</li>
+      <li>Related circuit-distance work: G. Pan.<sup class="cite"><a href="#n7">7</a></sup> The Zoo entry: V. Albert and the Error Correction Zoo.<sup class="cite"><a href="#n9">9</a></sup></li>
+    </ul>
+  </section>
+
+  <section class="prose" aria-labelledby="yourself-h">
+    <h2 id="yourself-h">Check it yourself</h2>
+    <p>Download the package from <a href="https://doi.org/10.5281/zenodo.23452754">doi:10.5281/zenodo.23452754</a>, unpack it, and run in its folder:<sup class="cite"><a href="#n2">2</a></sup></p>
+    <pre>bash verify.sh light      # rebuilds the circuits, replays the witnesses, reruns the controls and the [[108,8,10]] searches
+bash verify.sh full       # adds the eight [[144,12,12]] searches at weight 9 or less (several hours)</pre>
+    <p>It needs bash, gcc, and python3 with stim, numpy and numba. The last line says <code>SUMMARY: PASS</code> or <code>SUMMARY: FAIL</code>. The package's own clean-copy run of the light mode took about 3 minutes, and its README lists the full-mode node counts and times for comparison.<sup class="cite"><a href="#n2">2</a></sup> LIMITATIONS.md in the package gives suggested starting points for review, including the absence of a SAT or integer-programming certificate.<sup class="cite"><a href="#n2">2</a></sup></p>
+  </section>
+
+  <section class="refs" aria-labelledby="refs-h">
+    <h2 id="refs-h">Sources</h2>
+    <ol>
+      <li id="n1">S. Bravyi, A. W. Cross, J. M. Gambetta, D. Maslov, P. Rall, T. J. Yoder, "High-threshold and low-overhead fault-tolerant quantum memory", Nature (2024), <a href="https://arxiv.org/abs/2308.07915">arXiv:2308.07915</a>; code: github.com/sbravyi/BivariateBicycleCodes.</li>
+      <li id="n2">Zenodo deposit, published 18 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23452754">doi:10.5281/zenodo.23452754</a> (README.md, LIMITATIONS.md, TEST_RUN.txt, the note circuit_distance_gross.pdf).</li>
+      <li id="n3">A. Cross, Z. He, P. Rall, T. Yoder, "Improved QLDPC Surgery: Logical Measurements and Bridging Codes", <a href="https://arxiv.org/abs/2407.18393">arXiv:2407.18393</a> (2024).</li>
+      <li id="n4">L. Aghababaie Beni, O. Higgott, N. Shutty, <a href="https://arxiv.org/abs/2503.10988">arXiv:2503.10988</a> (Tesseract), and github.com/quantumlib/tesseract-decoder.</li>
+      <li id="n5">M. Webster, A. Jacob, O. Higgott, <a href="https://arxiv.org/abs/2603.22532">arXiv:2603.22532</a>.</li>
+      <li id="n6">A. Strikis, D. E. Browne, M. E. Beverland, "High-performance syndrome extraction circuits for quantum codes", <a href="https://arxiv.org/abs/2603.05481">arXiv:2603.05481</a>, Proposition 3.</li>
+      <li id="n7">G. Pan, <a href="https://github.com/GavinNull/gross-code-distance-12">github.com/GavinNull/gross-code-distance-12</a>.</li>
+      <li id="n8">I. Dumer, A. A. Kovalev, L. P. Pryadko, IEEE Trans. Inf. Theory (2017), <a href="https://arxiv.org/abs/1611.07164">arXiv:1611.07164</a>.</li>
+      <li id="n9">Error Correction Zoo data, pull request #420, merged 26 Oct 2026: <a href="https://github.com/errorcorrectionzoo/eczoo_data/pull/420">github.com/errorcorrectionzoo/eczoo_data/pull/420</a>.</li>
+          <li id="nE">Re-run log, 1 Nov 2026: <a href="../evidence/rerun_2026-11-01.txt">evidence/rerun_2026-11-01.txt</a>.</li>
+    </ol>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>The searches, code and checks behind these results were produced with AI tools (Claude Code, with ChatGPT as a reviewer) inside a process I designed and ran. Corrections are welcome and will be dated.</p>
+  <p>Contact: <a href="https://github.com/carsoncrocker">github.com/carsoncrocker</a></p>
+</div></footer>
+</body>
+</html>

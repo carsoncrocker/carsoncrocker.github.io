@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two-gross code 16-fault logical · Carson Crocker</title>
+<meta name="description" content="In my reconstruction of the two-gross code's depth-8 syndrome cycle, 16 circuit faults can corrupt the stored data without any detector firing, and the same holds for every one of 22,608 uniform depth-8 cycles. An upper bound only. Plain-English explanation, what is not new, how it was checked, and how to check it yourself.">
+<meta name="citation_title" content="Two-gross code [[288,12,18]]: 16-fault logical errors in uniform depth-8 syndrome cycles">
+<meta name="citation_author" content="Crocker, Carson">
+<meta name="citation_publication_date" content="2026/10/21">
+<meta name="citation_doi" content="10.5281/zenodo.23875528">
+<link rel="canonical" href="https://carsoncrocker.github.io/results/two-gross-16.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">Carson Crocker</a>
+  <nav class="nav" aria-label="Site"><a href="../">Home</a><a href="./" aria-current="page">Results</a><a href="../case-study.html">Case study</a><a href="../log.html">Log</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section>
+    <span class="eyebrow">Result · public deposit</span>
+    <h1>Two-gross code: a 16-fault logical error in the depth-8 syndrome cycle</h1>
+    <p class="lede">The two-gross code is a larger relative of IBM's gross code. Its code distance is 18, which means 18 qubit errors are needed to damage the stored data unnoticed. But the circuit that reads out the checks can itself fail, and failures inside it can do the same damage with fewer faults. In my reconstruction of the standard depth-8 circuit, I found sets of 16 circuit faults that no detector notices and that flip a logical qubit. So the circuit-level distance of that circuit is at most 16.<sup class="cite"><a href="#n1">1</a></sup><sup class="cite"><a href="#n2">2</a></sup></p>
+    <div class="bound"><span class="was">Published reference: Fail fast reports circuit distance &le; 18 for its BB(18)-circuit</span><span class="arrow">&rarr;</span><span class="now">My result: in my reconstruction, circuit distance &le; 16 for this cycle and for every cycle in the defined uniform depth-8 family</span></div>
+    <p class="small">Stage 3, published 21 Oct 2026; latest version 3.2: <a href="https://doi.org/10.5281/zenodo.23875528">doi:10.5281/zenodo.23875528</a>.<sup class="cite"><a href="#n1">1</a></sup> An upper bound only. No human expert has reviewed it.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="problem-h">
+    <h2 id="problem-h">The problem in plain words</h2>
+    <p>The two-gross code [[288,12,18]] is the larger code in IBM's planned modular architecture.<sup class="cite"><a href="#n3">3</a></sup> Its code distance 18 was proved by Rowshan and Devitt.<sup class="cite"><a href="#n4">4</a></sup> The <em>circuit-level distance</em> is a different number: the fewest faults, anywhere in the syndrome-measurement circuit (gates, idles, preparations, measurements), that trigger no detector yet apply a nontrivial logical operator. A single circuit fault can spread to several data qubits, so the circuit-level distance can be lower than the code distance.<sup class="cite"><a href="#n5">5</a></sup></p>
+    <p>The circuit studied here is the depth-8 cycle of Bravyi et al., applied to the two-gross code.<sup class="cite"><a href="#n5">5</a></sup> I use the round schedule of Section 2.4 of IBM's Fail fast paper: 18 noisy cycles followed by one fault-free cycle.<sup class="cite"><a href="#n6">6</a></sup> Fail fast's Table 2 reports an upper bound of 18 for its BB(18)-circuit model, the weight of the lowest-weight logical operator its search found.<sup class="cite"><a href="#n6">6</a></sup> I have not established that its full circuit and initialization conventions match my reconstruction.<sup class="cite"><a href="#n1">1</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="new-h">
+    <h2 id="new-h">What is new, and what is not</h2>
+    <p><b>This deposit, in my reconstruction:</b> explicit sets of 16 faults, listed gate by gate, that cause an undetected logical error for X-type and Z-type faults under each of the two circuit-label readings documented in MAPPING.md. Version 2 supplies certificates of an upper bound of 16 for each of the 22,608 cycles in the <em>uniform</em> family defined and enumerated in the deposit: one ancilla per check, CNOT gates only, period 8, separate preparation and measurement steps, and one shared CNOT order and timing for each check type. The claim includes the deposit's initialization, boundary and noise conventions.<sup class="cite"><a href="#n1">1</a></sup></p>
+    <p><b>Prior work:</b> the code's use in the modular architecture, its code distance 18 and the depth-8 cycle come from the cited papers.<sup class="cite"><a href="#n3">3</a></sup><sup class="cite"><a href="#n4">4</a></sup><sup class="cite"><a href="#n5">5</a></sup> Fail fast supplies the noisy-round and final fault-free-round schedule used here.<sup class="cite"><a href="#n6">6</a></sup></p>
+    <p><b>Not claimed:</b> no lower bound; nothing about cycles outside the uniform family (for example check-dependent orders, longer depth, extra ancillas or other gate sets); nothing about logical error rates or decoders. A published benchmark of distance solvers uses a different two-gross circuit and noise model, so its numbers are not comparable.<sup class="cite"><a href="#n7">7</a></sup> Whether the 2,333 class certificates that use data idle faults still give 16 without idle noise is not claimed.<sup class="cite"><a href="#n1">1</a></sup></p>
+    <p><b>"In my reconstruction" is meant literally.</b> I rebuilt the circuit from the published tables and the repository source, and I have no confirmation that it is the circuit IBM used. The deposit's MAPPING.md lists, gate by gate, what the match rests on.<sup class="cite"><a href="#n1">1</a></sup> My model begins with no errors on any qubit, as the simulation code of Bravyi et al. does.<sup class="cite"><a href="#n1">1</a></sup><sup class="cite"><a href="#n5">5</a></sup> This initialization is my modeling choice for this reconstruction; Fail fast's Section 2.4 states no initialization convention.<sup class="cite"><a href="#n6">6</a></sup> Versions 3 and 3.1 of the deposit incorrectly attributed this ideal initialization to Fail fast in MAPPING.md. Version 3.2 corrects it, adds no result and changes no result, and credits Victor Albert, who pointed it out in his comment on the Error Correction Zoo pull request.<sup class="cite"><a href="#n8">8</a></sup> His comment was not a verification of my reconstruction or of the 16-fault bound.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="checked-h">
+    <h2 id="checked-h">How it was checked</h2>
+    <ul>
+      <li><b>Four propagators</b> agree on a 16-fault set: the search pipeline's builder, a blind rebuild written from the papers only, a hostile-review rewrite, and the checkers in the package. Each runs the faults through the circuit and finds no detector firing and a flipped logical.<sup class="cite"><a href="#n1">1</a></sup></li>
+      <li><b>Matrix sizes:</b> two separately written circuit builds reproduce the detector and fault-column counts in Fail fast's Table 1 (2,736 detectors).<sup class="cite"><a href="#n1">1</a></sup><sup class="cite"><a href="#n6">6</a></sup></li>
+      <li><b>A check readers can follow:</b> HAND_CHECK.md lists the 24-qubit residual error and an 18-qubit operator that commutes with every check but anticommutes with the residual. With a residual of zero syndrome, those relations show a nontrivial logical error, and the file explains how to check them.<sup class="cite"><a href="#n1">1</a></sup></li>
+      <li><b>The family claim:</b> one script replays a certificate on all 22,608 cycles with no search; another re-derives the list of cycles from all 6!&sup2;&times;8 candidates. Removing one fault from a witness makes a detector fire in every case tested, which tests the supplied witnesses but excludes no other, smaller logical error; deliberately altered inputs are rejected.<sup class="cite"><a href="#n1">1</a></sup></li>
+      <li><b>Re-check on 1 Nov 2026:</b> From a fresh copy of v3.2, <code>check_witness.py</code> and <code>check_family.py</code> both passed, the second on all 22,608 cycles. I did not re-run <code>check_enumeration.py</code>.<sup class="cite"><a href="#nE">9</a></sup></li>
+    </ul>
+    <p class="note">All four propagators were written by Claude, under my direction, in separate sessions, with ChatGPT as a reviewer. A misreading of the papers shared by all of them would survive. No human expert has verified the circuit, the witnesses or the certificates. I am not a professional mathematician or physicist. Corrections are welcome.<sup class="cite"><a href="#n1">1</a></sup></p>
+  </section>
+
+  <section class="prose" aria-labelledby="status-h">
+    <h2 id="status-h">Status</h2>
+    <p><b>Stage 3 of 5: public.</b> The deposit has four versions: v1 (the witnesses), v2 (the family certificates), v3.1 (one reproducibility package with three checkers and a Stim export of the circuit) and v3.2 (the same package with corrected wording about Fail fast).<sup class="cite"><a href="#n1">1</a></sup> The Error Correction Zoo lists the 16-fault bound as "at most 16 for a reconstruction" in its entry for this code.<sup class="cite"><a href="#n8">8</a></sup> The stages are explained on the <a href="./#st-h">Results</a> page.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="credits-h">
+    <h2 id="credits-h">Credits</h2>
+    <ul>
+      <li>The depth-8 cycle and the code family: S. Bravyi et al.<sup class="cite"><a href="#n5">5</a></sup> The two-gross code in the modular architecture: IBM's Tour de gross.<sup class="cite"><a href="#n3">3</a></sup></li>
+      <li>The noisy-round and final fault-free-round schedule, the detector counts and the reported circuit-distance upper bound of 18: M. E. Beverland, M. Carroll, A. W. Cross and T. J. Yoder (Fail fast).<sup class="cite"><a href="#n6">6</a></sup></li>
+      <li>The code distance 18: M. Rowshan and S. Devitt.<sup class="cite"><a href="#n4">4</a></sup></li>
+      <li>Identifying the misattributed label, corrected in version 3.2, and house-style edits to the Zoo entry: Victor Albert, the Error Correction Zoo maintainer.<sup class="cite"><a href="#n8">8</a></sup></li>
+    </ul>
+  </section>
+
+  <section class="prose" aria-labelledby="yourself-h">
+    <h2 id="yourself-h">Check it yourself</h2>
+    <p>Download the package from <a href="https://doi.org/10.5281/zenodo.23875528">doi:10.5281/zenodo.23875528</a>, unpack it, and in its folder run:<sup class="cite"><a href="#n1">1</a></sup></p>
+    <pre>python3 -m venv venv
+venv/bin/python -m pip install -r requirements.txt    # numpy and stim only
+venv/bin/python check_witness.py        # the 16-fault sets; about 2 seconds
+venv/bin/python check_family.py         # all 22,608 certificates; about 1 minute
+venv/bin/python check_enumeration.py    # the cycle list is complete; about 1.5 minutes</pre>
+    <p>Each prints a line ending in PASSED or FAILED. Run times depend on the machine and its load. HAND_CHECK.md explains the witness calculation.<sup class="cite"><a href="#n1">1</a></sup></p>
+  </section>
+
+  <section class="refs" aria-labelledby="refs-h">
+    <h2 id="refs-h">Sources</h2>
+    <ol>
+      <li id="n1">Zenodo deposit: v1 <a href="https://doi.org/10.5281/zenodo.23535390">doi:10.5281/zenodo.23535390</a> (21 Oct 2026), v2 <a href="https://doi.org/10.5281/zenodo.23550503">doi:10.5281/zenodo.23550503</a> (22 Oct 2026), v3.1 <a href="https://doi.org/10.5281/zenodo.23630980">doi:10.5281/zenodo.23630980</a>, v3.2 <a href="https://doi.org/10.5281/zenodo.23875528">doi:10.5281/zenodo.23875528</a> (README.md, MAPPING.md, CHANGES_v3_2.md, HAND_CHECK.md, CLEAN_RUN_v3_2.txt).</li>
+      <li id="n2">Same deposit, README.md, section "What is claimed": upper bounds on circuit distance only.</li>
+      <li id="n3">IBM, "Tour de gross", <a href="https://arxiv.org/abs/2506.03094">arXiv:2506.03094</a>.</li>
+      <li id="n4">M. Rowshan, S. Devitt, "Logical Operator Decomposition for Distance Analysis of Bivariate Bicycle Codes", <a href="https://arxiv.org/abs/2609.39395">arXiv:2609.39395</a>.</li>
+      <li id="n5">S. Bravyi et al., Nature (2024), <a href="https://arxiv.org/abs/2308.07915">arXiv:2308.07915</a>, Tables 3 and 5; code: github.com/sbravyi/BivariateBicycleCodes.</li>
+      <li id="n6">M. E. Beverland, M. Carroll, A. W. Cross, T. J. Yoder, "Fail fast: techniques to probe rare events in quantum error correction", <a href="https://arxiv.org/abs/2511.15177">arXiv:2511.15177</a>, Sec. 2.4, Tables 1 and 2.</li>
+      <li id="n7">M. Webster, A. Jacob, O. Higgott, <a href="https://arxiv.org/abs/2603.22532">arXiv:2603.22532</a>.</li>
+      <li id="n8">Error Correction Zoo data, pull request #420, merged 26 Oct 2026: <a href="https://github.com/errorcorrectionzoo/eczoo_data/pull/420">github.com/errorcorrectionzoo/eczoo_data/pull/420</a>.</li>
+          <li id="nE">Re-run log, 1 Nov 2026: <a href="../evidence/rerun_2026-11-01.txt">evidence/rerun_2026-11-01.txt</a>.</li>
+    </ol>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>The searches, code and checks behind these results were produced with AI tools (Claude Code, with ChatGPT as a reviewer) inside a process I designed and ran. Corrections are welcome and will be dated.</p>
+  <p>Contact: <a href="https://github.com/carsoncrocker">github.com/carsoncrocker</a></p>
+</div></footer>
+</body>
+</html>
