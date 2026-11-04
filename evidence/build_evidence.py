@@ -6,6 +6,7 @@ import html, re, os
 
 PAGES = {
     "ledger_extract.md": "Ledger extract",
+    "ledger_nov.md": "Ledger extract, November 2026",
     "log_quotes.md": "Log quotes",
     "withdrawn.md": "Withdrawn",
     "usage.md": "Claude Code usage",

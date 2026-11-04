@@ -20,14 +20,25 @@
   <section>
     <h1>Results</h1>
     <p class="lede">What has been proven, and where each result stands.</p>
-    <p>Six results are computer-checked proofs that improve a published bound on an open problem. One further result is a written proof that depends on a theorem in OpenAI's recent preprint. The four quantum-code packages were established by exhaustive searches using two separately written programs; none has an independently checkable certificate. Every result comes with a full package, with a DOI, that anyone can download and re-check; the three graph results with files on their pages also have a short check-it-yourself kit. Eight results have a page of their own with a plain-English explanation, what is and is not new, and instructions for re-checking; the others are described on this page.</p>
+    <p>Seven results are computer-checked proofs that improve a published bound on an open problem. One further result is a written proof that depends on a theorem in OpenAI's recent preprint. The four quantum-code packages were established by exhaustive searches using two separately written programs; none has an independently checkable certificate. Every result comes with a full package, with a DOI, that anyone can download and re-check; the three graph results with files on their pages also have a short check-it-yourself kit. Eight results have a page of their own with a plain-English explanation, what is and is not new, and instructions for re-checking; the others are described on this page.</p>
   </section>
 
   <section aria-labelledby="pub-h">
     <h2 id="pub-h">Published</h2>
-    <p>The first card covers the two-gross quantum code, initially released on 21&ndash;22 October; its <a href="https://doi.org/10.5281/zenodo.23875528">version 3.2</a> corrects wording about Fail fast and adds no result. It is followed by certificates for equilateral sets in &ell;<sub>p</sub><sup>n</sup> (Kusner's question; version 3 on 22 October) and an explicit girth-5 5-chromatic unit-distance graph in R<sup>3</sup> (19 October). A further package, published on 16 October, reports exact distances from 14 to 24 for 27 quantum codes:
+    <p>The newest card gives an upper bound for c<sub>7</sub> (3 November). The next covers the two-gross quantum code, initially released on 21&ndash;22 October; its <a href="https://doi.org/10.5281/zenodo.23875528">version 3.2</a> corrects wording about Fail fast and adds no result. It is followed by certificates for equilateral sets in &ell;<sub>p</sub><sup>n</sup> (Kusner's question; version 3 on 22 October) and an explicit girth-5 5-chromatic unit-distance graph in R<sup>3</sup> (19 October). A further package, published on 16 October, reports exact distances from 14 to 24 for 27 quantum codes:
     <a href="https://doi.org/10.5281/zenodo.23423011">package and note</a>.</p>
     <div class="cards">
+      <article class="card" id="c7">
+        <div class="card-head">
+          <h3><a href="https://doi.org/10.5281/zenodo.23933131">An upper bound for c<sub>7</sub></a></h3>
+          <span class="small">published 3 Nov 2026<sup class="cite"><a href="#n10">10</a></sup></span>
+        </div>
+        <p>In the density Hales&ndash;Jewett problem, c<sub>n</sub> is the largest size of a subset of [3]<sup>n</sup> with no combinatorial line, using Polymath DHJ(3) notation. I give the upper bound c<sub>7</sub> &le; 1345 for n = 7.</p>
+        <p>The proof is a SAT refutation whose DRAT/LRAT proof was checked by drat-trim, cake_lpr, and lrat-check. An independently written blind re-encoding, made without seeing the original, also returned unsatisfiable; drat-trim verified its proof. I also checked c<sub>1</sub> through c<sub>5</sub> this way; slicing gives c<sub>6</sub> &le; 3c<sub>5</sub> = 450, and these checks establish upper bounds only.</p>
+        <p>My deposit includes a three-page note, replay.sh, and checksums so anyone can rerun the checks. I produced this work with Claude Code under my direction. It is not yet externally reviewed; no human expert has reviewed it.</p>
+        <div class="bound"><span class="was">Published upper bound: 1348 (Tao's blog post of 4 March 2009, cited in the deposit note)</span><span class="arrow">&rarr;</span><span class="now">c<sub>7</sub> &le; 1345</span></div>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23933131">doi:10.5281/zenodo.23933131</a><a href="https://arxiv.org/abs/1002.0374">Polymath paper, arXiv:1002.0374</a></div>
+      </article>
       <article class="card">
         <div class="card-head">
           <h3><a href="two-gross-16.html">Two-gross code: in my reconstruction, 16 faults can change the encoded information without detection</a></h3>
@@ -175,7 +186,7 @@
     <div class="stages">
       <div class="stg"><b>1. Found</b><span>The system found a candidate and it passed a first rigorous computer check.</span></div>
       <div class="stg"><b>2. Verified</b><span>Independent checkers, a formally verified checker or Lean proof where possible, hostile AI review, and a literature check repeated just before release.</span></div>
-      <div class="stg"><b>3. Public</b><span>The note and any accompanying code are public with a DOI. Corrections are recorded and dated.</span><span class="dotc">#188, #189, 31, 228, 276, 5,942, Kusner sets, gross code, two-gross</span></div>
+      <div class="stg"><b>3. Public</b><span>The note and any accompanying code are public with a DOI. Corrections are recorded and dated.</span><span class="dotc">#188, #189, 31, 228, 276, 5,942, Kusner sets, gross code, two-gross, c<sub>7</sub></span></div>
       <div class="stg"><b>4. arXiv</b><span>A written paper on arXiv, ideally with a professional mathematician as co-author.</span></div>
       <div class="stg"><b>5. Peer-reviewed</b><span>Accepted by a journal after independent review.</span></div>
     </div>
@@ -186,6 +197,7 @@
     <h2 id="wd-h">Caught before publishing</h2>
     <p>Things that looked new or true at first, until the checks said otherwise. Each claim listed here was caught before release; in one case the underlying computation was later published as a reproduction of the known result. They are listed because catching them is the point. Three earlier postings we missed were found only after publishing; they are on the <a href="../evidence/withdrawn.html">corrections page</a>. Items about unpublished work will be added when that work is published.</p>
     <ul>
+      <li><b>A bound already covered by earlier work</b> (4 Nov 2026). A lower bound I found for the chromatic number of R<sup>4</sup> in a tropical norm appears to be superseded by Bachoc, Bellitto, Moustrou, and Pecher (arXiv:1708.00291, Corollary 2), so I did not release it. <a href="../evidence/ledger_nov.html#L1087">Evidence</a></li>
       <li><b>A quantum code distance already found by Liang et al.</b> (14 Oct 2026). The [[248,10]] code from the same 10,000-atom paper had been solved exactly in 2025 (<a href="https://arxiv.org/abs/2503.03827">arXiv:2503.03827</a>). The novelty claim was dropped before release; the computation stays in the package as a reproduction. <a href="../evidence/withdrawn.html#w-bb18">Evidence</a></li>
       <li><b>A claimed 63 for #188</b> (2 Oct 2026). The search had graded itself on a sample of lines; the true figure was at least 68. Never announced. <a href="../evidence/withdrawn.html#w-188-63">Evidence</a></li>
       <li><b>A 5-chromatic unit-distance graph in a small disk</b> (20 Sep 2026) was already beaten in the Polymath16 project in 2021. <a href="../evidence/withdrawn.html#w-polymath">Evidence</a></li>
@@ -208,6 +220,7 @@
       <li id="n7">Zenodo dataset and code, published 18 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23452776">doi:10.5281/zenodo.23452776</a> (note, certificates, three checkers, LIMITATIONS.md).</li>
       <li id="n8">Zenodo dataset and code, published 19 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23462743">doi:10.5281/zenodo.23462743</a>; version 3, 22 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23569141">doi:10.5281/zenodo.23569141</a>.</li>
       <li id="n9">Zenodo dataset and code, published 19 Oct 2026: <a href="https://doi.org/10.5281/zenodo.23483410">doi:10.5281/zenodo.23483410</a>.</li>
+      <li id="n10">My Zenodo dataset and code, published 3 Nov 2026: <a href="https://doi.org/10.5281/zenodo.23933131">doi:10.5281/zenodo.23933131</a> (note, proof files, replay script, checksums); <a href="../evidence/ledger_nov.html#L1079">evidence/ledger_nov, L1079</a>.</li>
     </ol>
   </section>
 </main>
