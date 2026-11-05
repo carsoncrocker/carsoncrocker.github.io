@@ -30,14 +30,15 @@
     <div class="cards">
       <article class="card" id="c7">
         <div class="card-head">
-          <h3><a href="https://doi.org/10.5281/zenodo.23933131">An upper bound for c<sub>7</sub></a></h3>
-          <span class="small">published 3 Nov 2026<sup class="cite"><a href="#n10">10</a></sup></span>
+          <h3><a href="https://doi.org/10.5281/zenodo.23982007">An upper bound for c<sub>7</sub></a></h3>
+          <span class="small">published 3 Nov 2026 (1345); version 2, 5 Nov 2026 (1329)<sup class="cite"><a href="#n10">10</a></sup></span>
         </div>
-        <p>In the density Hales&ndash;Jewett problem, c<sub>n</sub> is the largest size of a subset of [3]<sup>n</sup> with no combinatorial line, using Polymath DHJ(3) notation. I give the upper bound c<sub>7</sub> &le; 1345 for n = 7.</p>
-        <p>The proof is a SAT refutation whose DRAT/LRAT proof was checked by drat-trim, cake_lpr, and lrat-check. An independently written blind re-encoding, made without seeing the original, also returned unsatisfiable; drat-trim verified its proof. I also checked c<sub>1</sub> through c<sub>5</sub> this way; slicing gives c<sub>6</sub> &le; 3c<sub>5</sub> = 450, and these checks establish upper bounds only.</p>
-        <p>My deposit includes a three-page note, replay.sh, and checksums so anyone can rerun the checks. I produced this work with Claude Code under my direction. It is not yet externally reviewed; no human expert has reviewed it.</p>
-        <div class="bound"><span class="was">Published upper bound: 1348 (Tao's blog post of 4 March 2009, cited in the deposit note)</span><span class="arrow">&rarr;</span><span class="now">c<sub>7</sub> &le; 1345</span></div>
-        <div class="links"><a href="https://doi.org/10.5281/zenodo.23933131">doi:10.5281/zenodo.23933131</a><a href="https://arxiv.org/abs/1002.0374">Polymath paper, arXiv:1002.0374</a></div>
+        <p>In the density Hales&ndash;Jewett problem, c<sub>n</sub> is the largest size of a subset of [3]<sup>n</sup> with no combinatorial line, using Polymath DHJ(3) notation. I give the upper bound c<sub>7</sub> &le; 1329 for n = 7, so 1302 &le; c<sub>7</sub> &le; 1329 with the Polymath construction. Version 1 gave c<sub>7</sub> &le; 1345.</p>
+        <p>Version 2 splits the size-1330 case into 5,316 cubes by slice counts. kissat refuted every cube, and drat-trim checked every refutation (75.3 solving and 44.8 checking core-hours). The cube proofs were deleted after checking; only their sizes and SHA-256 digests are kept, so the cube refutations cannot be replayed without re-solving. The bound also rests on a hand-written argument that the cubes cover every case; the cube generator was tested on n = 4 and 5 and audited by AI; neither establishes its correctness at n = 7.</p>
+        <p>For version 1 (1345), the proof is a SAT refutation whose DRAT/LRAT proof was checked by drat-trim, cake_lpr, and lrat-check. An independently written blind re-encoding, made without seeing the original, also returned unsatisfiable; drat-trim verified its proof. I also checked c<sub>1</sub> through c<sub>5</sub> this way; slicing gives c<sub>6</sub> &le; 3c<sub>5</sub> = 450, and these checks establish upper bounds only.</p>
+        <p>Version 1 includes a three-page note, replay.sh, and checksums so anyone can rerun its checks; version 2 adds the manuscript, the per-cube manifest and a script that re-checks its totals. I produced this work with Claude Code under my direction. It is not yet externally reviewed; no human expert has reviewed it.</p>
+        <div class="bound"><span class="was">Published upper bound: 1348 (Tao's blog post of 4 March 2009, cited in the deposit note)</span><span class="arrow">&rarr;</span><span class="now">c<sub>7</sub> &le; 1329</span></div>
+        <div class="links"><a href="https://doi.org/10.5281/zenodo.23982007">v2: doi:10.5281/zenodo.23982007</a> &middot; <a href="https://doi.org/10.5281/zenodo.23933131">v1: doi:10.5281/zenodo.23933131</a><a href="https://arxiv.org/abs/1002.0374">Polymath paper, arXiv:1002.0374</a></div>
       </article>
       <article class="card">
         <div class="card-head">
